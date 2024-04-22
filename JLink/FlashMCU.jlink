@@ -1,0 +1,7 @@
+r
+h
+loadbin build\studyMCU_103.bin, 0x00
+g
+verifybin build\studyMCU_103.bin, 0x00
+r
+q

@@ -1,0 +1,19 @@
+{
+	//"cortex-debug.armToolchainPath": "C:/VScodeIDE/Software/ARMEmbeddedGCC/bin",
+	"cortex-debug.enableTelemetry": false,
+	"cortex-debug.JLinkGDBServerPath": "JLinkGDBServerCL.exe",
+
+	"stm32-for-vscode.openOCDPath": false,
+	"C_Cpp.errorSquiggles": "Enabled",
+	"cmake.sourceDirectory": "D:/STM32_Project/studyMCU_407/Drivers/CMSIS/DSP/Examples/ARM/arm_bayes_example",
+	"makefile.launchConfigurations": [
+		{
+			"cwd": "d:\\STM32_Project\\studyMCU_407\\build",
+			"binaryPath": "d:\\STM32_Project\\studyMCU_407\\build\\studyMCU_407.elf",
+			"binaryArgs": []
+		}
+	],
+	"files.associations": {
+		"mbport.h": "c"
+	}
+}
