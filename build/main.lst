@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
   30:Core/Src/main.c **** 
   31:Core/Src/main.c **** /* USER CODE END PTD */
   32:Core/Src/main.c **** 
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 2
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 2
 
 
   33:Core/Src/main.c **** /* Private define ------------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
   87:Core/Src/main.c ****   /* Initialize all configured peripherals */
   88:Core/Src/main.c ****   MX_GPIO_Init();
   89:Core/Src/main.c ****   /* USER CODE BEGIN 2 */
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 3
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 3
 
 
   90:Core/Src/main.c **** 
@@ -130,7 +130,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
   96:Core/Src/main.c ****   {
   97:Core/Src/main.c **** 
   98:Core/Src/main.c ****     HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-  99:Core/Src/main.c ****     HAL_Delay(1000);
+  99:Core/Src/main.c ****     HAL_Delay(500);
  100:Core/Src/main.c **** 
  101:Core/Src/main.c ****     
  102:Core/Src/main.c ****     /* USER CODE END WHILE */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
  144:Core/Src/main.c ****     Error_Handler();
  145:Core/Src/main.c ****   }
  146:Core/Src/main.c **** }
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 4
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 4
 
 
  147:Core/Src/main.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
   31:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wconversion"
   32:Drivers/CMSIS/Include/cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
   33:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 5
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 5
 
 
   34:Drivers/CMSIS/Include/cmsis_gcc.h **** /* Fallback for __has_builtin */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
   88:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wpacked"
   89:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
   90:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 6
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 6
 
 
   91:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
   39              		.loc 2 142 3 view .LVU3
   40              		.syntax unified
   41              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 7
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 7
 
 
   42 0000 72B6     		cpsid i
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
   89 0016 0493     		str	r3, [sp, #16]
   90 0018 0593     		str	r3, [sp, #20]
  121:Core/Src/main.c ****   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 8
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 8
 
 
   91              		.loc 1 121 3 is_stmt 1 view .LVU12
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
  126              		.loc 1 137 34 is_stmt 0 view .LVU31
  127 003e 0221     		movs	r1, #2
  128 0040 0291     		str	r1, [sp, #8]
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 9
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 9
 
 
  138:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
  172              		.thumb_func
  174              	main:
  175              	.LFB65:
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 10
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 10
 
 
   65:Core/Src/main.c **** 
@@ -567,7 +567,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
  195              	.L10:
   95:Core/Src/main.c ****   {
  196              		.loc 1 95 3 discriminator 1 view .LVU48
-  98:Core/Src/main.c ****     HAL_Delay(1000);
+  98:Core/Src/main.c ****     HAL_Delay(500);
  197              		.loc 1 98 5 discriminator 1 view .LVU49
  198 000e 4FF40051 		mov	r1, #8192
  199 0012 0448     		ldr	r0, .L12
@@ -575,7 +575,7 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
  201              	.LVL8:
   99:Core/Src/main.c **** 
  202              		.loc 1 99 5 discriminator 1 view .LVU50
- 203 0018 4FF47A70 		mov	r0, #1000
+ 203 0018 4FF4FA70 		mov	r0, #500
  204 001c FFF7FEFF 		bl	HAL_Delay
  205              	.LVL9:
   95:Core/Src/main.c ****   {
@@ -598,22 +598,22 @@ ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 1
  223              		.file 9 "Core/Inc/gpio.h"
  224              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
  225              		.file 11 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 11
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 11
 
 
  226              		.file 12 "<built-in>"
-ARM GAS  C:\Users\az\AppData\Local\Temp\cczYmaDX.s 			page 12
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\az\AppData\Local\Temp\cczYmaDX.s:18     .text.Error_Handler:00000000 $t
-C:\Users\az\AppData\Local\Temp\cczYmaDX.s:24     .text.Error_Handler:00000000 Error_Handler
-C:\Users\az\AppData\Local\Temp\cczYmaDX.s:57     .text.SystemClock_Config:00000000 $t
-C:\Users\az\AppData\Local\Temp\cczYmaDX.s:63     .text.SystemClock_Config:00000000 SystemClock_Config
-C:\Users\az\AppData\Local\Temp\cczYmaDX.s:168    .text.main:00000000 $t
-C:\Users\az\AppData\Local\Temp\cczYmaDX.s:174    .text.main:00000000 main
-C:\Users\az\AppData\Local\Temp\cczYmaDX.s:211    .text.main:00000024 $d
+C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s:18     .text.Error_Handler:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s:24     .text.Error_Handler:00000000 Error_Handler
+C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s:57     .text.SystemClock_Config:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s:63     .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s:168    .text.main:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s:174    .text.main:00000000 main
+C:\Users\Andre\AppData\Local\Temp\ccO5mdzG.s:211    .text.main:00000024 $d
 
 UNDEFINED SYMBOLS
 memset

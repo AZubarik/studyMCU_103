@@ -987,26 +987,26 @@ LOAD c:/vscodeide/software/armembeddedgcc/bin/../lib/gcc/arm-none-eabi/10.3.1/th
  .debug_line    0x000023c6      0x20e build/system_stm32f1xx.o
  .debug_line    0x000025d4       0x74 build/startup_stm32f103xb.o
 
-.debug_str      0x00000000     0x125a
- .debug_str     0x00000000      0x336 build/main.o
-                                0x383 (size before relaxing)
- .debug_str     0x00000336       0xbe build/gpio.o
+.debug_str      0x00000000     0x1288
+ .debug_str     0x00000000      0x32a build/main.o
+                                0x377 (size before relaxing)
+ .debug_str     0x0000032a       0xf8 build/gpio.o
                                 0x268 (size before relaxing)
- .debug_str     0x000003f4       0xb4 build/stm32f1xx_it.o
+ .debug_str     0x00000422       0xb4 build/stm32f1xx_it.o
                                 0x20d (size before relaxing)
- .debug_str     0x000004a8       0x57 build/stm32f1xx_hal_msp.o
+ .debug_str     0x000004d6       0x57 build/stm32f1xx_hal_msp.o
                                 0x20a (size before relaxing)
- .debug_str     0x000004ff      0x5fb build/stm32f1xx_hal.o
+ .debug_str     0x0000052d      0x5fb build/stm32f1xx_hal.o
                                 0x80f (size before relaxing)
- .debug_str     0x00000afa      0x217 build/stm32f1xx_hal_rcc.o
+ .debug_str     0x00000b28      0x217 build/stm32f1xx_hal_rcc.o
                                 0x616 (size before relaxing)
- .debug_str     0x00000d11      0x114 build/stm32f1xx_hal_gpio.o
+ .debug_str     0x00000d3f      0x114 build/stm32f1xx_hal_gpio.o
                                 0x3eb (size before relaxing)
- .debug_str     0x00000e25      0x3c2 build/stm32f1xx_hal_cortex.o
+ .debug_str     0x00000e53      0x3c2 build/stm32f1xx_hal_cortex.o
                                 0x8be (size before relaxing)
- .debug_str     0x000011e7       0x4f build/system_stm32f1xx.o
+ .debug_str     0x00001215       0x4f build/system_stm32f1xx.o
                                 0x23f (size before relaxing)
- .debug_str     0x00001236       0x24 build/startup_stm32f103xb.o
+ .debug_str     0x00001264       0x24 build/startup_stm32f103xb.o
                                  0x5e (size before relaxing)
 
 .comment        0x00000000       0x49
