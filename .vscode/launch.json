@@ -6,7 +6,7 @@
 			"name": "cortex-debug",
 			"cwd": "${workspaceRoot}",
 			"executable": "${workspaceRoot}/build/studyMCU_103.elf",
-			"svdFile": "./JLink/STM32F103.svd",
+			"svdFile": "./JLink/STM32F103xB.svd",
 			"request": "launch",
 			"type": "cortex-debug",
 			"servertype": "jlink",

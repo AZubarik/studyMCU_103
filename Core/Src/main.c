@@ -94,6 +94,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+    HAL_Delay(1000);
+
+    
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -130,7 +135,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV2;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 

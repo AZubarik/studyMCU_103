@@ -10,8 +10,6 @@
                 "${workspaceRoot}\\Drivers\\**",
                 //"${workspaceRoot}\\Drivers\\FreeModbus\\**",
                 //"${workspaceRoot}\\Drivers\\AD7793\\**",
-                //"${workspaceRoot}\\Drivers\\W25qxx\\**",
-                //"${workspaceRoot}\\Drivers\\TFT\\**",
                 "${workspaceRoot}\\Core\\Src\\**",
                 "${workspaceRoot}\\Core\\Inc\\**",
                 "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F1xx/Include",
@@ -22,7 +20,7 @@
                 "USE_HAL_DRIVER",
                 "STM32F103xB",
                 "M3",
-                "GCC_ARMCM4"
+                "GCC_ARMCM3"
             ],
             "cStandard": "c11",
             "cppStandard": "c++17",

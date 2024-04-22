@@ -42,7 +42,7 @@
 		{
 			"label": "Write to Flash MCU",
 			"type": "shell",
-			"command": "JLink.exe -Device STM32F103 -If SWD -Speed 4000 JLink\\FlashMCU.jlink",
+			"command": "JLink.exe -Device STM32F103xB -If SWD -Speed 4000 JLink\\FlashMCU.jlink",
 			"options": {
 				"cwd": "${workspaceRoot}",
 				"shell": {
@@ -61,7 +61,7 @@
 		{
 			"label": "Read Flash from MCU",
 			"type": "shell",
-			"command": "JLink.exe -Device STM32F103 -If SWD -Speed 4000 JLink\\ReadMCU.jlink",
+			"command": "JLink.exe -Device STM32F103xB -If SWD -Speed 4000 JLink\\ReadMCU.jlink",
 			"options": {
 				"cwd": "${workspaceRoot}",
 				"shell": {
@@ -80,7 +80,7 @@
 		{
 			"label": "Erase Flash MCU",
 			"type": "shell",
-			"command": "JLink.exe -Device STM32F103 -If SWD -Speed 4000 JLink\\EraseMCU.jlink",
+			"command": "JLink.exe -Device STM32F103xB -If SWD -Speed 4000 JLink\\EraseMCU.jlink",
 			"options": {
 				"cwd": "${workspaceRoot}",
 				"shell": {
@@ -99,7 +99,7 @@
 		{
 			"label": "Reset MCU",
 			"type": "shell",
-			"command": "JLink.exe -Device STM32F103 -If SWD -Speed 4000 JLink\\ResetMCU.jlink",
+			"command": "JLink.exe -Device STM32F103xB -If SWD -Speed 4000 JLink\\ResetMCU.jlink",
 			"options": {
 				"cwd": "${workspaceRoot}",
 				"shell": {
@@ -116,9 +116,9 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "Start GDB Server (Cortex-M4)",
+			"label": "Start GDB Server (Cortex-M3)",
 			"type": "shell",
-			"command": "start JLinkGDBServer.exe -select USB -device Cortex-M3 -if SWD -speed 4000 -ir",
+			"command": "start JLinkGDBServer.exe -select USB -device Cortex-M3 -if SWD -speed 1000 -ir",
 			"options": {
 				"cwd": "${workspaceRoot}",
 				"shell": {
