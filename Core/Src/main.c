@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "spi.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -27,7 +28,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+uint8_t dataTo[2] = {20, 80};
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -86,8 +87,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-
+SPI2->CR1|=SPI_CR1_SPE;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -95,7 +97,17 @@ int main(void)
   while (1)
   {
 
-    HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+        while(!(SPI2->SR&SPI_SR_TXE));
+
+    SPI2->DR=*dataTo;
+
+// HAL_SPI_Transmit(&hspi2, dataTo, 2,1);
+  // while(!(SPI2->SR & SPI_SR_TXE));
+  // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
+  // //заполняем буфер передатчика
+  // SPI2->DR = 20;
+  // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
+
     HAL_Delay(500);
 
     
