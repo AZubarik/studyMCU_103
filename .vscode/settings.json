@@ -3,6 +3,9 @@
 	"cortex-debug.enableTelemetry": false,
 	"cortex-debug.JLinkGDBServerPath": "JLinkGDBServerCL.exe",
 	"cmake.configureOnOpen": false,
+	"files.associations": {
+		"gpio.h": "c"
+	},
 
 
 }

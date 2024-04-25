@@ -23,12 +23,14 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "AD7793.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 uint8_t dataTo[2] = {20, 80};
+
+unsigned long conv;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -88,27 +90,27 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_SPI2_Init();
+
+  AD7793_Reset();
   /* USER CODE BEGIN 2 */
-SPI2->CR1|=SPI_CR1_SPE;
+// SPI2->CR1|=SPI_CR1_SPE;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    HAL_Delay(200);
+    AD7793_Init();
+    HAL_Delay(200);
 
-        while(!(SPI2->SR&SPI_SR_TXE));
+    AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_INT, AD7793_CH_TEMP);
 
-    SPI2->DR=*dataTo;
+    HAL_Delay(200);
 
-// HAL_SPI_Transmit(&hspi2, dataTo, 2,1);
-  // while(!(SPI2->SR & SPI_SR_TXE));
-  // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
-  // //заполняем буфер передатчика
-  // SPI2->DR = 20;
-  // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_SET);
+    conv = AD7793_SingleConversion();
 
-    HAL_Delay(500);
+    HAL_Delay(200);
 
     
     /* USER CODE END WHILE */
