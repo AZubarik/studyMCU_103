@@ -31,6 +31,7 @@
 uint8_t dataTo[2] = {20, 80};
 
 unsigned long conv;
+float temp, tempChip; 
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -90,8 +91,6 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_SPI2_Init();
-
-  AD7793_Reset();
   /* USER CODE BEGIN 2 */
 // SPI2->CR1|=SPI_CR1_SPE;
   /* USER CODE END 2 */
@@ -100,19 +99,27 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+
+     AD7793_Reset();
     HAL_Delay(200);
+
     AD7793_Init();
-    HAL_Delay(200);
+     HAL_Delay(200);
 
-    AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_INT, AD7793_CH_TEMP);
+     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_INT, AD7793_CH_TEMP);
+      HAL_Delay(200);
+     conv = AD7793_SingleConversion();
+     tempChip = (((conv - 8388608.0) / 8388608.0) * 1.17 * 1000 / 0.810) - 273;
 
-    HAL_Delay(200);
+// while (2)
+// {
+//       conv = AD7793_SingleConversion();
 
-    conv = AD7793_SingleConversion();
+//     HAL_Delay(200);
 
-    HAL_Delay(200);
 
-    
+// }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -149,7 +156,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV2;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 

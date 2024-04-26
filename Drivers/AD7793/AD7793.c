@@ -2,20 +2,22 @@
 #include "spi.h"
 #include "gpio.h"
 
+
+
 void AD7793_Init(void)
 {
 	unsigned char dataToSend[3] = {0x50, 0x00, 0x00};
 
-    CS_Pin_OFF;
+    CS_Pin_OFF; 
 	    HAL_SPI_Transmit(&hspi2, dataToSend, sizeof(dataToSend), 1);
     CS_Pin_ON;
 }
 
 void AD7793_Reset(void)
 {
-	unsigned char dataToSend[5] = {0xff, 0xff, 0xff, 0xff};
+	unsigned char dataToSend[4] = {0xff, 0xff, 0xff, 0xff};
 
-    CS_Pin_OFF;
+    CS_Pin_OFF; 
 	    HAL_SPI_Transmit(&hspi2, dataToSend, sizeof(dataToSend), 1);
     CS_Pin_ON;
 }
@@ -32,9 +34,9 @@ void AD7793_Mode_Register(unsigned char mode, unsigned long clksrc, unsigned lon
 
 void AD7793_Configuration_Register(unsigned char vbias, unsigned char gain, unsigned char refsel, unsigned char channel)
 {
-	unsigned char dataToSend[3] = {AD7793_REG_CONF, 0x07, 0x16};
+	unsigned char dataToSend[3] = {AD7793_REG_CONF, 0x07, 0x00};
                   //dataToSend[1] = (vbias << 6) + gain;
-                 // dataToSend[2] = 0x10 | ((refsel << 7) + channel);
+                  dataToSend[2] = 0x10 | ((refsel << 7) + channel);
     CS_Pin_OFF; 
 	    HAL_SPI_Transmit(&hspi2, dataToSend, sizeof(dataToSend), 1);
     CS_Pin_ON;
@@ -81,10 +83,3 @@ unsigned long AD7793_ContinuousReadAvg(unsigned char sampleNumber)
     samplesAverage = samplesAverage / sampleNumber;
     return(samplesAverage);
 }
-
-// void SPI_Transmit(datamas)
-// {
-//     CS_Pin_OFF;   
-// 	    HAL_SPI_Transmit(&hspi3, datamas, sizeof(datamas), 1);
-//     CS_Pin_ON;
-// }

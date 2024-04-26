@@ -109,6 +109,6 @@ unsigned long AD7793_SingleConversion(void);
 /* Returns the average of several conversion results. */
 unsigned long AD7793_ContinuousReadAvg(unsigned char sampleNumber);
 
-void SPI_Transmin(unsigned char datamas);
+void Transmin(unsigned char dataArray);
 
 #endif
