@@ -8,7 +8,7 @@
                 "C:/VScodeIDE/Software/ARMEmbeddedGCC/arm-none-eabi/include/sys/",
                 "C:/VScodeIDE/Software/ARMEmbeddedGCC/lib/**",
                 "${workspaceRoot}\\Drivers\\**",
-                //"${workspaceRoot}\\Drivers\\FreeModbus\\**",
+                "${workspaceRoot}\\Drivers\\FreeModbus\\**",
                 "${workspaceRoot}\\Drivers\\AD7793\\**",
                 "${workspaceRoot}\\Core\\Src\\**",
                 "${workspaceRoot}\\Core\\Inc\\**",

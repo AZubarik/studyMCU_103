@@ -40,6 +40,25 @@
 			"problemMatcher": []
 		},
 		{
+			"label": "Make Build And Write",
+			"type": "shell",
+			"command": "make -s -j 10 all | JLink.exe -Device STM32F103xB -If SWD -Speed 4000 JLink\\FlashMCU.jlink",
+			"options": {
+				"cwd": "${workspaceRoot}",
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/C"
+					]
+				}
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": []
+		},
+		{
 			"label": "Write to Flash MCU",
 			"type": "shell",
 			"command": "JLink.exe -Device STM32F103xB -If SWD -Speed 4000 JLink\\FlashMCU.jlink",

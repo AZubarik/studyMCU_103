@@ -19,10 +19,19 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "spi.h"
+#include "tim.h"
+#include "usart.h"
 #include "gpio.h"
+
+#include "math.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "mb.h"
+#include "mbport.h"
+#include "user_mb_app.h"
+
+#include "math.h"
 #include "AD7793.h"
 /* USER CODE END Includes */
 
@@ -32,6 +41,16 @@ uint8_t dataTo[2] = {20, 80};
 
 unsigned long conv;
 float temp, tempChip; 
+
+float GAIN = 1;                                           /* Gain of the AD7793 unternal instrumentation amplifier */
+float V;                                              /* The voltage read on the analog input channel 2 (should be between -0.57 +0.57 when gain is set to 1) */
+float RRTD;                                           /* The measured resistance of the RTD */ 
+float temp, tempChip;                                 /* The temperature read on the analog input channel 1 */
+const float RREF = 2000.0;                            /* The reference resistor: here, 2.0 Kohm, 0.1%, 10ppm/C */
+const float Vref = 1.17;                              /* The external reference voltage applied between pins REFIN(+) and REFIN(-)and resulting from the excitation current flowing through the reference resistor  */
+const float R0 = 1000.0;                              /* RTD resistance at 0C */
+const float A = 3.9083E-3;                            /* Coefficient for t in the Callender-Van Dusen equation for temperature > 0C */
+const float B = -5.775E-7;                            /* Coefficient for t squared in the Callender-Van Dusen equation for temperature > 0C */
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -91,35 +110,44 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_SPI2_Init();
+  MX_TIM2_Init();
+  MX_TIM3_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-// SPI2->CR1|=SPI_CR1_SPE;
+  eMBInit(MB_RTU, 1, &huart2, 115200, &htim2);
+	eMBEnable();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    eMBPoll();
 
 
-     AD7793_Reset();
+    AD7793_Reset();
     HAL_Delay(200);
 
     AD7793_Init();
      HAL_Delay(200);
 
-     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_INT, AD7793_CH_TEMP);
-      HAL_Delay(200);
-     conv = AD7793_SingleConversion();
-     tempChip = (((conv - 8388608.0) / 8388608.0) * 1.17 * 1000 / 0.810) - 273;
+    AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793_CH_AIN1P_AIN1M);
+    HAL_Delay(200);
+    AD7793_IO_Register(AD7793_DIR_IEXC1_IOUT1_IEXC2_IOUT2, AD7793_EN_IXCEN_210uA);
+       HAL_Delay(200);
+  //  uint8_t mn[3] = {AD7793_REG_MODE, 0x00, 0};
+  //      CS_Pin_OFF; 
+	//     HAL_SPI_Transmit(&hspi2, mn, 3, 1);
+  //   CS_Pin_ON; 
+       HAL_Delay(200);
+    conv = AD7793_ContinuousReadAvg(2);
 
-// while (2)
-// {
-//       conv = AD7793_SingleConversion();
+    RRTD = RREF * (conv - 8388608.0) / (8388608.0 * GAIN);                        /* Computes the RTD resistance from the conversion code */
+    temp = (sqrt(pow(A,2) - 4*B*(1.0 - RRTD/R0))-A)/(2*B);
 
-//     HAL_Delay(200);
+    // tempChip = (((conv - 8388608.0) / 8388608.0) * 1.17 * 1000 / 0.810) - 273;
 
 
-// }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -145,7 +173,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL9;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL8;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -156,7 +184,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV2;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 

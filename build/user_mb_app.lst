@@ -1,0 +1,1155 @@
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"user_mb_app.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.eMBRegInputCB,"ax",%progbits
+  18              		.align	1
+  19              		.global	eMBRegInputCB
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	eMBRegInputCB:
+  25              	.LVL0:
+  26              	.LFB65:
+  27              		.file 1 "Drivers/FreeModbus/app/user_mb_app.c"
+   1:Drivers/FreeModbus/app/user_mb_app.c **** #include "user_mb_app.h"
+   2:Drivers/FreeModbus/app/user_mb_app.c **** 
+   3:Drivers/FreeModbus/app/user_mb_app.c **** #if (MB_SLAVE_ASCII_ENABLED > 0 || MB_SLAVE_RTU_ENABLED > 0 || MB_SLAVE_TCP_ENABLED > 0)
+   4:Drivers/FreeModbus/app/user_mb_app.c **** 
+   5:Drivers/FreeModbus/app/user_mb_app.c **** /*------------------------Slave mode use these variables----------------------*/
+   6:Drivers/FreeModbus/app/user_mb_app.c **** 
+   7:Drivers/FreeModbus/app/user_mb_app.c **** //Slave mode:DiscreteInputs variables
+   8:Drivers/FreeModbus/app/user_mb_app.c **** #if S_DISCRETE_INPUT_NDISCRETES > 0
+   9:Drivers/FreeModbus/app/user_mb_app.c **** USHORT   usSDiscInStart                               = S_DISCRETE_INPUT_START;
+  10:Drivers/FreeModbus/app/user_mb_app.c **** #if S_DISCRETE_INPUT_NDISCRETES%8
+  11:Drivers/FreeModbus/app/user_mb_app.c **** UCHAR    ucSDiscInBuf[S_DISCRETE_INPUT_NDISCRETES/8+1];
+  12:Drivers/FreeModbus/app/user_mb_app.c **** #else
+  13:Drivers/FreeModbus/app/user_mb_app.c **** UCHAR    ucSDiscInBuf[S_DISCRETE_INPUT_NDISCRETES/8]  ;
+  14:Drivers/FreeModbus/app/user_mb_app.c **** #endif
+  15:Drivers/FreeModbus/app/user_mb_app.c **** #endif
+  16:Drivers/FreeModbus/app/user_mb_app.c **** 
+  17:Drivers/FreeModbus/app/user_mb_app.c **** //Slave mode:Coils variables
+  18:Drivers/FreeModbus/app/user_mb_app.c **** #if S_COIL_NCOILS > 0
+  19:Drivers/FreeModbus/app/user_mb_app.c **** USHORT   usSCoilStart                                 = S_COIL_START;
+  20:Drivers/FreeModbus/app/user_mb_app.c **** #if S_COIL_NCOILS%8
+  21:Drivers/FreeModbus/app/user_mb_app.c **** UCHAR    ucSCoilBuf[S_COIL_NCOILS/8+1]                ;
+  22:Drivers/FreeModbus/app/user_mb_app.c **** #else
+  23:Drivers/FreeModbus/app/user_mb_app.c **** UCHAR    ucSCoilBuf[S_COIL_NCOILS/8]                  ;
+  24:Drivers/FreeModbus/app/user_mb_app.c **** #endif
+  25:Drivers/FreeModbus/app/user_mb_app.c **** #endif
+  26:Drivers/FreeModbus/app/user_mb_app.c **** 
+  27:Drivers/FreeModbus/app/user_mb_app.c **** //Slave mode:InputRegister variables
+  28:Drivers/FreeModbus/app/user_mb_app.c **** #if S_REG_INPUT_NREGS > 0
+  29:Drivers/FreeModbus/app/user_mb_app.c **** USHORT   usSRegInStart                                = S_REG_INPUT_START;
+  30:Drivers/FreeModbus/app/user_mb_app.c **** USHORT   usSRegInBuf[S_REG_INPUT_NREGS]               ;
+  31:Drivers/FreeModbus/app/user_mb_app.c **** #endif
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 2
+
+
+  32:Drivers/FreeModbus/app/user_mb_app.c **** 
+  33:Drivers/FreeModbus/app/user_mb_app.c **** //Slave mode:HoldingRegister variables
+  34:Drivers/FreeModbus/app/user_mb_app.c **** #if S_REG_HOLDING_NREGS > 0
+  35:Drivers/FreeModbus/app/user_mb_app.c **** USHORT   usSRegHoldStart                              = S_REG_HOLDING_START;
+  36:Drivers/FreeModbus/app/user_mb_app.c **** USHORT   usSRegHoldBuf[S_REG_HOLDING_NREGS]           ;
+  37:Drivers/FreeModbus/app/user_mb_app.c **** #endif
+  38:Drivers/FreeModbus/app/user_mb_app.c **** /*------------------------Slave user code----------------------*/
+  39:Drivers/FreeModbus/app/user_mb_app.c **** 
+  40:Drivers/FreeModbus/app/user_mb_app.c **** /*------------------------Slave registers callback function----------------------*/
+  41:Drivers/FreeModbus/app/user_mb_app.c **** 
+  42:Drivers/FreeModbus/app/user_mb_app.c **** /**
+  43:Drivers/FreeModbus/app/user_mb_app.c ****  * Modbus slave input register callback function.
+  44:Drivers/FreeModbus/app/user_mb_app.c ****  *
+  45:Drivers/FreeModbus/app/user_mb_app.c ****  * @param pucRegBuffer input register buffer
+  46:Drivers/FreeModbus/app/user_mb_app.c ****  * @param usAddress input register address
+  47:Drivers/FreeModbus/app/user_mb_app.c ****  * @param usNRegs input register number
+  48:Drivers/FreeModbus/app/user_mb_app.c ****  *
+  49:Drivers/FreeModbus/app/user_mb_app.c ****  * @return result
+  50:Drivers/FreeModbus/app/user_mb_app.c ****  */
+  51:Drivers/FreeModbus/app/user_mb_app.c **** eMBErrorCode eMBRegInputCB(UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs )
+  52:Drivers/FreeModbus/app/user_mb_app.c **** {
+  28              		.loc 1 52 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              		.loc 1 52 1 is_stmt 0 view .LVU1
+  34 0000 10B4     		push	{r4}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 4
+  37              		.cfi_offset 4, -4
+  53:Drivers/FreeModbus/app/user_mb_app.c **** #if S_REG_INPUT_NREGS > 0
+  54:Drivers/FreeModbus/app/user_mb_app.c ****     eMBErrorCode    eStatus = MB_ENOERR;
+  38              		.loc 1 54 5 is_stmt 1 view .LVU2
+  39              	.LVL1:
+  55:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex;
+  40              		.loc 1 55 5 view .LVU3
+  56:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT *        pusRegInputBuf;
+  41              		.loc 1 56 5 view .LVU4
+  57:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          REG_INPUT_START;
+  42              		.loc 1 57 5 view .LVU5
+  58:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          REG_INPUT_NREGS;
+  43              		.loc 1 58 5 view .LVU6
+  59:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          usRegInStart;
+  44              		.loc 1 59 5 view .LVU7
+  60:Drivers/FreeModbus/app/user_mb_app.c **** 
+  61:Drivers/FreeModbus/app/user_mb_app.c ****     pusRegInputBuf = usSRegInBuf;
+  45              		.loc 1 61 5 view .LVU8
+  62:Drivers/FreeModbus/app/user_mb_app.c ****     REG_INPUT_START = S_REG_INPUT_START;
+  46              		.loc 1 62 5 view .LVU9
+  63:Drivers/FreeModbus/app/user_mb_app.c ****     REG_INPUT_NREGS = S_REG_INPUT_NREGS;
+  47              		.loc 1 63 5 view .LVU10
+  64:Drivers/FreeModbus/app/user_mb_app.c ****     usRegInStart = usSRegInStart;
+  48              		.loc 1 64 5 view .LVU11
+  49              		.loc 1 64 18 is_stmt 0 view .LVU12
+  50 0002 104B     		ldr	r3, .L7
+  51 0004 1C88     		ldrh	r4, [r3]
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 3
+
+
+  52              	.LVL2:
+  65:Drivers/FreeModbus/app/user_mb_app.c **** 
+  66:Drivers/FreeModbus/app/user_mb_app.c ****     /* it already plus one in modbus function method. */
+  67:Drivers/FreeModbus/app/user_mb_app.c ****     usAddress--;
+  53              		.loc 1 67 5 is_stmt 1 view .LVU13
+  54              		.loc 1 67 14 is_stmt 0 view .LVU14
+  55 0006 4B1E     		subs	r3, r1, #1
+  56 0008 9BB2     		uxth	r3, r3
+  57              	.LVL3:
+  68:Drivers/FreeModbus/app/user_mb_app.c **** 
+  69:Drivers/FreeModbus/app/user_mb_app.c ****     if ((usAddress >= REG_INPUT_START) && (usAddress + usNRegs <= REG_INPUT_START + REG_INPUT_NREGS
+  58              		.loc 1 69 5 is_stmt 1 view .LVU15
+  59              		.loc 1 69 54 is_stmt 0 view .LVU16
+  60 000a 9918     		adds	r1, r3, r2
+  61              		.loc 1 69 40 view .LVU17
+  62 000c 0A29     		cmp	r1, #10
+  63 000e 17DC     		bgt	.L5
+  70:Drivers/FreeModbus/app/user_mb_app.c ****     {
+  71:Drivers/FreeModbus/app/user_mb_app.c ****         iRegIndex = usAddress - usRegInStart;
+  64              		.loc 1 71 9 is_stmt 1 view .LVU18
+  65              		.loc 1 71 19 is_stmt 0 view .LVU19
+  66 0010 1B1B     		subs	r3, r3, r4
+  67              	.LVL4:
+  68              		.loc 1 71 19 view .LVU20
+  69 0012 9BB2     		uxth	r3, r3
+  70              	.LVL5:
+  72:Drivers/FreeModbus/app/user_mb_app.c ****         while (usNRegs > 0)
+  71              		.loc 1 72 9 is_stmt 1 view .LVU21
+  72              		.loc 1 72 15 is_stmt 0 view .LVU22
+  73 0014 0FE0     		b	.L3
+  74              	.LVL6:
+  75              	.L4:
+  73:Drivers/FreeModbus/app/user_mb_app.c ****         {
+  74:Drivers/FreeModbus/app/user_mb_app.c ****             *pucRegBuffer++ = (UCHAR) (pusRegInputBuf[iRegIndex] >> 8);
+  76              		.loc 1 74 13 is_stmt 1 view .LVU23
+  77              		.loc 1 74 54 is_stmt 0 view .LVU24
+  78 0016 0C4C     		ldr	r4, .L7+4
+  79 0018 34F813C0 		ldrh	ip, [r4, r3, lsl #1]
+  80              	.LVL7:
+  81              		.loc 1 74 31 view .LVU25
+  82 001c 4FEA1C2C 		lsr	ip, ip, #8
+  83              		.loc 1 74 29 view .LVU26
+  84 0020 0146     		mov	r1, r0
+  85 0022 01F802CB 		strb	ip, [r1], #2
+  75:Drivers/FreeModbus/app/user_mb_app.c ****             *pucRegBuffer++ = (UCHAR) (pusRegInputBuf[iRegIndex] & 0xFF);
+  86              		.loc 1 75 13 is_stmt 1 view .LVU27
+  87              	.LVL8:
+  88              		.loc 1 75 31 is_stmt 0 view .LVU28
+  89 0026 14F81340 		ldrb	r4, [r4, r3, lsl #1]	@ zero_extendqisi2
+  90              		.loc 1 75 29 view .LVU29
+  91 002a 4470     		strb	r4, [r0, #1]
+  76:Drivers/FreeModbus/app/user_mb_app.c ****             iRegIndex++;
+  92              		.loc 1 76 13 is_stmt 1 view .LVU30
+  93              		.loc 1 76 22 is_stmt 0 view .LVU31
+  94 002c 0133     		adds	r3, r3, #1
+  95              	.LVL9:
+  96              		.loc 1 76 22 view .LVU32
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 4
+
+
+  97 002e 9BB2     		uxth	r3, r3
+  98              	.LVL10:
+  77:Drivers/FreeModbus/app/user_mb_app.c ****             usNRegs--;
+  99              		.loc 1 77 13 is_stmt 1 view .LVU33
+ 100              		.loc 1 77 20 is_stmt 0 view .LVU34
+ 101 0030 013A     		subs	r2, r2, #1
+ 102              	.LVL11:
+ 103              		.loc 1 77 20 view .LVU35
+ 104 0032 92B2     		uxth	r2, r2
+ 105              	.LVL12:
+  75:Drivers/FreeModbus/app/user_mb_app.c ****             *pucRegBuffer++ = (UCHAR) (pusRegInputBuf[iRegIndex] & 0xFF);
+ 106              		.loc 1 75 26 view .LVU36
+ 107 0034 0846     		mov	r0, r1
+ 108              	.LVL13:
+ 109              	.L3:
+  72:Drivers/FreeModbus/app/user_mb_app.c ****         {
+ 110              		.loc 1 72 15 is_stmt 1 view .LVU37
+ 111 0036 002A     		cmp	r2, #0
+ 112 0038 EDD1     		bne	.L4
+  54:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex;
+ 113              		.loc 1 54 21 is_stmt 0 view .LVU38
+ 114 003a 0020     		movs	r0, #0
+ 115              	.LVL14:
+ 116              	.L2:
+  78:Drivers/FreeModbus/app/user_mb_app.c ****         }
+  79:Drivers/FreeModbus/app/user_mb_app.c ****     }
+  80:Drivers/FreeModbus/app/user_mb_app.c ****     else
+  81:Drivers/FreeModbus/app/user_mb_app.c ****     {
+  82:Drivers/FreeModbus/app/user_mb_app.c ****         eStatus = MB_ENOREG;
+  83:Drivers/FreeModbus/app/user_mb_app.c ****     }
+  84:Drivers/FreeModbus/app/user_mb_app.c **** 
+  85:Drivers/FreeModbus/app/user_mb_app.c ****     return eStatus;
+ 117              		.loc 1 85 5 is_stmt 1 view .LVU39
+  86:Drivers/FreeModbus/app/user_mb_app.c **** #else
+  87:Drivers/FreeModbus/app/user_mb_app.c **** 	return MB_ENOREG;
+  88:Drivers/FreeModbus/app/user_mb_app.c **** #endif
+  89:Drivers/FreeModbus/app/user_mb_app.c **** }
+ 118              		.loc 1 89 1 is_stmt 0 view .LVU40
+ 119 003c 10BC     		pop	{r4}
+ 120              	.LCFI1:
+ 121              		.cfi_remember_state
+ 122              		.cfi_restore 4
+ 123              		.cfi_def_cfa_offset 0
+ 124 003e 7047     		bx	lr
+ 125              	.LVL15:
+ 126              	.L5:
+ 127              	.LCFI2:
+ 128              		.cfi_restore_state
+  82:Drivers/FreeModbus/app/user_mb_app.c ****     }
+ 129              		.loc 1 82 17 view .LVU41
+ 130 0040 0120     		movs	r0, #1
+ 131              	.LVL16:
+  82:Drivers/FreeModbus/app/user_mb_app.c ****     }
+ 132              		.loc 1 82 17 view .LVU42
+ 133 0042 FBE7     		b	.L2
+ 134              	.L8:
+ 135              		.align	2
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 5
+
+
+ 136              	.L7:
+ 137 0044 00000000 		.word	.LANCHOR0
+ 138 0048 00000000 		.word	.LANCHOR1
+ 139              		.cfi_endproc
+ 140              	.LFE65:
+ 142              		.section	.text.eMBRegHoldingCB,"ax",%progbits
+ 143              		.align	1
+ 144              		.global	eMBRegHoldingCB
+ 145              		.syntax unified
+ 146              		.thumb
+ 147              		.thumb_func
+ 149              	eMBRegHoldingCB:
+ 150              	.LVL17:
+ 151              	.LFB66:
+  90:Drivers/FreeModbus/app/user_mb_app.c **** 
+  91:Drivers/FreeModbus/app/user_mb_app.c **** /**
+  92:Drivers/FreeModbus/app/user_mb_app.c ****  * Modbus slave holding register callback function.
+  93:Drivers/FreeModbus/app/user_mb_app.c ****  *
+  94:Drivers/FreeModbus/app/user_mb_app.c ****  * @param pucRegBuffer holding register buffer
+  95:Drivers/FreeModbus/app/user_mb_app.c ****  * @param usAddress holding register address
+  96:Drivers/FreeModbus/app/user_mb_app.c ****  * @param usNRegs holding register number
+  97:Drivers/FreeModbus/app/user_mb_app.c ****  * @param eMode read or write
+  98:Drivers/FreeModbus/app/user_mb_app.c ****  *
+  99:Drivers/FreeModbus/app/user_mb_app.c ****  * @return result
+ 100:Drivers/FreeModbus/app/user_mb_app.c ****  */
+ 101:Drivers/FreeModbus/app/user_mb_app.c **** eMBErrorCode eMBRegHoldingCB(UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNRegs, eMBRegisterMod
+ 102:Drivers/FreeModbus/app/user_mb_app.c **** {
+ 152              		.loc 1 102 1 is_stmt 1 view -0
+ 153              		.cfi_startproc
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 156              		.loc 1 102 1 is_stmt 0 view .LVU44
+ 157 0000 10B5     		push	{r4, lr}
+ 158              	.LCFI3:
+ 159              		.cfi_def_cfa_offset 8
+ 160              		.cfi_offset 4, -8
+ 161              		.cfi_offset 14, -4
+ 103:Drivers/FreeModbus/app/user_mb_app.c **** #if S_REG_HOLDING_NREGS > 0
+ 104:Drivers/FreeModbus/app/user_mb_app.c ****     eMBErrorCode    eStatus = MB_ENOERR;
+ 162              		.loc 1 104 5 is_stmt 1 view .LVU45
+ 163              	.LVL18:
+ 105:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex;
+ 164              		.loc 1 105 5 view .LVU46
+ 106:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT *        pusRegHoldingBuf;
+ 165              		.loc 1 106 5 view .LVU47
+ 107:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          REG_HOLDING_START;
+ 166              		.loc 1 107 5 view .LVU48
+ 108:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          REG_HOLDING_NREGS;
+ 167              		.loc 1 108 5 view .LVU49
+ 109:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          usRegHoldStart;
+ 168              		.loc 1 109 5 view .LVU50
+ 110:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 111:Drivers/FreeModbus/app/user_mb_app.c ****     pusRegHoldingBuf = usSRegHoldBuf;
+ 169              		.loc 1 111 5 view .LVU51
+ 112:Drivers/FreeModbus/app/user_mb_app.c ****     REG_HOLDING_START = S_REG_HOLDING_START;
+ 170              		.loc 1 112 5 view .LVU52
+ 113:Drivers/FreeModbus/app/user_mb_app.c ****     REG_HOLDING_NREGS = S_REG_HOLDING_NREGS;
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 6
+
+
+ 171              		.loc 1 113 5 view .LVU53
+ 114:Drivers/FreeModbus/app/user_mb_app.c ****     usRegHoldStart = usSRegHoldStart;
+ 172              		.loc 1 114 5 view .LVU54
+ 173              		.loc 1 114 20 is_stmt 0 view .LVU55
+ 174 0002 1D4C     		ldr	r4, .L17
+ 175 0004 B4F800C0 		ldrh	ip, [r4]
+ 176              	.LVL19:
+ 115:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 116:Drivers/FreeModbus/app/user_mb_app.c ****     /* it already plus one in modbus function method. */
+ 117:Drivers/FreeModbus/app/user_mb_app.c ****     usAddress--;
+ 177              		.loc 1 117 5 is_stmt 1 view .LVU56
+ 178              		.loc 1 117 14 is_stmt 0 view .LVU57
+ 179 0008 0139     		subs	r1, r1, #1
+ 180              	.LVL20:
+ 181              		.loc 1 117 14 view .LVU58
+ 182 000a 89B2     		uxth	r1, r1
+ 183              	.LVL21:
+ 118:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 119:Drivers/FreeModbus/app/user_mb_app.c ****     if ((usAddress >= REG_HOLDING_START) && (usAddress + usNRegs <= REG_HOLDING_START + REG_HOLDING
+ 184              		.loc 1 119 5 is_stmt 1 view .LVU59
+ 185              		.loc 1 119 56 is_stmt 0 view .LVU60
+ 186 000c 8C18     		adds	r4, r1, r2
+ 187              		.loc 1 119 42 view .LVU61
+ 188 000e 0A2C     		cmp	r4, #10
+ 189 0010 2FDC     		bgt	.L15
+ 120:Drivers/FreeModbus/app/user_mb_app.c ****     {
+ 121:Drivers/FreeModbus/app/user_mb_app.c ****         iRegIndex = usAddress - usRegHoldStart;
+ 190              		.loc 1 121 9 is_stmt 1 view .LVU62
+ 191              		.loc 1 121 19 is_stmt 0 view .LVU63
+ 192 0012 A1EB0C01 		sub	r1, r1, ip
+ 193              	.LVL22:
+ 194              		.loc 1 121 19 view .LVU64
+ 195 0016 89B2     		uxth	r1, r1
+ 196              	.LVL23:
+ 122:Drivers/FreeModbus/app/user_mb_app.c ****         switch (eMode)
+ 197              		.loc 1 122 9 is_stmt 1 view .LVU65
+ 198 0018 9BB1     		cbz	r3, .L11
+ 199 001a 012B     		cmp	r3, #1
+ 200 001c 25D0     		beq	.L12
+ 201 001e 0020     		movs	r0, #0
+ 202              	.LVL24:
+ 203              		.loc 1 122 9 is_stmt 0 view .LVU66
+ 204 0020 28E0     		b	.L10
+ 205              	.LVL25:
+ 206              	.L13:
+ 123:Drivers/FreeModbus/app/user_mb_app.c ****         {
+ 124:Drivers/FreeModbus/app/user_mb_app.c ****         /* read current register values from the protocol stack. */
+ 125:Drivers/FreeModbus/app/user_mb_app.c ****         case MB_REG_READ:
+ 126:Drivers/FreeModbus/app/user_mb_app.c ****             while (usNRegs > 0)
+ 127:Drivers/FreeModbus/app/user_mb_app.c ****             {
+ 128:Drivers/FreeModbus/app/user_mb_app.c ****                 *pucRegBuffer++ = (UCHAR) (pusRegHoldingBuf[iRegIndex] >> 8);
+ 207              		.loc 1 128 17 is_stmt 1 view .LVU67
+ 208              		.loc 1 128 60 is_stmt 0 view .LVU68
+ 209 0022 164C     		ldr	r4, .L17+4
+ 210 0024 34F811E0 		ldrh	lr, [r4, r1, lsl #1]
+ 211              	.LVL26:
+ 212              		.loc 1 128 35 view .LVU69
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 7
+
+
+ 213 0028 4FEA1E2E 		lsr	lr, lr, #8
+ 214              		.loc 1 128 33 view .LVU70
+ 215 002c 8446     		mov	ip, r0
+ 216 002e 0CF802EB 		strb	lr, [ip], #2
+ 129:Drivers/FreeModbus/app/user_mb_app.c ****                 *pucRegBuffer++ = (UCHAR) (pusRegHoldingBuf[iRegIndex] & 0xFF);
+ 217              		.loc 1 129 17 is_stmt 1 view .LVU71
+ 218              	.LVL27:
+ 219              		.loc 1 129 35 is_stmt 0 view .LVU72
+ 220 0032 14F81140 		ldrb	r4, [r4, r1, lsl #1]	@ zero_extendqisi2
+ 221              		.loc 1 129 33 view .LVU73
+ 222 0036 4470     		strb	r4, [r0, #1]
+ 130:Drivers/FreeModbus/app/user_mb_app.c ****                 iRegIndex++;
+ 223              		.loc 1 130 17 is_stmt 1 view .LVU74
+ 224              		.loc 1 130 26 is_stmt 0 view .LVU75
+ 225 0038 0131     		adds	r1, r1, #1
+ 226              	.LVL28:
+ 227              		.loc 1 130 26 view .LVU76
+ 228 003a 89B2     		uxth	r1, r1
+ 229              	.LVL29:
+ 131:Drivers/FreeModbus/app/user_mb_app.c ****                 usNRegs--;
+ 230              		.loc 1 131 17 is_stmt 1 view .LVU77
+ 231              		.loc 1 131 24 is_stmt 0 view .LVU78
+ 232 003c 013A     		subs	r2, r2, #1
+ 233              	.LVL30:
+ 234              		.loc 1 131 24 view .LVU79
+ 235 003e 92B2     		uxth	r2, r2
+ 236              	.LVL31:
+ 129:Drivers/FreeModbus/app/user_mb_app.c ****                 *pucRegBuffer++ = (UCHAR) (pusRegHoldingBuf[iRegIndex] & 0xFF);
+ 237              		.loc 1 129 30 view .LVU80
+ 238 0040 6046     		mov	r0, ip
+ 239              	.LVL32:
+ 240              	.L11:
+ 126:Drivers/FreeModbus/app/user_mb_app.c ****             {
+ 241              		.loc 1 126 19 is_stmt 1 view .LVU81
+ 242 0042 002A     		cmp	r2, #0
+ 243 0044 EDD1     		bne	.L13
+ 104:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex;
+ 244              		.loc 1 104 21 is_stmt 0 view .LVU82
+ 245 0046 1846     		mov	r0, r3
+ 246              	.LVL33:
+ 104:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex;
+ 247              		.loc 1 104 21 view .LVU83
+ 248 0048 14E0     		b	.L10
+ 249              	.LVL34:
+ 250              	.L14:
+ 132:Drivers/FreeModbus/app/user_mb_app.c ****             }
+ 133:Drivers/FreeModbus/app/user_mb_app.c ****             break;
+ 134:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 135:Drivers/FreeModbus/app/user_mb_app.c ****         /* write current register values with new values from the protocol stack. */
+ 136:Drivers/FreeModbus/app/user_mb_app.c ****         case MB_REG_WRITE:
+ 137:Drivers/FreeModbus/app/user_mb_app.c ****             while (usNRegs > 0)
+ 138:Drivers/FreeModbus/app/user_mb_app.c ****             {
+ 139:Drivers/FreeModbus/app/user_mb_app.c ****                 pusRegHoldingBuf[iRegIndex] = *pucRegBuffer++ << 8;
+ 251              		.loc 1 139 17 is_stmt 1 view .LVU84
+ 252              		.loc 1 139 47 is_stmt 0 view .LVU85
+ 253 004a 8446     		mov	ip, r0
+ 254 004c 1CF8023B 		ldrb	r3, [ip], #2	@ zero_extendqisi2
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 8
+
+
+ 255              		.loc 1 139 33 view .LVU86
+ 256 0050 0A4C     		ldr	r4, .L17+4
+ 257              		.loc 1 139 63 view .LVU87
+ 258 0052 1B02     		lsls	r3, r3, #8
+ 259              		.loc 1 139 45 view .LVU88
+ 260 0054 24F81130 		strh	r3, [r4, r1, lsl #1]	@ movhi
+ 140:Drivers/FreeModbus/app/user_mb_app.c ****                 pusRegHoldingBuf[iRegIndex] |= *pucRegBuffer++;
+ 261              		.loc 1 140 17 is_stmt 1 view .LVU89
+ 262              	.LVL35:
+ 263              		.loc 1 140 48 is_stmt 0 view .LVU90
+ 264 0058 4078     		ldrb	r0, [r0, #1]	@ zero_extendqisi2
+ 265              		.loc 1 140 45 view .LVU91
+ 266 005a 0343     		orrs	r3, r3, r0
+ 267 005c 24F81130 		strh	r3, [r4, r1, lsl #1]	@ movhi
+ 141:Drivers/FreeModbus/app/user_mb_app.c ****                 iRegIndex++;
+ 268              		.loc 1 141 17 is_stmt 1 view .LVU92
+ 269              		.loc 1 141 26 is_stmt 0 view .LVU93
+ 270 0060 0131     		adds	r1, r1, #1
+ 271              	.LVL36:
+ 272              		.loc 1 141 26 view .LVU94
+ 273 0062 89B2     		uxth	r1, r1
+ 274              	.LVL37:
+ 142:Drivers/FreeModbus/app/user_mb_app.c ****                 usNRegs--;
+ 275              		.loc 1 142 17 is_stmt 1 view .LVU95
+ 276              		.loc 1 142 24 is_stmt 0 view .LVU96
+ 277 0064 013A     		subs	r2, r2, #1
+ 278              	.LVL38:
+ 279              		.loc 1 142 24 view .LVU97
+ 280 0066 92B2     		uxth	r2, r2
+ 281              	.LVL39:
+ 140:Drivers/FreeModbus/app/user_mb_app.c ****                 pusRegHoldingBuf[iRegIndex] |= *pucRegBuffer++;
+ 282              		.loc 1 140 61 view .LVU98
+ 283 0068 6046     		mov	r0, ip
+ 284              	.LVL40:
+ 285              	.L12:
+ 137:Drivers/FreeModbus/app/user_mb_app.c ****             {
+ 286              		.loc 1 137 19 is_stmt 1 view .LVU99
+ 287 006a 002A     		cmp	r2, #0
+ 288 006c EDD1     		bne	.L14
+ 104:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex;
+ 289              		.loc 1 104 21 is_stmt 0 view .LVU100
+ 290 006e 0020     		movs	r0, #0
+ 291              	.LVL41:
+ 104:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex;
+ 292              		.loc 1 104 21 view .LVU101
+ 293 0070 00E0     		b	.L10
+ 294              	.LVL42:
+ 295              	.L15:
+ 143:Drivers/FreeModbus/app/user_mb_app.c ****             }
+ 144:Drivers/FreeModbus/app/user_mb_app.c ****             break;
+ 145:Drivers/FreeModbus/app/user_mb_app.c ****         }
+ 146:Drivers/FreeModbus/app/user_mb_app.c ****     }
+ 147:Drivers/FreeModbus/app/user_mb_app.c ****     else
+ 148:Drivers/FreeModbus/app/user_mb_app.c ****     {
+ 149:Drivers/FreeModbus/app/user_mb_app.c ****         eStatus = MB_ENOREG;
+ 296              		.loc 1 149 17 view .LVU102
+ 297 0072 0120     		movs	r0, #1
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 9
+
+
+ 298              	.LVL43:
+ 299              	.L10:
+ 150:Drivers/FreeModbus/app/user_mb_app.c ****     }
+ 151:Drivers/FreeModbus/app/user_mb_app.c ****     return eStatus;
+ 300              		.loc 1 151 5 is_stmt 1 view .LVU103
+ 152:Drivers/FreeModbus/app/user_mb_app.c **** #else
+ 153:Drivers/FreeModbus/app/user_mb_app.c **** 	return MB_ENOREG;
+ 154:Drivers/FreeModbus/app/user_mb_app.c **** #endif
+ 155:Drivers/FreeModbus/app/user_mb_app.c **** }
+ 301              		.loc 1 155 1 is_stmt 0 view .LVU104
+ 302 0074 10BD     		pop	{r4, pc}
+ 303              	.L18:
+ 304 0076 00BF     		.align	2
+ 305              	.L17:
+ 306 0078 00000000 		.word	.LANCHOR2
+ 307 007c 00000000 		.word	.LANCHOR3
+ 308              		.cfi_endproc
+ 309              	.LFE66:
+ 311              		.section	.text.eMBRegCoilsCB,"ax",%progbits
+ 312              		.align	1
+ 313              		.global	eMBRegCoilsCB
+ 314              		.syntax unified
+ 315              		.thumb
+ 316              		.thumb_func
+ 318              	eMBRegCoilsCB:
+ 319              	.LVL44:
+ 320              	.LFB67:
+ 156:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 157:Drivers/FreeModbus/app/user_mb_app.c **** /**
+ 158:Drivers/FreeModbus/app/user_mb_app.c ****  * Modbus slave coils callback function.
+ 159:Drivers/FreeModbus/app/user_mb_app.c ****  *
+ 160:Drivers/FreeModbus/app/user_mb_app.c ****  * @param pucRegBuffer coils buffer
+ 161:Drivers/FreeModbus/app/user_mb_app.c ****  * @param usAddress coils address
+ 162:Drivers/FreeModbus/app/user_mb_app.c ****  * @param usNCoils coils number
+ 163:Drivers/FreeModbus/app/user_mb_app.c ****  * @param eMode read or write
+ 164:Drivers/FreeModbus/app/user_mb_app.c ****  *
+ 165:Drivers/FreeModbus/app/user_mb_app.c ****  * @return result
+ 166:Drivers/FreeModbus/app/user_mb_app.c ****  */
+ 167:Drivers/FreeModbus/app/user_mb_app.c **** eMBErrorCode eMBRegCoilsCB(UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNCoils, eMBRegisterMode
+ 168:Drivers/FreeModbus/app/user_mb_app.c **** {
+ 321              		.loc 1 168 1 is_stmt 1 view -0
+ 322              		.cfi_startproc
+ 323              		@ args = 0, pretend = 0, frame = 0
+ 324              		@ frame_needed = 0, uses_anonymous_args = 0
+ 325              		.loc 1 168 1 is_stmt 0 view .LVU106
+ 326 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 327              	.LCFI4:
+ 328              		.cfi_def_cfa_offset 32
+ 329              		.cfi_offset 3, -32
+ 330              		.cfi_offset 4, -28
+ 331              		.cfi_offset 5, -24
+ 332              		.cfi_offset 6, -20
+ 333              		.cfi_offset 7, -16
+ 334              		.cfi_offset 8, -12
+ 335              		.cfi_offset 9, -8
+ 336              		.cfi_offset 14, -4
+ 337 0004 1546     		mov	r5, r2
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 10
+
+
+ 338 0006 1E46     		mov	r6, r3
+ 169:Drivers/FreeModbus/app/user_mb_app.c **** #if S_COIL_NCOILS > 0
+ 170:Drivers/FreeModbus/app/user_mb_app.c ****     eMBErrorCode    eStatus = MB_ENOERR;
+ 339              		.loc 1 170 5 is_stmt 1 view .LVU107
+ 340              	.LVL45:
+ 171:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex , iRegBitIndex , iNReg;
+ 341              		.loc 1 171 5 view .LVU108
+ 172:Drivers/FreeModbus/app/user_mb_app.c ****     UCHAR *         pucCoilBuf;
+ 342              		.loc 1 172 5 view .LVU109
+ 173:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          COIL_START;
+ 343              		.loc 1 173 5 view .LVU110
+ 174:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          COIL_NCOILS;
+ 344              		.loc 1 174 5 view .LVU111
+ 175:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          usCoilStart;
+ 345              		.loc 1 175 5 view .LVU112
+ 176:Drivers/FreeModbus/app/user_mb_app.c ****     iNReg =  usNCoils / 8 + 1;
+ 346              		.loc 1 176 5 view .LVU113
+ 347              		.loc 1 176 27 is_stmt 0 view .LVU114
+ 348 0008 D408     		lsrs	r4, r2, #3
+ 349              	.LVL46:
+ 177:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 178:Drivers/FreeModbus/app/user_mb_app.c ****     pucCoilBuf = ucSCoilBuf;
+ 350              		.loc 1 178 5 is_stmt 1 view .LVU115
+ 179:Drivers/FreeModbus/app/user_mb_app.c ****     COIL_START = S_COIL_START;
+ 351              		.loc 1 179 5 view .LVU116
+ 180:Drivers/FreeModbus/app/user_mb_app.c ****     COIL_NCOILS = S_COIL_NCOILS;
+ 352              		.loc 1 180 5 view .LVU117
+ 181:Drivers/FreeModbus/app/user_mb_app.c ****     usCoilStart = usSCoilStart;
+ 353              		.loc 1 181 5 view .LVU118
+ 354              		.loc 1 181 17 is_stmt 0 view .LVU119
+ 355 000a 2B4B     		ldr	r3, .L29
+ 356              	.LVL47:
+ 357              		.loc 1 181 17 view .LVU120
+ 358 000c 1A88     		ldrh	r2, [r3]
+ 359              	.LVL48:
+ 182:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 183:Drivers/FreeModbus/app/user_mb_app.c ****     /* it already plus one in modbus function method. */
+ 184:Drivers/FreeModbus/app/user_mb_app.c ****     usAddress--;
+ 360              		.loc 1 184 5 is_stmt 1 view .LVU121
+ 361              		.loc 1 184 14 is_stmt 0 view .LVU122
+ 362 000e 0139     		subs	r1, r1, #1
+ 363              	.LVL49:
+ 364              		.loc 1 184 14 view .LVU123
+ 365 0010 89B2     		uxth	r1, r1
+ 366              	.LVL50:
+ 185:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 186:Drivers/FreeModbus/app/user_mb_app.c ****     if( ( usAddress >= COIL_START ) && ( usAddress + usNCoils <= COIL_START + COIL_NCOILS ) )
+ 367              		.loc 1 186 5 is_stmt 1 view .LVU124
+ 368              		.loc 1 186 52 is_stmt 0 view .LVU125
+ 369 0012 4B19     		adds	r3, r1, r5
+ 370              		.loc 1 186 37 view .LVU126
+ 371 0014 0A2B     		cmp	r3, #10
+ 372 0016 4CDC     		bgt	.L25
+ 373 0018 0134     		adds	r4, r4, #1
+ 374              	.LVL51:
+ 187:Drivers/FreeModbus/app/user_mb_app.c ****     {
+ 188:Drivers/FreeModbus/app/user_mb_app.c ****         iRegIndex = (USHORT) (usAddress - usCoilStart) / 8;
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 11
+
+
+ 375              		.loc 1 188 9 is_stmt 1 view .LVU127
+ 376              		.loc 1 188 21 is_stmt 0 view .LVU128
+ 377 001a 891A     		subs	r1, r1, r2
+ 378              	.LVL52:
+ 379              		.loc 1 188 19 view .LVU129
+ 380 001c C1F3CC0C 		ubfx	ip, r1, #3, #13
+ 381              	.LVL53:
+ 189:Drivers/FreeModbus/app/user_mb_app.c ****         iRegBitIndex = (USHORT) (usAddress - usCoilStart) % 8;
+ 382              		.loc 1 189 9 is_stmt 1 view .LVU130
+ 383              		.loc 1 189 22 is_stmt 0 view .LVU131
+ 384 0020 01F00707 		and	r7, r1, #7
+ 385              	.LVL54:
+ 190:Drivers/FreeModbus/app/user_mb_app.c ****         switch ( eMode )
+ 386              		.loc 1 190 9 is_stmt 1 view .LVU132
+ 387 0024 A6B1     		cbz	r6, .L21
+ 388 0026 012E     		cmp	r6, #1
+ 389 0028 34D0     		beq	.L22
+ 390 002a 0020     		movs	r0, #0
+ 391              	.LVL55:
+ 392              		.loc 1 190 9 is_stmt 0 view .LVU133
+ 393 002c 42E0     		b	.L20
+ 394              	.LVL56:
+ 395              	.L23:
+ 191:Drivers/FreeModbus/app/user_mb_app.c ****         {
+ 192:Drivers/FreeModbus/app/user_mb_app.c ****         /* read current coil values from the protocol stack. */
+ 193:Drivers/FreeModbus/app/user_mb_app.c ****         case MB_REG_READ:
+ 194:Drivers/FreeModbus/app/user_mb_app.c ****             while (iNReg > 0)
+ 195:Drivers/FreeModbus/app/user_mb_app.c ****             {
+ 196:Drivers/FreeModbus/app/user_mb_app.c ****                 *pucRegBuffer++ = xMBUtilGetBits(&pucCoilBuf[iRegIndex++],
+ 396              		.loc 1 196 17 is_stmt 1 view .LVU134
+ 397              		.loc 1 196 71 is_stmt 0 view .LVU135
+ 398 002e 0CF10109 		add	r9, ip, #1
+ 399 0032 1FFA89F9 		uxth	r9, r9
+ 400              	.LVL57:
+ 401              		.loc 1 196 30 view .LVU136
+ 402 0036 8046     		mov	r8, r0
+ 403              	.LVL58:
+ 404              		.loc 1 196 35 view .LVU137
+ 405 0038 0822     		movs	r2, #8
+ 406 003a 3946     		mov	r1, r7
+ 407 003c 1F48     		ldr	r0, .L29+4
+ 408 003e 6044     		add	r0, r0, ip
+ 409 0040 FFF7FEFF 		bl	xMBUtilGetBits
+ 410              	.LVL59:
+ 411              		.loc 1 196 33 view .LVU138
+ 412 0044 08F8010B 		strb	r0, [r8], #1
+ 413              	.LVL60:
+ 197:Drivers/FreeModbus/app/user_mb_app.c ****                         iRegBitIndex, 8);
+ 198:Drivers/FreeModbus/app/user_mb_app.c ****                 iNReg--;
+ 414              		.loc 1 198 17 is_stmt 1 view .LVU139
+ 415              		.loc 1 198 22 is_stmt 0 view .LVU140
+ 416 0048 013C     		subs	r4, r4, #1
+ 417              	.LVL61:
+ 418              		.loc 1 198 22 view .LVU141
+ 419 004a A4B2     		uxth	r4, r4
+ 420              	.LVL62:
+ 196:Drivers/FreeModbus/app/user_mb_app.c ****                         iRegBitIndex, 8);
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 12
+
+
+ 421              		.loc 1 196 71 view .LVU142
+ 422 004c CC46     		mov	ip, r9
+ 196:Drivers/FreeModbus/app/user_mb_app.c ****                         iRegBitIndex, 8);
+ 423              		.loc 1 196 30 view .LVU143
+ 424 004e 4046     		mov	r0, r8
+ 425              	.LVL63:
+ 426              	.L21:
+ 194:Drivers/FreeModbus/app/user_mb_app.c ****             {
+ 427              		.loc 1 194 19 is_stmt 1 view .LVU144
+ 428 0050 002C     		cmp	r4, #0
+ 429 0052 ECD1     		bne	.L23
+ 199:Drivers/FreeModbus/app/user_mb_app.c ****             }
+ 200:Drivers/FreeModbus/app/user_mb_app.c ****             pucRegBuffer--;
+ 430              		.loc 1 200 13 view .LVU145
+ 431              	.LVL64:
+ 201:Drivers/FreeModbus/app/user_mb_app.c ****             /* last coils */
+ 202:Drivers/FreeModbus/app/user_mb_app.c ****             usNCoils = usNCoils % 8;
+ 432              		.loc 1 202 13 view .LVU146
+ 433              		.loc 1 202 22 is_stmt 0 view .LVU147
+ 434 0054 05F00705 		and	r5, r5, #7
+ 435              	.LVL65:
+ 203:Drivers/FreeModbus/app/user_mb_app.c ****             /* filling zero to high bit */
+ 204:Drivers/FreeModbus/app/user_mb_app.c ****             *pucRegBuffer = *pucRegBuffer << (8 - usNCoils);
+ 436              		.loc 1 204 13 is_stmt 1 view .LVU148
+ 437              		.loc 1 204 29 is_stmt 0 view .LVU149
+ 438 0058 10F8013C 		ldrb	r3, [r0, #-1]	@ zero_extendqisi2
+ 439              		.loc 1 204 49 view .LVU150
+ 440 005c C5F10805 		rsb	r5, r5, #8
+ 441              	.LVL66:
+ 442              		.loc 1 204 43 view .LVU151
+ 443 0060 AB40     		lsls	r3, r3, r5
+ 444              		.loc 1 204 27 view .LVU152
+ 445 0062 DBB2     		uxtb	r3, r3
+ 446 0064 00F8013C 		strb	r3, [r0, #-1]
+ 205:Drivers/FreeModbus/app/user_mb_app.c ****             *pucRegBuffer = *pucRegBuffer >> (8 - usNCoils);
+ 447              		.loc 1 205 13 is_stmt 1 view .LVU153
+ 448              		.loc 1 205 43 is_stmt 0 view .LVU154
+ 449 0068 2B41     		asrs	r3, r3, r5
+ 450              		.loc 1 205 27 view .LVU155
+ 451 006a 00F8013C 		strb	r3, [r0, #-1]
+ 206:Drivers/FreeModbus/app/user_mb_app.c ****             break;
+ 452              		.loc 1 206 13 is_stmt 1 view .LVU156
+ 170:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex , iRegBitIndex , iNReg;
+ 453              		.loc 1 170 21 is_stmt 0 view .LVU157
+ 454 006e 3046     		mov	r0, r6
+ 455              	.LVL67:
+ 456              		.loc 1 206 13 view .LVU158
+ 457 0070 20E0     		b	.L20
+ 458              	.LVL68:
+ 459              	.L24:
+ 207:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 208:Drivers/FreeModbus/app/user_mb_app.c ****             /* write current coil values with new values from the protocol stack. */
+ 209:Drivers/FreeModbus/app/user_mb_app.c ****         case MB_REG_WRITE:
+ 210:Drivers/FreeModbus/app/user_mb_app.c ****             while (iNReg > 1)
+ 211:Drivers/FreeModbus/app/user_mb_app.c ****             {
+ 212:Drivers/FreeModbus/app/user_mb_app.c ****                 xMBUtilSetBits(&pucCoilBuf[iRegIndex++], iRegBitIndex, 8,
+ 460              		.loc 1 212 17 is_stmt 1 view .LVU159
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 13
+
+
+ 461              		.loc 1 212 53 is_stmt 0 view .LVU160
+ 462 0072 0CF10108 		add	r8, ip, #1
+ 463 0076 1FFA88F8 		uxth	r8, r8
+ 464              	.LVL69:
+ 213:Drivers/FreeModbus/app/user_mb_app.c ****                         *pucRegBuffer++);
+ 465              		.loc 1 213 38 view .LVU161
+ 466 007a 0646     		mov	r6, r0
+ 467              	.LVL70:
+ 212:Drivers/FreeModbus/app/user_mb_app.c ****                         *pucRegBuffer++);
+ 468              		.loc 1 212 17 view .LVU162
+ 469 007c 16F8013B 		ldrb	r3, [r6], #1	@ zero_extendqisi2
+ 470              	.LVL71:
+ 212:Drivers/FreeModbus/app/user_mb_app.c ****                         *pucRegBuffer++);
+ 471              		.loc 1 212 17 view .LVU163
+ 472 0080 0822     		movs	r2, #8
+ 473 0082 3946     		mov	r1, r7
+ 474 0084 0D48     		ldr	r0, .L29+4
+ 475 0086 6044     		add	r0, r0, ip
+ 476 0088 FFF7FEFF 		bl	xMBUtilSetBits
+ 477              	.LVL72:
+ 214:Drivers/FreeModbus/app/user_mb_app.c ****                 iNReg--;
+ 478              		.loc 1 214 17 is_stmt 1 view .LVU164
+ 479              		.loc 1 214 22 is_stmt 0 view .LVU165
+ 480 008c 013C     		subs	r4, r4, #1
+ 481              	.LVL73:
+ 482              		.loc 1 214 22 view .LVU166
+ 483 008e A4B2     		uxth	r4, r4
+ 484              	.LVL74:
+ 212:Drivers/FreeModbus/app/user_mb_app.c ****                         *pucRegBuffer++);
+ 485              		.loc 1 212 53 view .LVU167
+ 486 0090 C446     		mov	ip, r8
+ 213:Drivers/FreeModbus/app/user_mb_app.c ****                         *pucRegBuffer++);
+ 487              		.loc 1 213 38 view .LVU168
+ 488 0092 3046     		mov	r0, r6
+ 489              	.LVL75:
+ 490              	.L22:
+ 210:Drivers/FreeModbus/app/user_mb_app.c ****             {
+ 491              		.loc 1 210 19 is_stmt 1 view .LVU169
+ 492 0094 012C     		cmp	r4, #1
+ 493 0096 ECD8     		bhi	.L24
+ 215:Drivers/FreeModbus/app/user_mb_app.c ****             }
+ 216:Drivers/FreeModbus/app/user_mb_app.c ****             /* last coils */
+ 217:Drivers/FreeModbus/app/user_mb_app.c ****             usNCoils = usNCoils % 8;
+ 494              		.loc 1 217 13 view .LVU170
+ 495              	.LVL76:
+ 218:Drivers/FreeModbus/app/user_mb_app.c ****             /* xMBUtilSetBits has bug when ucNBits is zero */
+ 219:Drivers/FreeModbus/app/user_mb_app.c ****             if (usNCoils != 0)
+ 496              		.loc 1 219 13 view .LVU171
+ 497              		.loc 1 219 16 is_stmt 0 view .LVU172
+ 498 0098 15F00702 		ands	r2, r5, #7
+ 499 009c 01D1     		bne	.L28
+ 170:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex , iRegBitIndex , iNReg;
+ 500              		.loc 1 170 21 view .LVU173
+ 501 009e 0020     		movs	r0, #0
+ 502              	.LVL77:
+ 170:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex , iRegBitIndex , iNReg;
+ 503              		.loc 1 170 21 view .LVU174
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 14
+
+
+ 504 00a0 08E0     		b	.L20
+ 505              	.LVL78:
+ 506              	.L28:
+ 220:Drivers/FreeModbus/app/user_mb_app.c ****             {
+ 221:Drivers/FreeModbus/app/user_mb_app.c ****                 xMBUtilSetBits(&pucCoilBuf[iRegIndex++], iRegBitIndex, usNCoils,
+ 507              		.loc 1 221 17 is_stmt 1 view .LVU175
+ 508              		.loc 1 221 17 is_stmt 0 view .LVU176
+ 509 00a2 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 510 00a4 3946     		mov	r1, r7
+ 511 00a6 0548     		ldr	r0, .L29+4
+ 512              	.LVL79:
+ 513              		.loc 1 221 17 view .LVU177
+ 514 00a8 6044     		add	r0, r0, ip
+ 515 00aa FFF7FEFF 		bl	xMBUtilSetBits
+ 516              	.LVL80:
+ 170:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex , iRegBitIndex , iNReg;
+ 517              		.loc 1 170 21 view .LVU178
+ 518 00ae 0020     		movs	r0, #0
+ 519 00b0 00E0     		b	.L20
+ 520              	.LVL81:
+ 521              	.L25:
+ 222:Drivers/FreeModbus/app/user_mb_app.c ****                         *pucRegBuffer++);
+ 223:Drivers/FreeModbus/app/user_mb_app.c ****             }
+ 224:Drivers/FreeModbus/app/user_mb_app.c ****             break;
+ 225:Drivers/FreeModbus/app/user_mb_app.c ****         }
+ 226:Drivers/FreeModbus/app/user_mb_app.c ****     }
+ 227:Drivers/FreeModbus/app/user_mb_app.c ****     else
+ 228:Drivers/FreeModbus/app/user_mb_app.c ****     {
+ 229:Drivers/FreeModbus/app/user_mb_app.c ****         eStatus = MB_ENOREG;
+ 522              		.loc 1 229 17 view .LVU179
+ 523 00b2 0120     		movs	r0, #1
+ 524              	.LVL82:
+ 525              	.L20:
+ 230:Drivers/FreeModbus/app/user_mb_app.c ****     }
+ 231:Drivers/FreeModbus/app/user_mb_app.c ****     return eStatus;
+ 526              		.loc 1 231 5 is_stmt 1 view .LVU180
+ 232:Drivers/FreeModbus/app/user_mb_app.c **** #else
+ 233:Drivers/FreeModbus/app/user_mb_app.c **** 	return MB_ENOREG;
+ 234:Drivers/FreeModbus/app/user_mb_app.c **** #endif
+ 235:Drivers/FreeModbus/app/user_mb_app.c **** }
+ 527              		.loc 1 235 1 is_stmt 0 view .LVU181
+ 528 00b4 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 529              	.L30:
+ 530              		.align	2
+ 531              	.L29:
+ 532 00b8 00000000 		.word	.LANCHOR4
+ 533 00bc 00000000 		.word	.LANCHOR5
+ 534              		.cfi_endproc
+ 535              	.LFE67:
+ 537              		.section	.text.eMBRegDiscreteCB,"ax",%progbits
+ 538              		.align	1
+ 539              		.global	eMBRegDiscreteCB
+ 540              		.syntax unified
+ 541              		.thumb
+ 542              		.thumb_func
+ 544              	eMBRegDiscreteCB:
+ 545              	.LVL83:
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 15
+
+
+ 546              	.LFB68:
+ 236:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 237:Drivers/FreeModbus/app/user_mb_app.c **** /**
+ 238:Drivers/FreeModbus/app/user_mb_app.c ****  * Modbus slave discrete callback function.
+ 239:Drivers/FreeModbus/app/user_mb_app.c ****  *
+ 240:Drivers/FreeModbus/app/user_mb_app.c ****  * @param pucRegBuffer discrete buffer
+ 241:Drivers/FreeModbus/app/user_mb_app.c ****  * @param usAddress discrete address
+ 242:Drivers/FreeModbus/app/user_mb_app.c ****  * @param usNDiscrete discrete number
+ 243:Drivers/FreeModbus/app/user_mb_app.c ****  *
+ 244:Drivers/FreeModbus/app/user_mb_app.c ****  * @return result
+ 245:Drivers/FreeModbus/app/user_mb_app.c ****  */
+ 246:Drivers/FreeModbus/app/user_mb_app.c **** eMBErrorCode eMBRegDiscreteCB( UCHAR * pucRegBuffer, USHORT usAddress, USHORT usNDiscrete )
+ 247:Drivers/FreeModbus/app/user_mb_app.c **** {
+ 547              		.loc 1 247 1 is_stmt 1 view -0
+ 548              		.cfi_startproc
+ 549              		@ args = 0, pretend = 0, frame = 0
+ 550              		@ frame_needed = 0, uses_anonymous_args = 0
+ 551              		.loc 1 247 1 is_stmt 0 view .LVU183
+ 552 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 553              	.LCFI5:
+ 554              		.cfi_def_cfa_offset 24
+ 555              		.cfi_offset 4, -24
+ 556              		.cfi_offset 5, -20
+ 557              		.cfi_offset 6, -16
+ 558              		.cfi_offset 7, -12
+ 559              		.cfi_offset 8, -8
+ 560              		.cfi_offset 14, -4
+ 561 0004 9046     		mov	r8, r2
+ 248:Drivers/FreeModbus/app/user_mb_app.c **** #if S_DISCRETE_INPUT_NDISCRETES > 0
+ 249:Drivers/FreeModbus/app/user_mb_app.c ****     eMBErrorCode    eStatus = MB_ENOERR;
+ 562              		.loc 1 249 5 is_stmt 1 view .LVU184
+ 563              	.LVL84:
+ 250:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex , iRegBitIndex , iNReg;
+ 564              		.loc 1 250 5 view .LVU185
+ 251:Drivers/FreeModbus/app/user_mb_app.c ****     UCHAR *         pucDiscreteInputBuf;
+ 565              		.loc 1 251 5 view .LVU186
+ 252:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          DISCRETE_INPUT_START;
+ 566              		.loc 1 252 5 view .LVU187
+ 253:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          DISCRETE_INPUT_NDISCRETES;
+ 567              		.loc 1 253 5 view .LVU188
+ 254:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          usDiscreteInputStart;
+ 568              		.loc 1 254 5 view .LVU189
+ 255:Drivers/FreeModbus/app/user_mb_app.c ****     iNReg =  usNDiscrete / 8 + 1;
+ 569              		.loc 1 255 5 view .LVU190
+ 570              		.loc 1 255 30 is_stmt 0 view .LVU191
+ 571 0006 D508     		lsrs	r5, r2, #3
+ 572              	.LVL85:
+ 256:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 257:Drivers/FreeModbus/app/user_mb_app.c ****     pucDiscreteInputBuf = ucSDiscInBuf;
+ 573              		.loc 1 257 5 is_stmt 1 view .LVU192
+ 258:Drivers/FreeModbus/app/user_mb_app.c ****     DISCRETE_INPUT_START = S_DISCRETE_INPUT_START;
+ 574              		.loc 1 258 5 view .LVU193
+ 259:Drivers/FreeModbus/app/user_mb_app.c ****     DISCRETE_INPUT_NDISCRETES = S_DISCRETE_INPUT_NDISCRETES;
+ 575              		.loc 1 259 5 view .LVU194
+ 260:Drivers/FreeModbus/app/user_mb_app.c ****     usDiscreteInputStart = usSDiscInStart;
+ 576              		.loc 1 260 5 view .LVU195
+ 577              		.loc 1 260 26 is_stmt 0 view .LVU196
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 16
+
+
+ 578 0008 194B     		ldr	r3, .L37
+ 579 000a 1A88     		ldrh	r2, [r3]
+ 580              	.LVL86:
+ 261:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 262:Drivers/FreeModbus/app/user_mb_app.c ****     /* it already plus one in modbus function method. */
+ 263:Drivers/FreeModbus/app/user_mb_app.c ****     usAddress--;
+ 581              		.loc 1 263 5 is_stmt 1 view .LVU197
+ 582              		.loc 1 263 14 is_stmt 0 view .LVU198
+ 583 000c 4F1E     		subs	r7, r1, #1
+ 584 000e BFB2     		uxth	r7, r7
+ 585              	.LVL87:
+ 264:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 265:Drivers/FreeModbus/app/user_mb_app.c ****     if ((usAddress >= DISCRETE_INPUT_START) && (usAddress + usNDiscrete    <= DISCRETE_INPUT_START 
+ 586              		.loc 1 265 5 is_stmt 1 view .LVU199
+ 587              		.loc 1 265 59 is_stmt 0 view .LVU200
+ 588 0010 07EB0803 		add	r3, r7, r8
+ 589              		.loc 1 265 45 view .LVU201
+ 590 0014 0A2B     		cmp	r3, #10
+ 591 0016 28DC     		bgt	.L35
+ 592 0018 0446     		mov	r4, r0
+ 593 001a 0135     		adds	r5, r5, #1
+ 594              	.LVL88:
+ 266:Drivers/FreeModbus/app/user_mb_app.c ****     {
+ 267:Drivers/FreeModbus/app/user_mb_app.c ****         iRegIndex = (USHORT) (usAddress - usDiscreteInputStart) / 8;
+ 595              		.loc 1 267 9 is_stmt 1 view .LVU202
+ 596              		.loc 1 267 21 is_stmt 0 view .LVU203
+ 597 001c BF1A     		subs	r7, r7, r2
+ 598              	.LVL89:
+ 599              		.loc 1 267 19 view .LVU204
+ 600 001e C7F3CC03 		ubfx	r3, r7, #3, #13
+ 601              	.LVL90:
+ 268:Drivers/FreeModbus/app/user_mb_app.c ****         iRegBitIndex = (USHORT) (usAddress - usDiscreteInputStart) % 8;
+ 602              		.loc 1 268 9 is_stmt 1 view .LVU205
+ 603              		.loc 1 268 22 is_stmt 0 view .LVU206
+ 604 0022 07F00707 		and	r7, r7, #7
+ 605              	.LVL91:
+ 269:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 270:Drivers/FreeModbus/app/user_mb_app.c ****         while (iNReg > 0)
+ 606              		.loc 1 270 9 is_stmt 1 view .LVU207
+ 607              		.loc 1 270 15 is_stmt 0 view .LVU208
+ 608 0026 0CE0     		b	.L33
+ 609              	.LVL92:
+ 610              	.L34:
+ 271:Drivers/FreeModbus/app/user_mb_app.c ****         {
+ 272:Drivers/FreeModbus/app/user_mb_app.c ****             *pucRegBuffer++ = xMBUtilGetBits(&pucDiscreteInputBuf[iRegIndex++],
+ 611              		.loc 1 272 13 is_stmt 1 view .LVU209
+ 612              		.loc 1 272 76 is_stmt 0 view .LVU210
+ 613 0028 5E1C     		adds	r6, r3, #1
+ 614 002a B6B2     		uxth	r6, r6
+ 615              	.LVL93:
+ 616              		.loc 1 272 31 view .LVU211
+ 617 002c 0822     		movs	r2, #8
+ 618 002e 3946     		mov	r1, r7
+ 619 0030 1048     		ldr	r0, .L37+4
+ 620 0032 1844     		add	r0, r0, r3
+ 621 0034 FFF7FEFF 		bl	xMBUtilGetBits
+ 622              	.LVL94:
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 17
+
+
+ 623              		.loc 1 272 29 view .LVU212
+ 624 0038 04F8010B 		strb	r0, [r4], #1
+ 625              	.LVL95:
+ 273:Drivers/FreeModbus/app/user_mb_app.c ****                     iRegBitIndex, 8);
+ 274:Drivers/FreeModbus/app/user_mb_app.c ****             iNReg--;
+ 626              		.loc 1 274 13 is_stmt 1 view .LVU213
+ 627              		.loc 1 274 18 is_stmt 0 view .LVU214
+ 628 003c 013D     		subs	r5, r5, #1
+ 629              	.LVL96:
+ 630              		.loc 1 274 18 view .LVU215
+ 631 003e ADB2     		uxth	r5, r5
+ 632              	.LVL97:
+ 272:Drivers/FreeModbus/app/user_mb_app.c ****                     iRegBitIndex, 8);
+ 633              		.loc 1 272 76 view .LVU216
+ 634 0040 3346     		mov	r3, r6
+ 635              	.LVL98:
+ 636              	.L33:
+ 270:Drivers/FreeModbus/app/user_mb_app.c ****         {
+ 637              		.loc 1 270 15 is_stmt 1 view .LVU217
+ 638 0042 002D     		cmp	r5, #0
+ 639 0044 F0D1     		bne	.L34
+ 275:Drivers/FreeModbus/app/user_mb_app.c ****         }
+ 276:Drivers/FreeModbus/app/user_mb_app.c ****         pucRegBuffer--;
+ 640              		.loc 1 276 9 view .LVU218
+ 641              	.LVL99:
+ 277:Drivers/FreeModbus/app/user_mb_app.c ****         /* last discrete */
+ 278:Drivers/FreeModbus/app/user_mb_app.c ****         usNDiscrete = usNDiscrete % 8;
+ 642              		.loc 1 278 9 view .LVU219
+ 643              		.loc 1 278 21 is_stmt 0 view .LVU220
+ 644 0046 08F00708 		and	r8, r8, #7
+ 645              	.LVL100:
+ 279:Drivers/FreeModbus/app/user_mb_app.c ****         /* filling zero to high bit */
+ 280:Drivers/FreeModbus/app/user_mb_app.c ****         *pucRegBuffer = *pucRegBuffer << (8 - usNDiscrete);
+ 646              		.loc 1 280 9 is_stmt 1 view .LVU221
+ 647              		.loc 1 280 25 is_stmt 0 view .LVU222
+ 648 004a 14F8013C 		ldrb	r3, [r4, #-1]	@ zero_extendqisi2
+ 649              	.LVL101:
+ 650              		.loc 1 280 45 view .LVU223
+ 651 004e C8F10808 		rsb	r8, r8, #8
+ 652              	.LVL102:
+ 653              		.loc 1 280 39 view .LVU224
+ 654 0052 03FA08F3 		lsl	r3, r3, r8
+ 655              		.loc 1 280 23 view .LVU225
+ 656 0056 DBB2     		uxtb	r3, r3
+ 657 0058 04F8013C 		strb	r3, [r4, #-1]
+ 281:Drivers/FreeModbus/app/user_mb_app.c ****         *pucRegBuffer = *pucRegBuffer >> (8 - usNDiscrete);
+ 658              		.loc 1 281 9 is_stmt 1 view .LVU226
+ 659              		.loc 1 281 39 is_stmt 0 view .LVU227
+ 660 005c 43FA08F8 		asr	r8, r3, r8
+ 661              		.loc 1 281 23 view .LVU228
+ 662 0060 04F8018C 		strb	r8, [r4, #-1]
+ 249:Drivers/FreeModbus/app/user_mb_app.c ****     USHORT          iRegIndex , iRegBitIndex , iNReg;
+ 663              		.loc 1 249 21 view .LVU229
+ 664 0064 0020     		movs	r0, #0
+ 665              	.LVL103:
+ 666              	.L32:
+ 282:Drivers/FreeModbus/app/user_mb_app.c ****     }
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 18
+
+
+ 283:Drivers/FreeModbus/app/user_mb_app.c ****     else
+ 284:Drivers/FreeModbus/app/user_mb_app.c ****     {
+ 285:Drivers/FreeModbus/app/user_mb_app.c ****         eStatus = MB_ENOREG;
+ 286:Drivers/FreeModbus/app/user_mb_app.c ****     }
+ 287:Drivers/FreeModbus/app/user_mb_app.c **** 
+ 288:Drivers/FreeModbus/app/user_mb_app.c ****     return eStatus;
+ 667              		.loc 1 288 5 is_stmt 1 view .LVU230
+ 289:Drivers/FreeModbus/app/user_mb_app.c **** #else
+ 290:Drivers/FreeModbus/app/user_mb_app.c **** 	return MB_ENOREG;
+ 291:Drivers/FreeModbus/app/user_mb_app.c **** #endif
+ 292:Drivers/FreeModbus/app/user_mb_app.c **** }
+ 668              		.loc 1 292 1 is_stmt 0 view .LVU231
+ 669 0066 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 670              	.LVL104:
+ 671              	.L35:
+ 285:Drivers/FreeModbus/app/user_mb_app.c ****     }
+ 672              		.loc 1 285 17 view .LVU232
+ 673 006a 0120     		movs	r0, #1
+ 674              	.LVL105:
+ 285:Drivers/FreeModbus/app/user_mb_app.c ****     }
+ 675              		.loc 1 285 17 view .LVU233
+ 676 006c FBE7     		b	.L32
+ 677              	.L38:
+ 678 006e 00BF     		.align	2
+ 679              	.L37:
+ 680 0070 00000000 		.word	.LANCHOR6
+ 681 0074 00000000 		.word	.LANCHOR7
+ 682              		.cfi_endproc
+ 683              	.LFE68:
+ 685              		.global	usSRegHoldBuf
+ 686              		.global	usSRegHoldStart
+ 687              		.global	usSRegInBuf
+ 688              		.global	usSRegInStart
+ 689              		.global	ucSCoilBuf
+ 690              		.global	usSCoilStart
+ 691              		.global	ucSDiscInBuf
+ 692              		.global	usSDiscInStart
+ 693              		.section	.bss.ucSCoilBuf,"aw",%nobits
+ 694              		.align	2
+ 695              		.set	.LANCHOR5,. + 0
+ 698              	ucSCoilBuf:
+ 699 0000 0000     		.space	2
+ 700              		.section	.bss.ucSDiscInBuf,"aw",%nobits
+ 701              		.align	2
+ 702              		.set	.LANCHOR7,. + 0
+ 705              	ucSDiscInBuf:
+ 706 0000 0000     		.space	2
+ 707              		.section	.bss.usSCoilStart,"aw",%nobits
+ 708              		.align	1
+ 709              		.set	.LANCHOR4,. + 0
+ 712              	usSCoilStart:
+ 713 0000 0000     		.space	2
+ 714              		.section	.bss.usSDiscInStart,"aw",%nobits
+ 715              		.align	1
+ 716              		.set	.LANCHOR6,. + 0
+ 719              	usSDiscInStart:
+ 720 0000 0000     		.space	2
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 19
+
+
+ 721              		.section	.bss.usSRegHoldBuf,"aw",%nobits
+ 722              		.align	2
+ 723              		.set	.LANCHOR3,. + 0
+ 726              	usSRegHoldBuf:
+ 727 0000 00000000 		.space	20
+ 727      00000000 
+ 727      00000000 
+ 727      00000000 
+ 727      00000000 
+ 728              		.section	.bss.usSRegHoldStart,"aw",%nobits
+ 729              		.align	1
+ 730              		.set	.LANCHOR2,. + 0
+ 733              	usSRegHoldStart:
+ 734 0000 0000     		.space	2
+ 735              		.section	.bss.usSRegInBuf,"aw",%nobits
+ 736              		.align	2
+ 737              		.set	.LANCHOR1,. + 0
+ 740              	usSRegInBuf:
+ 741 0000 00000000 		.space	20
+ 741      00000000 
+ 741      00000000 
+ 741      00000000 
+ 741      00000000 
+ 742              		.section	.bss.usSRegInStart,"aw",%nobits
+ 743              		.align	1
+ 744              		.set	.LANCHOR0,. + 0
+ 747              	usSRegInStart:
+ 748 0000 0000     		.space	2
+ 749              		.text
+ 750              	.Letext0:
+ 751              		.file 2 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\machine\\_default_types.
+ 752              		.file 3 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 753              		.file 4 "Drivers/FreeModbus/port/port.h"
+ 754              		.file 5 "Drivers/FreeModbus/include/mb.h"
+ 755              		.file 6 "Drivers/FreeModbus/include/mbutils.h"
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 user_mb_app.c
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:18     .text.eMBRegInputCB:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:24     .text.eMBRegInputCB:00000000 eMBRegInputCB
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:137    .text.eMBRegInputCB:00000044 $d
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:143    .text.eMBRegHoldingCB:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:149    .text.eMBRegHoldingCB:00000000 eMBRegHoldingCB
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:306    .text.eMBRegHoldingCB:00000078 $d
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:312    .text.eMBRegCoilsCB:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:318    .text.eMBRegCoilsCB:00000000 eMBRegCoilsCB
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:532    .text.eMBRegCoilsCB:000000b8 $d
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:538    .text.eMBRegDiscreteCB:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:544    .text.eMBRegDiscreteCB:00000000 eMBRegDiscreteCB
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:680    .text.eMBRegDiscreteCB:00000070 $d
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:726    .bss.usSRegHoldBuf:00000000 usSRegHoldBuf
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:733    .bss.usSRegHoldStart:00000000 usSRegHoldStart
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:740    .bss.usSRegInBuf:00000000 usSRegInBuf
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:747    .bss.usSRegInStart:00000000 usSRegInStart
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:698    .bss.ucSCoilBuf:00000000 ucSCoilBuf
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:712    .bss.usSCoilStart:00000000 usSCoilStart
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:705    .bss.ucSDiscInBuf:00000000 ucSDiscInBuf
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:719    .bss.usSDiscInStart:00000000 usSDiscInStart
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:694    .bss.ucSCoilBuf:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:701    .bss.ucSDiscInBuf:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:708    .bss.usSCoilStart:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:715    .bss.usSDiscInStart:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:722    .bss.usSRegHoldBuf:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:729    .bss.usSRegHoldStart:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:736    .bss.usSRegInBuf:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccmnWkOS.s:743    .bss.usSRegInStart:00000000 $d
+
+UNDEFINED SYMBOLS
+xMBUtilGetBits
+xMBUtilSetBits
