@@ -23,13 +23,12 @@
 #include "usart.h"
 #include "gpio.h"
 
-#include "math.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "mb.h"
 #include "mbport.h"
 #include "user_mb_app.h"
+#include "ReceiveTransmit.h"
 
 #include "math.h"
 #include "AD7793.h"
@@ -110,11 +109,11 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_SPI2_Init();
-  MX_TIM2_Init();
-  MX_TIM3_Init();
   MX_USART2_UART_Init();
+  MX_TIM4_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  eMBInit(MB_RTU, 1, &huart2, 115200, &htim2);
+  eMBInit(MB_RTU, 1, &huart2, 115200, &htim4);
 	eMBEnable();
   /* USER CODE END 2 */
 
@@ -124,26 +123,18 @@ int main(void)
   {
     eMBPoll();
 
-
     AD7793_Reset();
-    HAL_Delay(200);
-
+    HAL_Delay(50);
     AD7793_Init();
-     HAL_Delay(200);
-
     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793_CH_AIN1P_AIN1M);
-    HAL_Delay(200);
     AD7793_IO_Register(AD7793_DIR_IEXC1_IOUT1_IEXC2_IOUT2, AD7793_EN_IXCEN_210uA);
-       HAL_Delay(200);
-  //  uint8_t mn[3] = {AD7793_REG_MODE, 0x00, 0};
-  //      CS_Pin_OFF; 
-	//     HAL_SPI_Transmit(&hspi2, mn, 3, 1);
-  //   CS_Pin_ON; 
-       HAL_Delay(200);
-    conv = AD7793_ContinuousReadAvg(2);
+
+    conv = AD7793_SingleConversion();
 
     RRTD = RREF * (conv - 8388608.0) / (8388608.0 * GAIN);                        /* Computes the RTD resistance from the conversion code */
     temp = (sqrt(pow(A,2) - 4*B*(1.0 - RRTD/R0))-A)/(2*B);
+
+    dataTransmit(0,temp);
 
     // tempChip = (((conv - 8388608.0) / 8388608.0) * 1.17 * 1000 / 0.810) - 273;
 

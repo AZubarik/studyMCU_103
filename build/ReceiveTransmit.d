@@ -1,4 +1,9 @@
-build/main.o: Core/Src/main.c Core/Inc/main.h \
+build/ReceiveTransmit.o: \
+ Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c \
+ Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h \
+ Drivers/FreeModbus/include/mb.h Drivers/FreeModbus/port/port.h \
+ Drivers/FreeModbus/include/mbconfig.h \
+ Drivers/FreeModbus/port/portcritical.h Core/Inc/main.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  Core/Inc/stm32f1xx_hal_conf.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -22,17 +27,16 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h Core/Inc/spi.h \
- Core/Inc/main.h Core/Inc/tim.h Core/Inc/usart.h Core/Inc/gpio.h \
- Drivers/FreeModbus/include/mb.h Drivers/FreeModbus/port/port.h \
- Drivers/FreeModbus/include/mbconfig.h \
- Drivers/FreeModbus/port/portcritical.h \
+ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
  Drivers/FreeModbus/include/mbport.h Drivers/FreeModbus/include/mbproto.h \
  Drivers/FreeModbus/include/mbport.h Drivers/FreeModbus/app/user_mb_app.h \
  Drivers/FreeModbus/include/mb_m.h Drivers/FreeModbus/include/mbframe.h \
- Drivers/FreeModbus/include/mbutils.h \
- Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h \
- Drivers/AD7793/AD7793.h
+ Drivers/FreeModbus/include/mbutils.h
+Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h:
+Drivers/FreeModbus/include/mb.h:
+Drivers/FreeModbus/port/port.h:
+Drivers/FreeModbus/include/mbconfig.h:
+Drivers/FreeModbus/port/portcritical.h:
 Core/Inc/main.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 Core/Inc/stm32f1xx_hal_conf.h:
@@ -60,15 +64,6 @@ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
-Core/Inc/spi.h:
-Core/Inc/main.h:
-Core/Inc/tim.h:
-Core/Inc/usart.h:
-Core/Inc/gpio.h:
-Drivers/FreeModbus/include/mb.h:
-Drivers/FreeModbus/port/port.h:
-Drivers/FreeModbus/include/mbconfig.h:
-Drivers/FreeModbus/port/portcritical.h:
 Drivers/FreeModbus/include/mbport.h:
 Drivers/FreeModbus/include/mbproto.h:
 Drivers/FreeModbus/include/mbport.h:
@@ -76,5 +71,3 @@ Drivers/FreeModbus/app/user_mb_app.h:
 Drivers/FreeModbus/include/mb_m.h:
 Drivers/FreeModbus/include/mbframe.h:
 Drivers/FreeModbus/include/mbutils.h:
-Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h:
-Drivers/AD7793/AD7793.h:

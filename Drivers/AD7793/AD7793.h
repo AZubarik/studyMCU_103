@@ -95,6 +95,9 @@ void AD7793_Init(void);
 /*  Sends 32 consecutive 1's on SPI in order to reset the part. */
 void AD7793_Reset(void);
 
+/* Waits for RDY pin to go low. */
+void AD7793_WaitRdyGoLow(void);
+
 /*  MODE REGISTER */
 void AD7793_Mode_Register(unsigned char mode, unsigned long clksrc, unsigned long rate);
 
