@@ -124,7 +124,6 @@ int main(void)
     eMBPoll();
 
     AD7793_Reset();
-    HAL_Delay(50);
     AD7793_Init();
     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793_CH_AIN1P_AIN1M);
     AD7793_IO_Register(AD7793_DIR_IEXC1_IOUT1_IEXC2_IOUT2, AD7793_EN_IXCEN_210uA);
@@ -137,7 +136,11 @@ int main(void)
     dataTransmit(0,temp);
 
     // tempChip = (((conv - 8388608.0) / 8388608.0) * 1.17 * 1000 / 0.810) - 273;
-
+    
+    // while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3) != GPIO_PIN_RESET) {
+    //   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, RESET);
+    // }
+    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, SET);
 
     /* USER CODE END WHILE */
 

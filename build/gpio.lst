@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 1
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccCe2K0c.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 1
   30:Core/Src/gpio.c **** /*----------------------------------------------------------------------------*/
   31:Core/Src/gpio.c **** /* USER CODE BEGIN 1 */
   32:Core/Src/gpio.c **** 
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 2
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccCe2K0c.s 			page 2
 
 
   33:Core/Src/gpio.c **** /* USER CODE END 1 */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 1
   49:Core/Src/gpio.c ****   __HAL_RCC_GPIOD_CLK_ENABLE();
   65              		.loc 1 49 3 view .LVU9
   66              	.LBB3:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 3
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccCe2K0c.s 			page 3
 
 
   67              		.loc 1 49 3 view .LVU10
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 1
  116              	.LVL0:
   55:Core/Src/gpio.c **** 
   56:Core/Src/gpio.c ****   /*Configure GPIO pin Output Level */
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 4
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccCe2K0c.s 			page 4
 
 
   57:Core/Src/gpio.c ****   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 1
   71:Core/Src/gpio.c ****   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
  157              		.loc 1 71 3 is_stmt 1 view .LVU46
  158 0098 04A9     		add	r1, sp, #16
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 5
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccCe2K0c.s 			page 5
 
 
  159 009a 3046     		mov	r0, r6
@@ -296,13 +296,13 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 1
  196 00c8 0920     		movs	r0, #9
  197 00ca FFF7FEFF 		bl	HAL_NVIC_SetPriority
  198              	.LVL6:
-  87:Core/Src/gpio.c ****   HAL_NVIC_EnableIRQ(EXTI3_IRQn);
+  87:Core/Src/gpio.c ****   HAL_NVIC_DisableIRQ(EXTI15_10_IRQn);
  199              		.loc 1 87 3 view .LVU62
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 6
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccCe2K0c.s 			page 6
 
 
- 200 00ce 0920     		movs	r0, #9
- 201 00d0 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 200 00ce 2820     		movs	r0, #40
+ 201 00d0 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
  202              	.LVL7:
   88:Core/Src/gpio.c **** 
   89:Core/Src/gpio.c ****   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 1, 0);
@@ -342,18 +342,17 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 1
  234              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
  235              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
  236              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s 			page 7
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccCe2K0c.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gpio.c
-C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s:18     .text.MX_GPIO_Init:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s:24     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\Andre\AppData\Local\Temp\cciTrLnE.s:222    .text.MX_GPIO_Init:000000e8 $d
+C:\Users\az\AppData\Local\Temp\ccCe2K0c.s:18     .text.MX_GPIO_Init:00000000 $t
+C:\Users\az\AppData\Local\Temp\ccCe2K0c.s:24     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\az\AppData\Local\Temp\ccCe2K0c.s:222    .text.MX_GPIO_Init:000000e8 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin
 HAL_GPIO_Init
 HAL_NVIC_SetPriority
-HAL_NVIC_EnableIRQ
 HAL_NVIC_DisableIRQ

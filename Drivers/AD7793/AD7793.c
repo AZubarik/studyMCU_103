@@ -17,9 +17,10 @@ void AD7793_Reset(void)
 
 void AD7793_WaitRdyGoLow(void)
 {
-     HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
-for(int i = 0; i < 600000; i++){
-}
+    uint32_t i = 0;
+    while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) != GPIO_PIN_RESET)
+    {
+    }
 }
 
 void AD7793_Mode_Register(unsigned char mode, unsigned long clksrc, unsigned long rate)
@@ -59,20 +60,22 @@ unsigned long AD7793_SingleConversion(void)
     CS_Pin_ON;
 
     uint32_t data_out = (((int32_t)out[1])<<16) | (((int32_t)out[2])<<8) | (((int32_t)out[3]));
+    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, SET);
     return(data_out);
 }
 
 unsigned long AD7793_ContinuousReadAvg(unsigned char sampleNumber)
 {
+    AD7793_Mode_Register(AD7793_MODE_CONT, AD7793_CLK_INT, AD7793_RATE_19_6);
   
     uint8_t conf[4] = {AD7793_REG_DATA};
     uint8_t out[4] = {0x00, 0x00, 0x00, 0x00};
     unsigned long   samplesAverage = 0x0;
     unsigned char count = 0x0;
     
-    CS_Pin_OFF;
     for(count = 0;count < sampleNumber;count ++)
     {
+        AD7793_WaitRdyGoLow();
         HAL_SPI_TransmitReceive(&hspi2, conf, out, sizeof(out) , 1);
         uint32_t data_out = (((int32_t)out[1])<<16) | (((int32_t)out[2])<<8) | (((int32_t)out[3]));
         samplesAverage += data_out;

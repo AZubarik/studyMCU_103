@@ -3,6 +3,8 @@
 
 #include "main.h"
 
+#define WaitRdyGoLow_Delay          70000
+
 /*  AD7793 Registers*/
 #define AD7793_REG_COMM		        0   /* Communications Register  (WO, 8-bit) */
 #define AD7793_REG_STAT	            0   /* Status Register	        (RO, 8-bit) */
@@ -88,6 +90,8 @@
 #define AD7793_EN_IXCEN_210uA				2  /* Excitation Current 210uA */
 #define AD7793_EN_IXCEN_1mA					3  /* Excitation Current 1mA */
 
+/* */
+#define  tempChip(conv)  (((conv - 8388608.0) / 8388608.0) * 1.17 * 1000 / 0.810) - 273;
 
 /*  Initialize AD7793 and check if the device is present.   */
 void AD7793_Init(void);
