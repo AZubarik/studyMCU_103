@@ -1,5 +1,5 @@
-build/stm32f1xx_it.o: Core/Src/stm32f1xx_it.c Core/Inc/main.h \
- Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
+build/initADC.o: Drivers/AD7793/initADC.c Drivers/AD7793/initADC.h \
+ Core/Inc/main.h Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  Core/Inc/stm32f1xx_hal_conf.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h \
@@ -23,7 +23,7 @@ build/stm32f1xx_it.o: Core/Src/stm32f1xx_it.c Core/Inc/main.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- Core/Inc/stm32f1xx_it.h \
+ Drivers/AD7793/AD7793.h \
  Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h \
  Drivers/FreeModbus/include/mb.h Drivers/FreeModbus/port/port.h \
  Drivers/FreeModbus/include/mbconfig.h \
@@ -31,7 +31,8 @@ build/stm32f1xx_it.o: Core/Src/stm32f1xx_it.c Core/Inc/main.h \
  Drivers/FreeModbus/include/mbport.h Drivers/FreeModbus/include/mbproto.h \
  Drivers/FreeModbus/include/mbport.h Drivers/FreeModbus/app/user_mb_app.h \
  Drivers/FreeModbus/include/mb_m.h Drivers/FreeModbus/include/mbframe.h \
- Drivers/FreeModbus/include/mbutils.h Drivers/AD7793/initADC.h
+ Drivers/FreeModbus/include/mbutils.h
+Drivers/AD7793/initADC.h:
 Core/Inc/main.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 Core/Inc/stm32f1xx_hal_conf.h:
@@ -59,7 +60,7 @@ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
-Core/Inc/stm32f1xx_it.h:
+Drivers/AD7793/AD7793.h:
 Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h:
 Drivers/FreeModbus/include/mb.h:
 Drivers/FreeModbus/port/port.h:
@@ -72,4 +73,3 @@ Drivers/FreeModbus/app/user_mb_app.h:
 Drivers/FreeModbus/include/mb_m.h:
 Drivers/FreeModbus/include/mbframe.h:
 Drivers/FreeModbus/include/mbutils.h:
-Drivers/AD7793/initADC.h:

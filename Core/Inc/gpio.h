@@ -29,9 +29,12 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-#define CS_Pin_ON                       HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET)
-#define CS_Pin_OFF                      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET)
+#define PIN_(N)              GPIO_PIN_13
+#define CS_Pin_ON                             HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_SET)
+#define CS_Pin_OFF                      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_9, GPIO_PIN_RESET)
 
+#define CS_ON(N)                         HAL_GPIO_WritePin(GPIOC, (N), GPIO_PIN_RESET)
+#define CS_OFF(N)                           HAL_GPIO_WritePin(GPIOC, (N), GPIO_PIN_SET)
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN Private defines */

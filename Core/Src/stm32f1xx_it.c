@@ -22,11 +22,14 @@
 #include "stm32f1xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "ReceiveTransmit.h"
+
+#include "initADC.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN TD */
-
+/* USER CODE END PTD */
 /* USER CODE END TD */
 
 /* Private define ------------------------------------------------------------*/
@@ -220,7 +223,7 @@ void EXTI3_IRQHandler(void)
 void TIM3_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
-
+  ADC_chanel(GPIO_PIN_12);
 
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);

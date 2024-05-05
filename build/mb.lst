@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
   29:Drivers/FreeModbus/mb.c ****  */
   30:Drivers/FreeModbus/mb.c **** 
   31:Drivers/FreeModbus/mb.c **** /* ----------------------- System includes ----------------------------------*/
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 2
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 2
 
 
   32:Drivers/FreeModbus/mb.c **** #include "stdlib.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
   86:Drivers/FreeModbus/mb.c ****  * Using for Modbus Slave
   87:Drivers/FreeModbus/mb.c ****  */
   88:Drivers/FreeModbus/mb.c **** BOOL( *pxMBFrameCBByteReceived ) ( void );
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 3
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 3
 
 
   89:Drivers/FreeModbus/mb.c **** BOOL( *pxMBFrameCBTransmitterEmpty ) ( void );
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
   36              		.cfi_offset 3, -16
   37              		.cfi_offset 4, -12
   38              		.cfi_offset 5, -8
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 4
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 4
 
 
   39              		.cfi_offset 14, -4
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  162:Drivers/FreeModbus/mb.c **** #endif
  163:Drivers/FreeModbus/mb.c **** #if MB_SLAVE_ASCII_ENABLED > 0
  164:Drivers/FreeModbus/mb.c ****         case MB_ASCII:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 5
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 5
 
 
  165:Drivers/FreeModbus/mb.c ****             pvMBFrameStartCur = eMBASCIIStart;
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
   93              		.loc 1 156 13 is_stmt 1 view .LVU22
  156:Drivers/FreeModbus/mb.c ****             pxMBFrameCBTransmitterEmpty = xMBRTUTransmitFSM;
   94              		.loc 1 156 37 is_stmt 0 view .LVU23
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 6
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 6
 
 
   95 0040 174B     		ldr	r3, .L8+40
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  128              		.loc 1 192 17 is_stmt 1 view .LVU38
  129              		.loc 1 192 26 is_stmt 0 view .LVU39
  130 0066 154B     		ldr	r3, .L8+68
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 7
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 7
 
 
  131 0068 0122     		movs	r2, #1
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  180              	eMBRegisterCB:
  181              	.LVL10:
  182              	.LFB66:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 8
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 8
 
 
  198:Drivers/FreeModbus/mb.c **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  199 0002 43B2     		sxtb	r3, r0
  200              		.loc 1 235 7 view .LVU50
  201 0004 002B     		cmp	r3, #0
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 9
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 9
 
 
  202 0006 33DD     		ble	.L21
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  252:Drivers/FreeModbus/mb.c ****         else
  253:Drivers/FreeModbus/mb.c ****         {
  254:Drivers/FreeModbus/mb.c ****             for( i = 0; i < MB_FUNC_HANDLERS_MAX; i++ )
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 10
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 10
 
 
  237              		.loc 1 254 20 view .LVU64
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  260:Drivers/FreeModbus/mb.c ****                     break;
  261:Drivers/FreeModbus/mb.c ****                 }
  262:Drivers/FreeModbus/mb.c ****             }
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 11
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 11
 
 
  263:Drivers/FreeModbus/mb.c ****             /* Remove can't fail. */
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  250:Drivers/FreeModbus/mb.c ****         }
  310              		.loc 1 250 65 view .LVU92
  311 006c 0424     		movs	r4, #4
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 12
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 12
 
 
  312              	.LVL25:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  286:Drivers/FreeModbus/mb.c ****         }
  287:Drivers/FreeModbus/mb.c ****     }
  288:Drivers/FreeModbus/mb.c ****     else
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 13
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 13
 
 
  289:Drivers/FreeModbus/mb.c ****     {
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  395              		.loc 1 298 1 is_stmt 1 view -0
  396              		.cfi_startproc
  397              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 14
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 14
 
 
  398              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  435              	.L43:
  436 001c 00000000 		.word	.LANCHOR10
  437 0020 00000000 		.word	.LANCHOR1
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 15
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 15
 
 
  438              		.cfi_endproc
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  328:Drivers/FreeModbus/mb.c ****     }
  329:Drivers/FreeModbus/mb.c ****     else
  330:Drivers/FreeModbus/mb.c ****     {
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 16
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 16
 
 
  331:Drivers/FreeModbus/mb.c ****         eStatus = MB_EILLSTATE;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  524              	.LCFI6:
  525              		.cfi_def_cfa_offset 24
  338:Drivers/FreeModbus/mb.c ****     static UCHAR   *ucMBFrame;
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 17
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 17
 
 
  526              		.loc 1 338 5 view .LVU135
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  367:Drivers/FreeModbus/mb.c ****                 /* Check if the frame is for us. If not ignore the frame. */
  368:Drivers/FreeModbus/mb.c ****                 if( ( ucRcvAddress == ucMBAddress ) || ( ucRcvAddress == MB_ADDRESS_BROADCAST ) )
  369:Drivers/FreeModbus/mb.c ****                 {
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 18
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 18
 
 
  370:Drivers/FreeModbus/mb.c ****                     ( void )xMBPortEventPost( EV_EXECUTE );
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  563              		.cfi_restore_state
  358:Drivers/FreeModbus/mb.c ****         {
  564              		.loc 1 358 9 is_stmt 1 view .LVU150
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 19
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 19
 
 
  565 001e 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  378:Drivers/FreeModbus/mb.c ****             {
  604              		.loc 1 378 52 is_stmt 0 discriminator 2 view .LVU166
  605 004c 0133     		adds	r3, r3, #1
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 20
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 20
 
 
  606              	.LVL44:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  647 007a CDE7     		b	.L54
  648              	.LVL49:
  649              	.L68:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 21
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 21
 
 
  387:Drivers/FreeModbus/mb.c ****                     break;
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  687              		.loc 1 400 30 view .LVU196
  688 00a2 1048     		ldr	r0, .L69+4
  689 00a4 0568     		ldr	r5, [r0]
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 22
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 22
 
 
  400:Drivers/FreeModbus/mb.c ****                     ucMBFrame[usLength++] = eException;
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  732              	.L65:
  411:Drivers/FreeModbus/mb.c **** }
  733              		.loc 1 411 12 view .LVU209
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 23
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 23
 
 
  734 00dc 1C46     		mov	r4, r3
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  803 0000 00000000 		.space	4
  804              		.section	.bss.pxMBFrameCBByteReceived,"aw",%nobits
  805              		.align	2
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 24
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 24
 
 
  806              		.set	.LANCHOR6,. + 0
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  884 0008 04       		.byte	4
  885 0009 000000   		.space	3
  886 000c 00000000 		.word	eMBFuncReadInputRegister
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 25
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 25
 
 
  887 0010 03       		.byte	3
@@ -1481,67 +1481,67 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 1
  920              		.file 8 "Drivers/FreeModbus/include/mbframe.h"
  921              		.file 9 "Drivers/FreeModbus/port/portcritical.h"
  922              		.file 10 "Drivers/FreeModbus/rtu/mbrtu.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 26
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 26
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 mb.c
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:18     .text.eMBInit:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:24     .text.eMBInit:00000000 eMBInit
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:152    .text.eMBInit:00000078 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:174    .text.eMBRegisterCB:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:180    .text.eMBRegisterCB:00000000 eMBRegisterCB
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:323    .text.eMBRegisterCB:00000074 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:328    .text.eMBClose:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:334    .text.eMBClose:00000000 eMBClose
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:381    .text.eMBClose:00000020 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:387    .text.eMBEnable:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:393    .text.eMBEnable:00000000 eMBEnable
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:436    .text.eMBEnable:0000001c $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:442    .text.eMBDisable:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:448    .text.eMBDisable:00000000 eMBDisable
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:499    .text.eMBDisable:00000024 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:505    .text.eMBPoll:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:511    .text.eMBPoll:00000000 eMBPoll
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:739    .text.eMBPoll:000000e0 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:821    .bss.pxMBFrameCBTransmitFSMCur:00000000 pxMBFrameCBTransmitFSMCur
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:815    .bss.pxMBFrameCBReceiveFSMCur:00000000 pxMBFrameCBReceiveFSMCur
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:835    .bss.pxMBPortCBTimerExpired:00000000 pxMBPortCBTimerExpired
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:828    .bss.pxMBFrameCBTransmitterEmpty:00000000 pxMBFrameCBTransmitterEmpty
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:809    .bss.pxMBFrameCBByteReceived:00000000 pxMBFrameCBByteReceived
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:761    .bss.eException.0:00000000 eException.0
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:762    .bss.eException.0:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:767    .bss.eMBCurrentMode:00000000 eMBCurrentMode
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:768    .bss.eMBCurrentMode:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:770    .bss.peMBFrameReceiveCur:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:774    .bss.peMBFrameReceiveCur:00000000 peMBFrameReceiveCur
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:777    .bss.peMBFrameSendCur:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:781    .bss.peMBFrameSendCur:00000000 peMBFrameSendCur
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:784    .bss.pvMBFrameCloseCur:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:788    .bss.pvMBFrameCloseCur:00000000 pvMBFrameCloseCur
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:791    .bss.pvMBFrameStartCur:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:795    .bss.pvMBFrameStartCur:00000000 pvMBFrameStartCur
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:798    .bss.pvMBFrameStopCur:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:802    .bss.pvMBFrameStopCur:00000000 pvMBFrameStopCur
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:805    .bss.pxMBFrameCBByteReceived:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:812    .bss.pxMBFrameCBReceiveFSMCur:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:818    .bss.pxMBFrameCBTransmitFSMCur:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:824    .bss.pxMBFrameCBTransmitterEmpty:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:831    .bss.pxMBPortCBTimerExpired:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:841    .bss.ucFunctionCode.1:00000000 ucFunctionCode.1
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:842    .bss.ucFunctionCode.1:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:847    .bss.ucMBAddress:00000000 ucMBAddress
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:848    .bss.ucMBAddress:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:850    .bss.ucMBFrame.3:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:854    .bss.ucMBFrame.3:00000000 ucMBFrame.3
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:860    .bss.ucRcvAddress.4:00000000 ucRcvAddress.4
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:861    .bss.ucRcvAddress.4:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:863    .bss.usLength.2:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:867    .bss.usLength.2:00000000 usLength.2
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:873    .data.eMBState:00000000 eMBState
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:876    .data.xFuncHandlers:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s:880    .data.xFuncHandlers:00000000 xFuncHandlers
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7kbQ4c.s 			page 27
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:18     .text.eMBInit:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:24     .text.eMBInit:00000000 eMBInit
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:152    .text.eMBInit:00000078 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:174    .text.eMBRegisterCB:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:180    .text.eMBRegisterCB:00000000 eMBRegisterCB
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:323    .text.eMBRegisterCB:00000074 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:328    .text.eMBClose:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:334    .text.eMBClose:00000000 eMBClose
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:381    .text.eMBClose:00000020 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:387    .text.eMBEnable:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:393    .text.eMBEnable:00000000 eMBEnable
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:436    .text.eMBEnable:0000001c $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:442    .text.eMBDisable:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:448    .text.eMBDisable:00000000 eMBDisable
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:499    .text.eMBDisable:00000024 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:505    .text.eMBPoll:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:511    .text.eMBPoll:00000000 eMBPoll
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:739    .text.eMBPoll:000000e0 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:821    .bss.pxMBFrameCBTransmitFSMCur:00000000 pxMBFrameCBTransmitFSMCur
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:815    .bss.pxMBFrameCBReceiveFSMCur:00000000 pxMBFrameCBReceiveFSMCur
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:835    .bss.pxMBPortCBTimerExpired:00000000 pxMBPortCBTimerExpired
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:828    .bss.pxMBFrameCBTransmitterEmpty:00000000 pxMBFrameCBTransmitterEmpty
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:809    .bss.pxMBFrameCBByteReceived:00000000 pxMBFrameCBByteReceived
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:761    .bss.eException.0:00000000 eException.0
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:762    .bss.eException.0:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:767    .bss.eMBCurrentMode:00000000 eMBCurrentMode
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:768    .bss.eMBCurrentMode:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:770    .bss.peMBFrameReceiveCur:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:774    .bss.peMBFrameReceiveCur:00000000 peMBFrameReceiveCur
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:777    .bss.peMBFrameSendCur:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:781    .bss.peMBFrameSendCur:00000000 peMBFrameSendCur
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:784    .bss.pvMBFrameCloseCur:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:788    .bss.pvMBFrameCloseCur:00000000 pvMBFrameCloseCur
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:791    .bss.pvMBFrameStartCur:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:795    .bss.pvMBFrameStartCur:00000000 pvMBFrameStartCur
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:798    .bss.pvMBFrameStopCur:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:802    .bss.pvMBFrameStopCur:00000000 pvMBFrameStopCur
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:805    .bss.pxMBFrameCBByteReceived:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:812    .bss.pxMBFrameCBReceiveFSMCur:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:818    .bss.pxMBFrameCBTransmitFSMCur:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:824    .bss.pxMBFrameCBTransmitterEmpty:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:831    .bss.pxMBPortCBTimerExpired:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:841    .bss.ucFunctionCode.1:00000000 ucFunctionCode.1
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:842    .bss.ucFunctionCode.1:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:847    .bss.ucMBAddress:00000000 ucMBAddress
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:848    .bss.ucMBAddress:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:850    .bss.ucMBFrame.3:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:854    .bss.ucMBFrame.3:00000000 ucMBFrame.3
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:860    .bss.ucRcvAddress.4:00000000 ucRcvAddress.4
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:861    .bss.ucRcvAddress.4:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:863    .bss.usLength.2:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:867    .bss.usLength.2:00000000 usLength.2
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:873    .data.eMBState:00000000 eMBState
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:876    .data.xFuncHandlers:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s:880    .data.xFuncHandlers:00000000 xFuncHandlers
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccD04H8B.s 			page 27
 
 
 

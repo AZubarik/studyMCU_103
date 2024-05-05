@@ -62,6 +62,7 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c \
 Drivers/AD7793/AD7793.c \
+Drivers/AD7793/initADC.c \
 Drivers/FreeModbus/ascii/mbascii.c \
 Drivers/FreeModbus/functions/mbfunccoils.c \
 Drivers/FreeModbus/functions/mbfunccoils_m.c \

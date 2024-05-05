@@ -31,8 +31,7 @@ build/main.o: Core/Src/main.c Core/Inc/main.h \
  Drivers/FreeModbus/include/mbport.h Drivers/FreeModbus/app/user_mb_app.h \
  Drivers/FreeModbus/include/mb_m.h Drivers/FreeModbus/include/mbframe.h \
  Drivers/FreeModbus/include/mbutils.h \
- Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h \
- Drivers/AD7793/AD7793.h
+ Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h
 Core/Inc/main.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 Core/Inc/stm32f1xx_hal_conf.h:
@@ -77,4 +76,3 @@ Drivers/FreeModbus/include/mb_m.h:
 Drivers/FreeModbus/include/mbframe.h:
 Drivers/FreeModbus/include/mbutils.h:
 Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h:
-Drivers/AD7793/AD7793.h:

@@ -6,31 +6,31 @@
 #define WaitRdyGoLow_Delay          70000
 
 /*  AD7793 Registers*/
-#define AD7793_REG_COMM		        0   /* Communications Register  (WO, 8-bit) */
-#define AD7793_REG_STAT	            0   /* Status Register	        (RO, 8-bit) */
-#define AD7793_REG_MODE	            0x08   /* Mode Register	     	(RW, 16-bit */
-#define AD7793_REG_CONF	            0x10   /* Configuration Register   (RW, 16-bit)*/
-#define AD7793_REG_DATA	            0x58   /* Data Register	     	(RO,   16-/24-bit) */
-#define AD7793_REG_ID	            4   /* ID Register	     	    (RO, 8-bit)   */
-#define AD7793_REG_IO	            0x28   /* IO Register	     	    (RO, 8-bit) */
-#define AD7793_REG_OFFSET           6   /* Offset Register	        (RW, 24-bit */
-#define AD7793_REG_FULLSCAL         7   /* Full-Scale Register	    (RW, 24-bit */
+#define AD7793_REG_COMM		        0       /* Communications Register  (WO, 8-bit) */
+#define AD7793_REG_STAT	            0       /* Status Register	        (RO, 8-bit) */
+#define AD7793_REG_MODE	            0x08    /* Mode Register	     	(RW, 16-bit */
+#define AD7793_REG_CONF	            0x10    /* Configuration Register   (RW, 16-bit)*/
+#define AD7793_REG_DATA	            0x58    /* Data Register	     	(RO, 16-/24-bit) */
+#define AD7793_REG_ID	            4       /* ID Register	     	    (RO, 8-bit)   */
+#define AD7793_REG_IO	            0x28    /* IO Register	     	    (RO, 8-bit) */
+#define AD7793_REG_OFFSET           6       /* Offset Register	        (RW, 24-bit */
+#define AD7793_REG_FULLSCAL         7       /* Full-Scale Register	    (RW, 24-bit */
 
 /* AD7793_MODE_SEL(x) options */
-#define AD7793_MODE_CONT		    0   /* Continuous Conversion Mode */
-#define AD7793_MODE_SINGLE		    1   /* Single Conversion Mode */
-#define AD7793_MODE_IDLE		    2   /* Idle Mode */
-#define AD7793_MODE_PWRDN		    3   /* Power-Down Mode */
-#define AD7793_MODE_CAL_INT_ZERO    4   /* Internal Zero-Scale Calibration */
-#define AD7793_MODE_CAL_INT_FULL    5   /*   Internal Full-Scale Calibration */
-#define AD7793_MODE_CAL_SYS_ZERO    6   /* System   Zero-Scale Calibration */
-#define AD7793_MODE_CAL_SYS_FULL    7   /* System Full-Scale   Calibration */
+#define AD7793_MODE_CONT		    0       /* Continuous Conversion Mode */
+#define AD7793_MODE_SINGLE		    1       /* Single Conversion Mode */
+#define AD7793_MODE_IDLE		    2       /* Idle Mode */
+#define AD7793_MODE_PWRDN		    3       /* Power-Down Mode */
+#define AD7793_MODE_CAL_INT_ZERO    4       /* Internal Zero-Scale Calibration */
+#define AD7793_MODE_CAL_INT_FULL    5       /* Internal Full-Scale Calibration */
+#define AD7793_MODE_CAL_SYS_ZERO    6       /* System Zero-Scale Calibration */
+#define AD7793_MODE_CAL_SYS_FULL    7       /* System Full-Scale Calibration */
 
 /* AD7793_MODE_CLKSRC(x) options */
 #define AD7793_CLK_INT		        0   /* Internal 64 kHz Clk not available at the CLK pin */
 #define AD7793_CLK_INT_CO	        1   /* Internal 64 kHz Clk available at the CLK pin */
 #define AD7793_CLK_EXT		        2   /* External 64 kHz Clock */
-#define AD7793_CLK_EXT_DIV2	        3   /* External Clock   divided by 2 */
+#define AD7793_CLK_EXT_DIV2	        3   /* External Clock divided by 2 */
 
 /* AD7793_MODE_RATE(x) options */
 #define AD7793_RATE_NIL     		0
@@ -85,13 +85,15 @@
 #define AD7793_DIR_IEXC1_IEXC2_IOUT2		3   /* Both current sources IEXC1,2 connect to IOUT2 */
 
 /*  AD7793_IEXCEN(x)   options*/
-#define AD7793_EN_IXCEN_DISABLE				0  /* Disable excitation current*/
-#define AD7793_EN_IXCEN_10uA				1  /* Excitation Current 10uA */
-#define AD7793_EN_IXCEN_210uA				2  /* Excitation Current 210uA */
-#define AD7793_EN_IXCEN_1mA					3  /* Excitation Current 1mA */
+#define AD7793_EN_IXCEN_DISABLE				0   /* Disable excitation current*/
+#define AD7793_EN_IXCEN_10uA				1   /* Excitation Current 10uA */
+#define AD7793_EN_IXCEN_210uA				2   /* Excitation Current 210uA */
+#define AD7793_EN_IXCEN_1mA					3   /* Excitation Current 1mA */
 
 /* */
-#define  tempChip(conv)  (((conv - 8388608.0) / 8388608.0) * 1.17 * 1000 / 0.810) - 273;
+#define tempChip(conv)  (((conv - 8388608.0) / 8388608.0) * 1.17 * 1000 / 0.810) - 273
+
+#define temp(conv)      (sqrt(pow(A,2) - 4*B*(1.0 - (RREF * (conv - 8388608.0) / (8388608.0 * GAIN))/R0))-A)/(2*B)   
 
 /*  Initialize AD7793 and check if the device is present.   */
 void AD7793_Init(void);
@@ -103,19 +105,22 @@ void AD7793_Reset(void);
 void AD7793_WaitRdyGoLow(void);
 
 /*  MODE REGISTER */
-void AD7793_Mode_Register(unsigned char mode, unsigned long clksrc, unsigned long rate);
+void AD7793_Mode_Register(uint8_t mode, uint8_t clksrc, uint8_t rate);
 
 /*  CONFIGURATION REGISTER */
-void AD7793_Configuration_Register(unsigned char vbias, unsigned char gain, unsigned char refsel, unsigned char channel);
+void AD7793_Configuration_Register(uint8_t vbias, uint8_t gain, uint8_t refsel, uint8_t channel);
 
 /*  IO REGISTER 8-bit */
-void AD7793_IO_Register(unsigned char direction, unsigned char current);
+void AD7793_IO_Register(uint8_t direction, uint8_t current);
+
+/*  Performs the given calibration to the specified channel. */
+void AD7793_Calibrate(uint8_t mode, uint8_t channel);
 
 /*  Returns the result of a single conversion. */
-unsigned long AD7793_SingleConversion(void);
+uint32_t AD7793_SingleConversion(void);
 
 /*  Returns the average of several conversion results. */
-unsigned long AD7793_ContinuousReadAvg(unsigned char sampleNumber);
+uint32_t AD7793_ContinuousReadAvg(uint8_t sampleNumber);
 
 void send_to_SPI(uint8_t *data, uint16_t size);
 

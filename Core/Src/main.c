@@ -30,31 +30,15 @@
 #include "user_mb_app.h"
 #include "ReceiveTransmit.h"
 
-#include "math.h"
-#include "AD7793.h"
+// #include "AD7793.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-uint8_t dataTo[2] = {20, 80};
-
-unsigned long conv;
-float temp, tempChip; 
-
-float GAIN = 1;                                           /* Gain of the AD7793 unternal instrumentation amplifier */
-float V;                                              /* The voltage read on the analog input channel 2 (should be between -0.57 +0.57 when gain is set to 1) */
-float RRTD;                                           /* The measured resistance of the RTD */ 
-float temp, tempChip;                                 /* The temperature read on the analog input channel 1 */
-const float RREF = 2000.0;                            /* The reference resistor: here, 2.0 Kohm, 0.1%, 10ppm/C */
-const float Vref = 1.17;                              /* The external reference voltage applied between pins REFIN(+) and REFIN(-)and resulting from the excitation current flowing through the reference resistor  */
-const float R0 = 1000.0;                              /* RTD resistance at 0C */
-const float A = 3.9083E-3;                            /* Coefficient for t in the Callender-Van Dusen equation for temperature > 0C */
-const float B = -5.775E-7;                            /* Coefficient for t squared in the Callender-Van Dusen equation for temperature > 0C */
-/* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+extern BOOL ucSDiscInBuf[];
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -113,6 +97,9 @@ int main(void)
   MX_TIM4_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
+
+  HAL_TIM_Base_Start_IT(&htim3);
+
   eMBInit(MB_RTU, 1, &huart2, 115200, &htim4);
 	eMBEnable();
   /* USER CODE END 2 */
@@ -122,20 +109,6 @@ int main(void)
   while (1)
   {
     eMBPoll();
-
-    AD7793_Reset();
-    AD7793_Init();
-    AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793_CH_AIN1P_AIN1M);
-    AD7793_IO_Register(AD7793_DIR_IEXC1_IOUT1_IEXC2_IOUT2, AD7793_EN_IXCEN_210uA);
-
-    conv = AD7793_SingleConversion();
-
-    RRTD = RREF * (conv - 8388608.0) / (8388608.0 * GAIN);                        /* Computes the RTD resistance from the conversion code */
-    temp = (sqrt(pow(A,2) - 4*B*(1.0 - RRTD/R0))-A)/(2*B);
-
-    dataTransmit(0,temp);
-
-    // tempChip = (((conv - 8388608.0) / 8388608.0) * 1.17 * 1000 / 0.810) - 273;
     
     // while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3) != GPIO_PIN_RESET) {
     //   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, RESET);
