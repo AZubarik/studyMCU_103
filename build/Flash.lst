@@ -1,0 +1,240 @@
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"Flash.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.ErasingMemory,"ax",%progbits
+  18              		.align	1
+  19              		.global	ErasingMemory
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	ErasingMemory:
+  25              	.LFB65:
+  26              		.file 1 "Drivers/Flash/Flash.c"
+   1:Drivers/Flash/Flash.c **** #include "Flash.h"
+   2:Drivers/Flash/Flash.c **** #include "main.h"
+   3:Drivers/Flash/Flash.c **** #include "ReceiveTransmit.h"
+   4:Drivers/Flash/Flash.c **** 
+   5:Drivers/Flash/Flash.c **** extern uint16_t usSRegHoldBuf[];
+   6:Drivers/Flash/Flash.c **** 
+   7:Drivers/Flash/Flash.c **** void ErasingMemory()
+   8:Drivers/Flash/Flash.c **** {
+  27              		.loc 1 8 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 10B5     		push	{r4, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+  36 0002 82B0     		sub	sp, sp, #8
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+   9:Drivers/Flash/Flash.c **** 	static FLASH_EraseInitTypeDef EraseInitStruct; // Cтруктура для очистки флеш
+  39              		.loc 1 9 2 view .LVU1
+  10:Drivers/Flash/Flash.c **** 
+  11:Drivers/Flash/Flash.c **** 	EraseInitStruct.TypeErase = FLASH_TYPEERASE_PAGES;		// Постраничная очистка, FL
+  40              		.loc 1 11 2 view .LVU2
+  41              		.loc 1 11 28 is_stmt 0 view .LVU3
+  42 0004 094C     		ldr	r4, .L3
+  43 0006 0023     		movs	r3, #0
+  44 0008 2360     		str	r3, [r4]
+  12:Drivers/Flash/Flash.c **** 	EraseInitStruct.PageAddress = ((uint32_t)0x0801FC00); // Адрес 127-ой страницы
+  45              		.loc 1 12 2 is_stmt 1 view .LVU4
+  46              		.loc 1 12 30 is_stmt 0 view .LVU5
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 2
+
+
+  47 000a 094A     		ldr	r2, .L3+4
+  48 000c A260     		str	r2, [r4, #8]
+  13:Drivers/Flash/Flash.c **** 	EraseInitStruct.NbPages = 1;													// Кол-во страниц для стирания
+  49              		.loc 1 13 2 is_stmt 1 view .LVU6
+  50              		.loc 1 13 26 is_stmt 0 view .LVU7
+  51 000e 0122     		movs	r2, #1
+  52 0010 E260     		str	r2, [r4, #12]
+  14:Drivers/Flash/Flash.c **** 	EraseInitStruct.Banks = FLASH_BANK_1;									// FLASH_BANK_2 - банк №2, FLASH_BANK_BOTH - �
+  53              		.loc 1 14 2 is_stmt 1 view .LVU8
+  54              		.loc 1 14 24 is_stmt 0 view .LVU9
+  55 0012 6260     		str	r2, [r4, #4]
+  15:Drivers/Flash/Flash.c **** 
+  16:Drivers/Flash/Flash.c **** 	uint32_t page_error = 0; // Переменная, в которую запишется адрес 
+  56              		.loc 1 16 2 is_stmt 1 view .LVU10
+  57              		.loc 1 16 11 is_stmt 0 view .LVU11
+  58 0014 0193     		str	r3, [sp, #4]
+  17:Drivers/Flash/Flash.c **** 
+  18:Drivers/Flash/Flash.c **** 	HAL_FLASH_Unlock(); // Разблокировать флеш
+  59              		.loc 1 18 2 is_stmt 1 view .LVU12
+  60 0016 FFF7FEFF 		bl	HAL_FLASH_Unlock
+  61              	.LVL0:
+  19:Drivers/Flash/Flash.c **** 	HAL_FLASHEx_Erase(&EraseInitStruct, &page_error);
+  62              		.loc 1 19 2 view .LVU13
+  63 001a 01A9     		add	r1, sp, #4
+  64 001c 2046     		mov	r0, r4
+  65 001e FFF7FEFF 		bl	HAL_FLASHEx_Erase
+  66              	.LVL1:
+  20:Drivers/Flash/Flash.c **** 
+  21:Drivers/Flash/Flash.c **** 	HAL_FLASH_Lock(); // Заблокировать флеш
+  67              		.loc 1 21 2 view .LVU14
+  68 0022 FFF7FEFF 		bl	HAL_FLASH_Lock
+  69              	.LVL2:
+  22:Drivers/Flash/Flash.c **** }
+  70              		.loc 1 22 1 is_stmt 0 view .LVU15
+  71 0026 02B0     		add	sp, sp, #8
+  72              	.LCFI2:
+  73              		.cfi_def_cfa_offset 8
+  74              		@ sp needed
+  75 0028 10BD     		pop	{r4, pc}
+  76              	.L4:
+  77 002a 00BF     		.align	2
+  78              	.L3:
+  79 002c 00000000 		.word	.LANCHOR0
+  80 0030 00FC0108 		.word	134347776
+  81              		.cfi_endproc
+  82              	.LFE65:
+  84              		.section	.text.writeFlashData,"ax",%progbits
+  85              		.align	1
+  86              		.global	writeFlashData
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  91              	writeFlashData:
+  92              	.LVL3:
+  93              	.LFB66:
+  23:Drivers/Flash/Flash.c **** 
+  24:Drivers/Flash/Flash.c **** void writeFlashData(uint32_t address, uint32_t data)
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 3
+
+
+  25:Drivers/Flash/Flash.c **** {
+  94              		.loc 1 25 1 is_stmt 1 view -0
+  95              		.cfi_startproc
+  96              		@ args = 0, pretend = 0, frame = 0
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98              		.loc 1 25 1 is_stmt 0 view .LVU17
+  99 0000 38B5     		push	{r3, r4, r5, lr}
+ 100              	.LCFI3:
+ 101              		.cfi_def_cfa_offset 16
+ 102              		.cfi_offset 3, -16
+ 103              		.cfi_offset 4, -12
+ 104              		.cfi_offset 5, -8
+ 105              		.cfi_offset 14, -4
+ 106 0002 0446     		mov	r4, r0
+ 107 0004 0D46     		mov	r5, r1
+  26:Drivers/Flash/Flash.c **** 	HAL_FLASH_Unlock();
+ 108              		.loc 1 26 2 is_stmt 1 view .LVU18
+ 109 0006 FFF7FEFF 		bl	HAL_FLASH_Unlock
+ 110              	.LVL4:
+  27:Drivers/Flash/Flash.c **** 	if (HAL_FLASH_Program(FLASH_TYPEPROGRAM_WORD, (uint32_t)address, data) != HAL_OK)
+ 111              		.loc 1 27 2 view .LVU19
+ 112              		.loc 1 27 6 is_stmt 0 view .LVU20
+ 113 000a 2A46     		mov	r2, r5
+ 114 000c 0023     		movs	r3, #0
+ 115 000e 2146     		mov	r1, r4
+ 116 0010 0220     		movs	r0, #2
+ 117 0012 FFF7FEFF 		bl	HAL_FLASH_Program
+ 118              	.LVL5:
+ 119              		.loc 1 27 5 view .LVU21
+ 120 0016 10B9     		cbnz	r0, .L8
+ 121              	.L6:
+  28:Drivers/Flash/Flash.c **** 	{
+  29:Drivers/Flash/Flash.c **** 		HAL_FLASH_GetError();
+  30:Drivers/Flash/Flash.c **** 	}
+  31:Drivers/Flash/Flash.c **** 	HAL_FLASH_Lock();
+ 122              		.loc 1 31 2 is_stmt 1 view .LVU22
+ 123 0018 FFF7FEFF 		bl	HAL_FLASH_Lock
+ 124              	.LVL6:
+  32:Drivers/Flash/Flash.c **** }
+ 125              		.loc 1 32 1 is_stmt 0 view .LVU23
+ 126 001c 38BD     		pop	{r3, r4, r5, pc}
+ 127              	.LVL7:
+ 128              	.L8:
+  29:Drivers/Flash/Flash.c **** 	}
+ 129              		.loc 1 29 3 is_stmt 1 view .LVU24
+ 130 001e FFF7FEFF 		bl	HAL_FLASH_GetError
+ 131              	.LVL8:
+ 132 0022 F9E7     		b	.L6
+ 133              		.cfi_endproc
+ 134              	.LFE66:
+ 136              		.section	.text.readFlashData,"ax",%progbits
+ 137              		.align	1
+ 138              		.global	readFlashData
+ 139              		.syntax unified
+ 140              		.thumb
+ 141              		.thumb_func
+ 143              	readFlashData:
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 4
+
+
+ 144              	.LVL9:
+ 145              	.LFB67:
+  33:Drivers/Flash/Flash.c **** 
+  34:Drivers/Flash/Flash.c **** uint32_t readFlashData(uint32_t address)
+  35:Drivers/Flash/Flash.c **** {
+ 146              		.loc 1 35 1 view -0
+ 147              		.cfi_startproc
+ 148              		@ args = 0, pretend = 0, frame = 0
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150              		@ link register save eliminated.
+  36:Drivers/Flash/Flash.c **** 	
+  37:Drivers/Flash/Flash.c **** 	return *(uint32_t *)address;
+ 151              		.loc 1 37 2 view .LVU26
+  38:Drivers/Flash/Flash.c **** }
+ 152              		.loc 1 38 1 is_stmt 0 view .LVU27
+ 153 0000 0068     		ldr	r0, [r0]
+ 154              	.LVL10:
+ 155              		.loc 1 38 1 view .LVU28
+ 156 0002 7047     		bx	lr
+ 157              		.cfi_endproc
+ 158              	.LFE67:
+ 160              		.section	.bss.EraseInitStruct.0,"aw",%nobits
+ 161              		.align	2
+ 162              		.set	.LANCHOR0,. + 0
+ 165              	EraseInitStruct.0:
+ 166 0000 00000000 		.space	16
+ 166      00000000 
+ 166      00000000 
+ 166      00000000 
+ 167              		.text
+ 168              	.Letext0:
+ 169              		.file 2 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\machine\\_default_types.
+ 170              		.file 3 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 171              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h"
+ 172              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h"
+ 173              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Flash.c
+C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:18     .text.ErasingMemory:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:24     .text.ErasingMemory:00000000 ErasingMemory
+C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:79     .text.ErasingMemory:0000002c $d
+C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:85     .text.writeFlashData:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:91     .text.writeFlashData:00000000 writeFlashData
+C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:137    .text.readFlashData:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:143    .text.readFlashData:00000000 readFlashData
+C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:161    .bss.EraseInitStruct.0:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:165    .bss.EraseInitStruct.0:00000000 EraseInitStruct.0
+
+UNDEFINED SYMBOLS
+HAL_FLASH_Unlock
+HAL_FLASHEx_Erase
+HAL_FLASH_Lock
+HAL_FLASH_Program
+HAL_FLASH_GetError

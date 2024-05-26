@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 1
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -35,14 +35,14 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 1
    7:Drivers/AD7793/AD7793.c **** 
    8:Drivers/AD7793/AD7793.c **** void AD7793_Init(void)
    9:Drivers/AD7793/AD7793.c **** {
-  10:Drivers/AD7793/AD7793.c **** 	uint8_t init_command[3] = {0x50, 0x00, 0x00};
-  11:Drivers/AD7793/AD7793.c ****     send_to_SPI(init_command, sizeof(init_command));
+  10:Drivers/AD7793/AD7793.c ****   uint8_t init_command[3] = {0x50, 0x00, 0x00};
+  11:Drivers/AD7793/AD7793.c ****   send_to_SPI(init_command, sizeof(init_command));
   12:Drivers/AD7793/AD7793.c **** }
   13:Drivers/AD7793/AD7793.c **** 
   14:Drivers/AD7793/AD7793.c **** void AD7793_Reset(void)
   15:Drivers/AD7793/AD7793.c **** {
-  16:Drivers/AD7793/AD7793.c **** 	uint8_t dataToSend[5] = {0x03, 0xff, 0xff, 0xff, 0xff};
-  17:Drivers/AD7793/AD7793.c ****     send_to_SPI(dataToSend, sizeof(dataToSend));
+  16:Drivers/AD7793/AD7793.c ****   uint8_t dataToSend[5] = {0x03, 0xff, 0xff, 0xff, 0xff};
+  17:Drivers/AD7793/AD7793.c ****   send_to_SPI(dataToSend, sizeof(dataToSend));
   18:Drivers/AD7793/AD7793.c **** }
   19:Drivers/AD7793/AD7793.c **** 
   20:Drivers/AD7793/AD7793.c **** void AD7793_WaitRdyGoLow(void)
@@ -57,23 +57,23 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 1
   34              		.cfi_offset 3, -8
   35              		.cfi_offset 14, -4
   36              	.L2:
-  22:Drivers/AD7793/AD7793.c ****     while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) != GPIO_PIN_RESET)
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 2
+  22:Drivers/AD7793/AD7793.c ****   while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) != GPIO_PIN_RESET)
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 2
 
 
-  23:Drivers/AD7793/AD7793.c ****     {
-  24:Drivers/AD7793/AD7793.c ****     }
-  37              		.loc 1 24 5 discriminator 1 view .LVU1
-  22:Drivers/AD7793/AD7793.c ****     while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) != GPIO_PIN_RESET)
-  38              		.loc 1 22 10 discriminator 1 view .LVU2
-  22:Drivers/AD7793/AD7793.c ****     while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) != GPIO_PIN_RESET)
-  39              		.loc 1 22 11 is_stmt 0 discriminator 1 view .LVU3
+  23:Drivers/AD7793/AD7793.c ****   {
+  24:Drivers/AD7793/AD7793.c ****   }
+  37              		.loc 1 24 3 discriminator 1 view .LVU1
+  22:Drivers/AD7793/AD7793.c ****   while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) != GPIO_PIN_RESET)
+  38              		.loc 1 22 9 discriminator 1 view .LVU2
+  22:Drivers/AD7793/AD7793.c ****   while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) != GPIO_PIN_RESET)
+  39              		.loc 1 22 10 is_stmt 0 discriminator 1 view .LVU3
   40 0002 4FF40061 		mov	r1, #2048
   41 0006 0348     		ldr	r0, .L4
   42 0008 FFF7FEFF 		bl	HAL_GPIO_ReadPin
   43              	.LVL0:
-  22:Drivers/AD7793/AD7793.c ****     while(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) != GPIO_PIN_RESET)
-  44              		.loc 1 22 10 discriminator 1 view .LVU4
+  22:Drivers/AD7793/AD7793.c ****   while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_11) != GPIO_PIN_RESET)
+  44              		.loc 1 22 9 discriminator 1 view .LVU4
   45 000c 0028     		cmp	r0, #0
   46 000e F8D1     		bne	.L2
   25:Drivers/AD7793/AD7793.c **** }
@@ -109,56 +109,55 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 1
   75 0002 83B0     		sub	sp, sp, #12
   76              	.LCFI2:
   77              		.cfi_def_cfa_offset 16
-  29:Drivers/AD7793/AD7793.c ****     uint8_t mode_comand[3] = {AD7793_REG_MODE, 0x00, 0x00};
-  78              		.loc 1 29 5 is_stmt 1 view .LVU8
-  79              		.loc 1 29 13 is_stmt 0 view .LVU9
+  29:Drivers/AD7793/AD7793.c ****   uint8_t mode_comand[3] = {AD7793_REG_MODE, 0x00, 0x00};
+  78              		.loc 1 29 3 is_stmt 1 view .LVU8
+  79              		.loc 1 29 11 is_stmt 0 view .LVU9
   80 0004 0E4B     		ldr	r3, .L8
   81 0006 1B68     		ldr	r3, [r3]
   82 0008 ADF80430 		strh	r3, [sp, #4]	@ movhi
   83 000c 1B0C     		lsrs	r3, r3, #16
   84 000e 8DF80630 		strb	r3, [sp, #6]
-  30:Drivers/AD7793/AD7793.c ****             mode_comand[1] = mode << 5;
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 3
+  30:Drivers/AD7793/AD7793.c ****   mode_comand[1] = mode << 5;
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 3
 
 
-  85              		.loc 1 30 13 is_stmt 1 view .LVU10
-  86              		.loc 1 30 35 is_stmt 0 view .LVU11
+  85              		.loc 1 30 3 is_stmt 1 view .LVU10
+  86              		.loc 1 30 25 is_stmt 0 view .LVU11
   87 0012 4001     		lsls	r0, r0, #5
   88              	.LVL2:
-  89              		.loc 1 30 28 view .LVU12
+  89              		.loc 1 30 18 view .LVU12
   90 0014 8DF80500 		strb	r0, [sp, #5]
-  31:Drivers/AD7793/AD7793.c ****             mode_comand[2] = (clksrc << 6) + rate;
-  91              		.loc 1 31 13 is_stmt 1 view .LVU13
-  92              		.loc 1 31 38 is_stmt 0 view .LVU14
+  31:Drivers/AD7793/AD7793.c ****   mode_comand[2] = (clksrc << 6) + rate;
+  91              		.loc 1 31 3 is_stmt 1 view .LVU13
+  92              		.loc 1 31 28 is_stmt 0 view .LVU14
   93 0018 8901     		lsls	r1, r1, #6
   94              	.LVL3:
-  95              		.loc 1 31 38 view .LVU15
+  95              		.loc 1 31 28 view .LVU15
   96 001a C9B2     		uxtb	r1, r1
-  97              		.loc 1 31 44 view .LVU16
+  97              		.loc 1 31 34 view .LVU16
   98 001c 1144     		add	r1, r1, r2
-  99              		.loc 1 31 28 view .LVU17
+  99              		.loc 1 31 18 view .LVU17
  100 001e 8DF80610 		strb	r1, [sp, #6]
-  32:Drivers/AD7793/AD7793.c ****     HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_RESET); 
- 101              		.loc 1 32 5 is_stmt 1 view .LVU18
+  32:Drivers/AD7793/AD7793.c ****   HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_RESET);
+ 101              		.loc 1 32 3 is_stmt 1 view .LVU18
  102 0022 0022     		movs	r2, #0
  103              	.LVL4:
- 104              		.loc 1 32 5 is_stmt 0 view .LVU19
+ 104              		.loc 1 32 3 is_stmt 0 view .LVU19
  105 0024 074B     		ldr	r3, .L8+4
  106 0026 1988     		ldrh	r1, [r3]
  107 0028 0748     		ldr	r0, .L8+8
  108 002a FFF7FEFF 		bl	HAL_GPIO_WritePin
  109              	.LVL5:
-  33:Drivers/AD7793/AD7793.c ****     HAL_SPI_Transmit(&hspi2, mode_comand, 3, 1);
- 110              		.loc 1 33 5 is_stmt 1 view .LVU20
+  33:Drivers/AD7793/AD7793.c ****   HAL_SPI_Transmit(&hspi2, mode_comand, 3, 1);
+ 110              		.loc 1 33 3 is_stmt 1 view .LVU20
  111 002e 0123     		movs	r3, #1
  112 0030 0322     		movs	r2, #3
  113 0032 01A9     		add	r1, sp, #4
  114 0034 0548     		ldr	r0, .L8+12
  115 0036 FFF7FEFF 		bl	HAL_SPI_Transmit
  116              	.LVL6:
-  34:Drivers/AD7793/AD7793.c ****     
-  35:Drivers/AD7793/AD7793.c **** }
- 117              		.loc 1 35 1 is_stmt 0 view .LVU21
+  34:Drivers/AD7793/AD7793.c **** }
+ 117              		.loc 1 34 1 is_stmt 0 view .LVU21
  118 003a 03B0     		add	sp, sp, #12
  119              	.LCFI3:
  120              		.cfi_def_cfa_offset 4
@@ -173,709 +172,748 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 1
  129 004c 00000000 		.word	hspi2
  130              		.cfi_endproc
  131              	.LFE68:
- 133              		.section	.text.AD7793_Calibrate,"ax",%progbits
+ 133              		.section	.text.AD7793_SingleConversion,"ax",%progbits
  134              		.align	1
- 135              		.global	AD7793_Calibrate
+ 135              		.global	AD7793_SingleConversion
  136              		.syntax unified
  137              		.thumb
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 4
-
-
  138              		.thumb_func
- 140              	AD7793_Calibrate:
- 141              	.LVL7:
- 142              	.LFB71:
-  36:Drivers/AD7793/AD7793.c **** 
-  37:Drivers/AD7793/AD7793.c **** void AD7793_Configuration_Register(uint8_t vbias, uint8_t gain, uint8_t refsel, uint8_t channel)
-  38:Drivers/AD7793/AD7793.c **** {
-  39:Drivers/AD7793/AD7793.c ****     uint8_t vbias_gain = (vbias << 6) + gain;
-  40:Drivers/AD7793/AD7793.c ****     uint8_t refsel_chanel = 0x10 | ((refsel << 7) + channel);
-  41:Drivers/AD7793/AD7793.c **** 
-  42:Drivers/AD7793/AD7793.c **** 	uint8_t conf_command[3] = {AD7793_REG_CONF, vbias_gain, refsel_chanel};
-  43:Drivers/AD7793/AD7793.c ****     send_to_SPI(conf_command, sizeof(conf_command)); 
-  44:Drivers/AD7793/AD7793.c **** }
-  45:Drivers/AD7793/AD7793.c **** 
-  46:Drivers/AD7793/AD7793.c **** void AD7793_IO_Register(uint8_t direction, uint8_t current)
-  47:Drivers/AD7793/AD7793.c **** {
-  48:Drivers/AD7793/AD7793.c ****     uint8_t io_comand[2] = {AD7793_REG_IO, current};
-  49:Drivers/AD7793/AD7793.c ****             io_comand[1] = (direction << 2) + current;          
-  50:Drivers/AD7793/AD7793.c ****     send_to_SPI(io_comand, sizeof(io_comand));
-  51:Drivers/AD7793/AD7793.c **** }
-  52:Drivers/AD7793/AD7793.c **** 
-  53:Drivers/AD7793/AD7793.c **** void AD7793_Calibrate(uint8_t mode, uint8_t channel)
-  54:Drivers/AD7793/AD7793.c **** {
- 143              		.loc 1 54 1 is_stmt 1 view -0
- 144              		.cfi_startproc
- 145              		@ args = 0, pretend = 0, frame = 0
- 146              		@ frame_needed = 0, uses_anonymous_args = 0
- 147              		@ link register save eliminated.
-  55:Drivers/AD7793/AD7793.c ****     // unsigned long oldRegValue = 0x0;
-  56:Drivers/AD7793/AD7793.c ****     // unsigned long newRegValue = 0x0;
-  57:Drivers/AD7793/AD7793.c **** 
-  58:Drivers/AD7793/AD7793.c ****     // AD7793_Configuration_Register(uint8_t vbias, uint8_t gain, uint8_t refsel, uint8_t channel);
-  59:Drivers/AD7793/AD7793.c ****     // oldRegValue   = AD7793_GetRegisterValue(AD7793_REG_MODE, 2, 1); // CS is modified by SPI rea
-  60:Drivers/AD7793/AD7793.c ****     // oldRegValue &= ~AD7793_MODE_SEL(0x7);
-  61:Drivers/AD7793/AD7793.c ****     // newRegValue = oldRegValue   | AD7793_MODE_SEL(mode);
-  62:Drivers/AD7793/AD7793.c ****     // AD7793_SetRegisterValue(AD7793_REG_MODE,
-  63:Drivers/AD7793/AD7793.c ****     // 						newRegValue,
-  64:Drivers/AD7793/AD7793.c ****     //  						2,
-  65:Drivers/AD7793/AD7793.c ****     // 						0); // CS is not modified by SPI read/write   functions.
-  66:Drivers/AD7793/AD7793.c **** 	// AD7793_WaitRdyGoLow();
-  67:Drivers/AD7793/AD7793.c **** }
- 148              		.loc 1 67 1 view .LVU23
- 149 0000 7047     		bx	lr
- 150              		.cfi_endproc
- 151              	.LFE71:
- 153              		.section	.text.AD7793_SingleConversion,"ax",%progbits
- 154              		.align	1
- 155              		.global	AD7793_SingleConversion
- 156              		.syntax unified
- 157              		.thumb
- 158              		.thumb_func
- 160              	AD7793_SingleConversion:
- 161              	.LFB72:
-  68:Drivers/AD7793/AD7793.c **** 
-  69:Drivers/AD7793/AD7793.c **** 
-  70:Drivers/AD7793/AD7793.c **** unsigned long AD7793_SingleConversion(void)
-  71:Drivers/AD7793/AD7793.c **** {
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 5
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 4
 
 
- 162              		.loc 1 71 1 view -0
- 163              		.cfi_startproc
- 164              		@ args = 0, pretend = 0, frame = 8
- 165              		@ frame_needed = 0, uses_anonymous_args = 0
- 166 0000 10B5     		push	{r4, lr}
- 167              	.LCFI4:
- 168              		.cfi_def_cfa_offset 8
- 169              		.cfi_offset 4, -8
- 170              		.cfi_offset 14, -4
- 171 0002 84B0     		sub	sp, sp, #16
- 172              	.LCFI5:
- 173              		.cfi_def_cfa_offset 24
-  72:Drivers/AD7793/AD7793.c ****     AD7793_Mode_Register(AD7793_MODE_SINGLE, AD7793_CLK_INT, AD7793_RATE_19_6);
- 174              		.loc 1 72 5 view .LVU25
- 175 0004 0822     		movs	r2, #8
- 176 0006 0021     		movs	r1, #0
- 177 0008 0120     		movs	r0, #1
- 178 000a FFF7FEFF 		bl	AD7793_Mode_Register
- 179              	.LVL8:
-  73:Drivers/AD7793/AD7793.c ****     AD7793_WaitRdyGoLow();
- 180              		.loc 1 73 5 view .LVU26
- 181 000e FFF7FEFF 		bl	AD7793_WaitRdyGoLow
- 182              	.LVL9:
-  74:Drivers/AD7793/AD7793.c ****     uint8_t conf[4] = {AD7793_REG_DATA};
- 183              		.loc 1 74 5 view .LVU27
- 184              		.loc 1 74 13 is_stmt 0 view .LVU28
- 185 0012 5823     		movs	r3, #88
- 186 0014 0393     		str	r3, [sp, #12]
-  75:Drivers/AD7793/AD7793.c ****     uint8_t out[4] = {0x00, 0x00, 0x00, 0x00};
- 187              		.loc 1 75 5 is_stmt 1 view .LVU29
- 188              		.loc 1 75 13 is_stmt 0 view .LVU30
- 189 0016 0023     		movs	r3, #0
- 190 0018 0293     		str	r3, [sp, #8]
-  76:Drivers/AD7793/AD7793.c ****     
-  77:Drivers/AD7793/AD7793.c ****         HAL_SPI_TransmitReceive(&hspi2, conf, out, sizeof(out) , 1);
- 191              		.loc 1 77 9 is_stmt 1 view .LVU31
- 192 001a 0124     		movs	r4, #1
- 193 001c 0094     		str	r4, [sp]
- 194 001e 0423     		movs	r3, #4
- 195 0020 02AA     		add	r2, sp, #8
- 196 0022 03A9     		add	r1, sp, #12
- 197 0024 0A48     		ldr	r0, .L13
- 198 0026 FFF7FEFF 		bl	HAL_SPI_TransmitReceive
- 199              	.LVL10:
-  78:Drivers/AD7793/AD7793.c ****     HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_SET);
- 200              		.loc 1 78 5 view .LVU32
- 201 002a 2246     		mov	r2, r4
- 202 002c 094B     		ldr	r3, .L13+4
- 203 002e 1988     		ldrh	r1, [r3]
- 204 0030 0948     		ldr	r0, .L13+8
- 205 0032 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 206              	.LVL11:
-  79:Drivers/AD7793/AD7793.c **** 
-  80:Drivers/AD7793/AD7793.c ****     uint32_t data_out = (((int32_t)out[1])<<16) | (((int32_t)out[2])<<8) | (((int32_t)out[3]));
- 207              		.loc 1 80 5 view .LVU33
- 208              		.loc 1 80 39 is_stmt 0 view .LVU34
- 209 0036 9DF80900 		ldrb	r0, [sp, #9]	@ zero_extendqisi2
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 6
-
-
- 210              		.loc 1 80 65 view .LVU35
- 211 003a 9DF80A30 		ldrb	r3, [sp, #10]	@ zero_extendqisi2
- 212              		.loc 1 80 69 view .LVU36
- 213 003e 1B02     		lsls	r3, r3, #8
- 214              		.loc 1 80 49 view .LVU37
- 215 0040 43EA0043 		orr	r3, r3, r0, lsl #16
- 216              		.loc 1 80 90 view .LVU38
- 217 0044 9DF80B00 		ldrb	r0, [sp, #11]	@ zero_extendqisi2
- 218              	.LVL12:
-  81:Drivers/AD7793/AD7793.c ****     return(data_out);
- 219              		.loc 1 81 5 is_stmt 1 view .LVU39
-  82:Drivers/AD7793/AD7793.c **** }
- 220              		.loc 1 82 1 is_stmt 0 view .LVU40
- 221 0048 1843     		orrs	r0, r0, r3
- 222              	.LVL13:
- 223              		.loc 1 82 1 view .LVU41
- 224 004a 04B0     		add	sp, sp, #16
- 225              	.LCFI6:
- 226              		.cfi_def_cfa_offset 8
- 227              		@ sp needed
- 228 004c 10BD     		pop	{r4, pc}
- 229              	.L14:
- 230 004e 00BF     		.align	2
- 231              	.L13:
- 232 0050 00000000 		.word	hspi2
- 233 0054 00000000 		.word	pinNumber
- 234 0058 000C0140 		.word	1073810432
- 235              		.cfi_endproc
- 236              	.LFE72:
- 238              		.section	.text.AD7793_ContinuousReadAvg,"ax",%progbits
- 239              		.align	1
- 240              		.global	AD7793_ContinuousReadAvg
- 241              		.syntax unified
- 242              		.thumb
- 243              		.thumb_func
- 245              	AD7793_ContinuousReadAvg:
- 246              	.LVL14:
- 247              	.LFB73:
-  83:Drivers/AD7793/AD7793.c **** 
-  84:Drivers/AD7793/AD7793.c **** unsigned long AD7793_ContinuousReadAvg(uint8_t sampleNumber)
-  85:Drivers/AD7793/AD7793.c **** {
- 248              		.loc 1 85 1 is_stmt 1 view -0
- 249              		.cfi_startproc
- 250              		@ args = 0, pretend = 0, frame = 8
- 251              		@ frame_needed = 0, uses_anonymous_args = 0
- 252              		.loc 1 85 1 is_stmt 0 view .LVU43
- 253 0000 70B5     		push	{r4, r5, r6, lr}
- 254              	.LCFI7:
- 255              		.cfi_def_cfa_offset 16
- 256              		.cfi_offset 4, -16
- 257              		.cfi_offset 5, -12
- 258              		.cfi_offset 6, -8
- 259              		.cfi_offset 14, -4
- 260 0002 84B0     		sub	sp, sp, #16
- 261              	.LCFI8:
- 262              		.cfi_def_cfa_offset 32
- 263 0004 0646     		mov	r6, r0
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 7
-
-
-  86:Drivers/AD7793/AD7793.c ****     AD7793_Mode_Register(AD7793_MODE_CONT, AD7793_CLK_INT, AD7793_RATE_16_7_50);
- 264              		.loc 1 86 5 is_stmt 1 view .LVU44
- 265 0006 0922     		movs	r2, #9
- 266 0008 0021     		movs	r1, #0
- 267 000a 0846     		mov	r0, r1
- 268              	.LVL15:
- 269              		.loc 1 86 5 is_stmt 0 view .LVU45
- 270 000c FFF7FEFF 		bl	AD7793_Mode_Register
- 271              	.LVL16:
-  87:Drivers/AD7793/AD7793.c ****   
-  88:Drivers/AD7793/AD7793.c ****     uint8_t conf[4] = {AD7793_REG_DATA};
- 272              		.loc 1 88 5 is_stmt 1 view .LVU46
- 273              		.loc 1 88 13 is_stmt 0 view .LVU47
- 274 0010 5823     		movs	r3, #88
- 275 0012 0393     		str	r3, [sp, #12]
-  89:Drivers/AD7793/AD7793.c ****     uint8_t out[4] = {0x00, 0x00, 0x00, 0x00};
- 276              		.loc 1 89 5 is_stmt 1 view .LVU48
- 277              		.loc 1 89 13 is_stmt 0 view .LVU49
- 278 0014 0025     		movs	r5, #0
- 279 0016 0295     		str	r5, [sp, #8]
-  90:Drivers/AD7793/AD7793.c ****     uint32_t samplesAverage = 0x0;
- 280              		.loc 1 90 5 is_stmt 1 view .LVU50
- 281              	.LVL17:
-  91:Drivers/AD7793/AD7793.c ****     uint8_t count = 0x0;
- 282              		.loc 1 91 5 view .LVU51
-  92:Drivers/AD7793/AD7793.c ****     
-  93:Drivers/AD7793/AD7793.c ****     for(count = 0;count < sampleNumber;count ++)
- 283              		.loc 1 93 5 view .LVU52
- 284              		.loc 1 93 15 is_stmt 0 view .LVU53
- 285 0018 2C46     		mov	r4, r5
- 286              		.loc 1 93 5 view .LVU54
- 287 001a 16E0     		b	.L16
- 288              	.LVL18:
- 289              	.L17:
- 290              	.LBB2:
-  94:Drivers/AD7793/AD7793.c ****     {
-  95:Drivers/AD7793/AD7793.c ****         AD7793_WaitRdyGoLow();
- 291              		.loc 1 95 9 is_stmt 1 discriminator 3 view .LVU55
- 292 001c FFF7FEFF 		bl	AD7793_WaitRdyGoLow
- 293              	.LVL19:
-  96:Drivers/AD7793/AD7793.c ****         HAL_SPI_TransmitReceive(&hspi2, conf, out, sizeof(out) , 1);
- 294              		.loc 1 96 9 discriminator 3 view .LVU56
- 295 0020 0123     		movs	r3, #1
- 296 0022 0093     		str	r3, [sp]
- 297 0024 0423     		movs	r3, #4
- 298 0026 02AA     		add	r2, sp, #8
- 299 0028 03A9     		add	r1, sp, #12
- 300 002a 0E48     		ldr	r0, .L19
- 301 002c FFF7FEFF 		bl	HAL_SPI_TransmitReceive
- 302              	.LVL20:
-  97:Drivers/AD7793/AD7793.c ****         uint32_t data_out = (((int32_t)out[1])<<16) | (((int32_t)out[2])<<8) | (((int32_t)out[3]));
- 303              		.loc 1 97 9 discriminator 3 view .LVU57
- 304              		.loc 1 97 43 is_stmt 0 discriminator 3 view .LVU58
- 305 0030 9DF80920 		ldrb	r2, [sp, #9]	@ zero_extendqisi2
- 306              		.loc 1 97 69 discriminator 3 view .LVU59
- 307 0034 9DF80A30 		ldrb	r3, [sp, #10]	@ zero_extendqisi2
- 308              		.loc 1 97 73 discriminator 3 view .LVU60
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 8
-
-
- 309 0038 1B02     		lsls	r3, r3, #8
- 310              		.loc 1 97 53 discriminator 3 view .LVU61
- 311 003a 43EA0243 		orr	r3, r3, r2, lsl #16
- 312              		.loc 1 97 94 discriminator 3 view .LVU62
- 313 003e 9DF80B20 		ldrb	r2, [sp, #11]	@ zero_extendqisi2
- 314              		.loc 1 97 78 discriminator 3 view .LVU63
- 315 0042 1343     		orrs	r3, r3, r2
- 316              	.LVL21:
-  98:Drivers/AD7793/AD7793.c ****         samplesAverage += data_out;
- 317              		.loc 1 98 9 is_stmt 1 discriminator 3 view .LVU64
- 318              		.loc 1 98 24 is_stmt 0 discriminator 3 view .LVU65
- 319 0044 1D44     		add	r5, r5, r3
- 320              	.LVL22:
- 321              		.loc 1 98 24 discriminator 3 view .LVU66
- 322              	.LBE2:
-  93:Drivers/AD7793/AD7793.c ****     {
- 323              		.loc 1 93 40 is_stmt 1 discriminator 3 view .LVU67
-  93:Drivers/AD7793/AD7793.c ****     {
- 324              		.loc 1 93 46 is_stmt 0 discriminator 3 view .LVU68
- 325 0046 0134     		adds	r4, r4, #1
- 326              	.LVL23:
-  93:Drivers/AD7793/AD7793.c ****     {
- 327              		.loc 1 93 46 discriminator 3 view .LVU69
- 328 0048 E4B2     		uxtb	r4, r4
- 329              	.LVL24:
- 330              	.L16:
-  93:Drivers/AD7793/AD7793.c ****     {
- 331              		.loc 1 93 19 is_stmt 1 discriminator 1 view .LVU70
-  93:Drivers/AD7793/AD7793.c ****     {
- 332              		.loc 1 93 5 is_stmt 0 discriminator 1 view .LVU71
- 333 004a B442     		cmp	r4, r6
- 334 004c E6D3     		bcc	.L17
-  99:Drivers/AD7793/AD7793.c ****     }
- 100:Drivers/AD7793/AD7793.c ****     HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_SET);
- 335              		.loc 1 100 5 is_stmt 1 view .LVU72
- 336 004e 0122     		movs	r2, #1
- 337 0050 054B     		ldr	r3, .L19+4
- 338 0052 1988     		ldrh	r1, [r3]
- 339 0054 0548     		ldr	r0, .L19+8
- 340 0056 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 341              	.LVL25:
- 101:Drivers/AD7793/AD7793.c ****     samplesAverage = samplesAverage / sampleNumber;
- 342              		.loc 1 101 5 view .LVU73
- 102:Drivers/AD7793/AD7793.c ****     return(samplesAverage);
- 343              		.loc 1 102 5 view .LVU74
- 103:Drivers/AD7793/AD7793.c **** }
- 344              		.loc 1 103 1 is_stmt 0 view .LVU75
- 345 005a B5FBF6F0 		udiv	r0, r5, r6
- 346              	.LVL26:
- 347              		.loc 1 103 1 view .LVU76
- 348 005e 04B0     		add	sp, sp, #16
- 349              	.LCFI9:
- 350              		.cfi_def_cfa_offset 16
- 351              		@ sp needed
- 352 0060 70BD     		pop	{r4, r5, r6, pc}
- 353              	.LVL27:
- 354              	.L20:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 9
-
-
- 355              		.loc 1 103 1 view .LVU77
- 356 0062 00BF     		.align	2
- 357              	.L19:
- 358 0064 00000000 		.word	hspi2
- 359 0068 00000000 		.word	pinNumber
- 360 006c 000C0140 		.word	1073810432
- 361              		.cfi_endproc
- 362              	.LFE73:
- 364              		.section	.text.send_to_SPI,"ax",%progbits
- 365              		.align	1
- 366              		.global	send_to_SPI
- 367              		.syntax unified
- 368              		.thumb
- 369              		.thumb_func
- 371              	send_to_SPI:
- 372              	.LVL28:
- 373              	.LFB74:
- 104:Drivers/AD7793/AD7793.c **** 
- 105:Drivers/AD7793/AD7793.c **** void send_to_SPI(uint8_t *data, uint16_t size) 
- 106:Drivers/AD7793/AD7793.c **** {   
- 374              		.loc 1 106 1 is_stmt 1 view -0
- 375              		.cfi_startproc
- 376              		@ args = 0, pretend = 0, frame = 0
- 377              		@ frame_needed = 0, uses_anonymous_args = 0
- 378              		.loc 1 106 1 is_stmt 0 view .LVU79
- 379 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
- 380              	.LCFI10:
- 381              		.cfi_def_cfa_offset 24
- 382              		.cfi_offset 3, -24
- 383              		.cfi_offset 4, -20
- 384              		.cfi_offset 5, -16
- 385              		.cfi_offset 6, -12
- 386              		.cfi_offset 7, -8
- 387              		.cfi_offset 14, -4
- 388 0002 0446     		mov	r4, r0
- 389 0004 0D46     		mov	r5, r1
- 107:Drivers/AD7793/AD7793.c ****     HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_RESET);
- 390              		.loc 1 107 5 is_stmt 1 view .LVU80
- 391 0006 094F     		ldr	r7, .L23
- 392 0008 094E     		ldr	r6, .L23+4
- 393 000a 0022     		movs	r2, #0
- 394 000c 3988     		ldrh	r1, [r7]
- 395              	.LVL29:
- 396              		.loc 1 107 5 is_stmt 0 view .LVU81
- 397 000e 3046     		mov	r0, r6
- 398              	.LVL30:
- 399              		.loc 1 107 5 view .LVU82
- 400 0010 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 401              	.LVL31:
- 108:Drivers/AD7793/AD7793.c **** 	    HAL_SPI_Transmit(&hspi2, data, size, 1);
- 402              		.loc 1 108 6 is_stmt 1 view .LVU83
- 403 0014 0123     		movs	r3, #1
- 404 0016 2A46     		mov	r2, r5
- 405 0018 2146     		mov	r1, r4
- 406 001a 0648     		ldr	r0, .L23+8
- 407 001c FFF7FEFF 		bl	HAL_SPI_Transmit
- 408              	.LVL32:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 10
-
-
- 109:Drivers/AD7793/AD7793.c ****     HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_SET);
- 409              		.loc 1 109 5 view .LVU84
- 410 0020 0122     		movs	r2, #1
- 411 0022 3988     		ldrh	r1, [r7]
- 412 0024 3046     		mov	r0, r6
- 413 0026 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 414              	.LVL33:
- 110:Drivers/AD7793/AD7793.c **** }
- 415              		.loc 1 110 1 is_stmt 0 view .LVU85
- 416 002a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
- 417              	.LVL34:
- 418              	.L24:
- 419              		.loc 1 110 1 view .LVU86
- 420              		.align	2
- 421              	.L23:
- 422 002c 00000000 		.word	pinNumber
- 423 0030 000C0140 		.word	1073810432
- 424 0034 00000000 		.word	hspi2
- 425              		.cfi_endproc
- 426              	.LFE74:
- 428              		.section	.text.AD7793_Init,"ax",%progbits
- 429              		.align	1
- 430              		.global	AD7793_Init
- 431              		.syntax unified
- 432              		.thumb
- 433              		.thumb_func
- 435              	AD7793_Init:
- 436              	.LFB65:
-   9:Drivers/AD7793/AD7793.c **** 	uint8_t init_command[3] = {0x50, 0x00, 0x00};
- 437              		.loc 1 9 1 is_stmt 1 view -0
- 438              		.cfi_startproc
- 439              		@ args = 0, pretend = 0, frame = 8
- 440              		@ frame_needed = 0, uses_anonymous_args = 0
- 441 0000 00B5     		push	{lr}
- 442              	.LCFI11:
- 443              		.cfi_def_cfa_offset 4
- 444              		.cfi_offset 14, -4
- 445 0002 83B0     		sub	sp, sp, #12
- 446              	.LCFI12:
- 447              		.cfi_def_cfa_offset 16
-  10:Drivers/AD7793/AD7793.c ****     send_to_SPI(init_command, sizeof(init_command));
- 448              		.loc 1 10 2 view .LVU88
-  10:Drivers/AD7793/AD7793.c ****     send_to_SPI(init_command, sizeof(init_command));
- 449              		.loc 1 10 10 is_stmt 0 view .LVU89
- 450 0004 064B     		ldr	r3, .L27
- 451 0006 5B68     		ldr	r3, [r3, #4]
- 452 0008 ADF80430 		strh	r3, [sp, #4]	@ movhi
- 453 000c 1B0C     		lsrs	r3, r3, #16
- 454 000e 8DF80630 		strb	r3, [sp, #6]
-  11:Drivers/AD7793/AD7793.c **** }
- 455              		.loc 1 11 5 is_stmt 1 view .LVU90
- 456 0012 0321     		movs	r1, #3
- 457 0014 01A8     		add	r0, sp, #4
- 458 0016 FFF7FEFF 		bl	send_to_SPI
- 459              	.LVL35:
-  12:Drivers/AD7793/AD7793.c **** 
- 460              		.loc 1 12 1 is_stmt 0 view .LVU91
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 11
-
-
- 461 001a 03B0     		add	sp, sp, #12
- 462              	.LCFI13:
- 463              		.cfi_def_cfa_offset 4
- 464              		@ sp needed
- 465 001c 5DF804FB 		ldr	pc, [sp], #4
- 466              	.L28:
- 467              		.align	2
- 468              	.L27:
- 469 0020 00000000 		.word	.LANCHOR0
- 470              		.cfi_endproc
- 471              	.LFE65:
- 473              		.section	.rodata.AD7793_Reset.str1.4,"aMS",%progbits,1
- 474              		.align	2
- 475              	.LC2:
- 476 0000 03FFFFFF 		.ascii	"\003\377\377\377\377\000"
- 476      FF00
- 477              		.section	.text.AD7793_Reset,"ax",%progbits
- 478              		.align	1
- 479              		.global	AD7793_Reset
- 480              		.syntax unified
- 481              		.thumb
- 482              		.thumb_func
- 484              	AD7793_Reset:
- 485              	.LFB66:
-  15:Drivers/AD7793/AD7793.c **** 	uint8_t dataToSend[5] = {0x03, 0xff, 0xff, 0xff, 0xff};
- 486              		.loc 1 15 1 is_stmt 1 view -0
- 487              		.cfi_startproc
- 488              		@ args = 0, pretend = 0, frame = 8
- 489              		@ frame_needed = 0, uses_anonymous_args = 0
- 490 0000 00B5     		push	{lr}
- 491              	.LCFI14:
- 492              		.cfi_def_cfa_offset 4
- 493              		.cfi_offset 14, -4
- 494 0002 83B0     		sub	sp, sp, #12
- 495              	.LCFI15:
- 496              		.cfi_def_cfa_offset 16
-  16:Drivers/AD7793/AD7793.c ****     send_to_SPI(dataToSend, sizeof(dataToSend));
- 497              		.loc 1 16 2 view .LVU93
-  16:Drivers/AD7793/AD7793.c ****     send_to_SPI(dataToSend, sizeof(dataToSend));
- 498              		.loc 1 16 10 is_stmt 0 view .LVU94
- 499 0004 064B     		ldr	r3, .L31
- 500 0006 93E80300 		ldm	r3, {r0, r1}
- 501 000a 0090     		str	r0, [sp]
- 502 000c 8DF80410 		strb	r1, [sp, #4]
-  17:Drivers/AD7793/AD7793.c **** }
- 503              		.loc 1 17 5 is_stmt 1 view .LVU95
- 504 0010 0521     		movs	r1, #5
- 505 0012 6846     		mov	r0, sp
- 506 0014 FFF7FEFF 		bl	send_to_SPI
- 507              	.LVL36:
-  18:Drivers/AD7793/AD7793.c **** 
- 508              		.loc 1 18 1 is_stmt 0 view .LVU96
- 509 0018 03B0     		add	sp, sp, #12
- 510              	.LCFI16:
- 511              		.cfi_def_cfa_offset 4
- 512              		@ sp needed
- 513 001a 5DF804FB 		ldr	pc, [sp], #4
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 12
-
-
- 514              	.L32:
- 515 001e 00BF     		.align	2
- 516              	.L31:
- 517 0020 00000000 		.word	.LC2
- 518              		.cfi_endproc
- 519              	.LFE66:
- 521              		.section	.text.AD7793_Configuration_Register,"ax",%progbits
- 522              		.align	1
- 523              		.global	AD7793_Configuration_Register
- 524              		.syntax unified
- 525              		.thumb
- 526              		.thumb_func
- 528              	AD7793_Configuration_Register:
- 529              	.LVL37:
- 530              	.LFB69:
-  38:Drivers/AD7793/AD7793.c ****     uint8_t vbias_gain = (vbias << 6) + gain;
- 531              		.loc 1 38 1 is_stmt 1 view -0
- 532              		.cfi_startproc
- 533              		@ args = 0, pretend = 0, frame = 8
- 534              		@ frame_needed = 0, uses_anonymous_args = 0
-  38:Drivers/AD7793/AD7793.c ****     uint8_t vbias_gain = (vbias << 6) + gain;
- 535              		.loc 1 38 1 is_stmt 0 view .LVU98
- 536 0000 00B5     		push	{lr}
- 537              	.LCFI17:
- 538              		.cfi_def_cfa_offset 4
- 539              		.cfi_offset 14, -4
- 540 0002 83B0     		sub	sp, sp, #12
- 541              	.LCFI18:
- 542              		.cfi_def_cfa_offset 16
-  39:Drivers/AD7793/AD7793.c ****     uint8_t refsel_chanel = 0x10 | ((refsel << 7) + channel);
- 543              		.loc 1 39 5 is_stmt 1 view .LVU99
-  39:Drivers/AD7793/AD7793.c ****     uint8_t refsel_chanel = 0x10 | ((refsel << 7) + channel);
- 544              		.loc 1 39 33 is_stmt 0 view .LVU100
- 545 0004 8001     		lsls	r0, r0, #6
- 546              	.LVL38:
-  39:Drivers/AD7793/AD7793.c ****     uint8_t refsel_chanel = 0x10 | ((refsel << 7) + channel);
- 547              		.loc 1 39 33 view .LVU101
- 548 0006 C0B2     		uxtb	r0, r0
-  39:Drivers/AD7793/AD7793.c ****     uint8_t refsel_chanel = 0x10 | ((refsel << 7) + channel);
- 549              		.loc 1 39 13 view .LVU102
- 550 0008 0844     		add	r0, r0, r1
- 551              	.LVL39:
+ 140              	AD7793_SingleConversion:
+ 141              	.LFB72:
+  35:Drivers/AD7793/AD7793.c **** 
+  36:Drivers/AD7793/AD7793.c **** void AD7793_Configuration_Register(uint8_t vbias, uint8_t gain, uint8_t refsel, uint8_t channel)
+  37:Drivers/AD7793/AD7793.c **** {
+  38:Drivers/AD7793/AD7793.c ****   uint8_t vbias_gain = (vbias << 6) + gain;
+  39:Drivers/AD7793/AD7793.c ****   uint8_t refsel_chanel = 0x10 | ((refsel << 7) + channel);
   40:Drivers/AD7793/AD7793.c **** 
- 552              		.loc 1 40 5 is_stmt 1 view .LVU103
-  40:Drivers/AD7793/AD7793.c **** 
- 553              		.loc 1 40 45 is_stmt 0 view .LVU104
- 554 000a D201     		lsls	r2, r2, #7
- 555              	.LVL40:
-  40:Drivers/AD7793/AD7793.c **** 
- 556              		.loc 1 40 45 view .LVU105
- 557 000c D2B2     		uxtb	r2, r2
-  40:Drivers/AD7793/AD7793.c **** 
- 558              		.loc 1 40 51 view .LVU106
- 559 000e 1A44     		add	r2, r2, r3
- 560 0010 52B2     		sxtb	r2, r2
-  40:Drivers/AD7793/AD7793.c **** 
- 561              		.loc 1 40 34 view .LVU107
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 13
-
-
- 562 0012 42F01002 		orr	r2, r2, #16
- 563              	.LVL41:
-  42:Drivers/AD7793/AD7793.c ****     send_to_SPI(conf_command, sizeof(conf_command)); 
- 564              		.loc 1 42 2 is_stmt 1 view .LVU108
-  42:Drivers/AD7793/AD7793.c ****     send_to_SPI(conf_command, sizeof(conf_command)); 
- 565              		.loc 1 42 10 is_stmt 0 view .LVU109
- 566 0016 1023     		movs	r3, #16
- 567              	.LVL42:
-  42:Drivers/AD7793/AD7793.c ****     send_to_SPI(conf_command, sizeof(conf_command)); 
- 568              		.loc 1 42 10 view .LVU110
- 569 0018 8DF80430 		strb	r3, [sp, #4]
- 570 001c 8DF80500 		strb	r0, [sp, #5]
- 571 0020 8DF80620 		strb	r2, [sp, #6]
+  41:Drivers/AD7793/AD7793.c ****   uint8_t conf_command[3] = {AD7793_REG_CONF, vbias_gain, refsel_chanel};
+  42:Drivers/AD7793/AD7793.c ****   send_to_SPI(conf_command, sizeof(conf_command));
   43:Drivers/AD7793/AD7793.c **** }
- 572              		.loc 1 43 5 is_stmt 1 view .LVU111
- 573 0024 0321     		movs	r1, #3
- 574              	.LVL43:
-  43:Drivers/AD7793/AD7793.c **** }
- 575              		.loc 1 43 5 is_stmt 0 view .LVU112
- 576 0026 01A8     		add	r0, sp, #4
- 577              	.LVL44:
-  43:Drivers/AD7793/AD7793.c **** }
- 578              		.loc 1 43 5 view .LVU113
- 579 0028 FFF7FEFF 		bl	send_to_SPI
- 580              	.LVL45:
   44:Drivers/AD7793/AD7793.c **** 
- 581              		.loc 1 44 1 view .LVU114
- 582 002c 03B0     		add	sp, sp, #12
- 583              	.LCFI19:
- 584              		.cfi_def_cfa_offset 4
- 585              		@ sp needed
- 586 002e 5DF804FB 		ldr	pc, [sp], #4
- 587              		.cfi_endproc
- 588              	.LFE69:
- 590              		.section	.text.AD7793_IO_Register,"ax",%progbits
- 591              		.align	1
- 592              		.global	AD7793_IO_Register
- 593              		.syntax unified
- 594              		.thumb
- 595              		.thumb_func
- 597              	AD7793_IO_Register:
- 598              	.LVL46:
- 599              	.LFB70:
-  47:Drivers/AD7793/AD7793.c ****     uint8_t io_comand[2] = {AD7793_REG_IO, current};
- 600              		.loc 1 47 1 is_stmt 1 view -0
- 601              		.cfi_startproc
- 602              		@ args = 0, pretend = 0, frame = 8
- 603              		@ frame_needed = 0, uses_anonymous_args = 0
-  47:Drivers/AD7793/AD7793.c ****     uint8_t io_comand[2] = {AD7793_REG_IO, current};
- 604              		.loc 1 47 1 is_stmt 0 view .LVU116
- 605 0000 00B5     		push	{lr}
- 606              	.LCFI20:
- 607              		.cfi_def_cfa_offset 4
- 608              		.cfi_offset 14, -4
- 609 0002 83B0     		sub	sp, sp, #12
- 610              	.LCFI21:
- 611              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 14
-
-
-  48:Drivers/AD7793/AD7793.c ****             io_comand[1] = (direction << 2) + current;          
- 612              		.loc 1 48 5 is_stmt 1 view .LVU117
-  48:Drivers/AD7793/AD7793.c ****             io_comand[1] = (direction << 2) + current;          
- 613              		.loc 1 48 13 is_stmt 0 view .LVU118
- 614 0004 2823     		movs	r3, #40
- 615 0006 8DF80430 		strb	r3, [sp, #4]
- 616 000a 8DF80510 		strb	r1, [sp, #5]
-  49:Drivers/AD7793/AD7793.c ****     send_to_SPI(io_comand, sizeof(io_comand));
- 617              		.loc 1 49 13 is_stmt 1 view .LVU119
-  49:Drivers/AD7793/AD7793.c ****     send_to_SPI(io_comand, sizeof(io_comand));
- 618              		.loc 1 49 39 is_stmt 0 view .LVU120
- 619 000e 8000     		lsls	r0, r0, #2
- 620              	.LVL47:
-  49:Drivers/AD7793/AD7793.c ****     send_to_SPI(io_comand, sizeof(io_comand));
- 621              		.loc 1 49 39 view .LVU121
- 622 0010 C0B2     		uxtb	r0, r0
-  49:Drivers/AD7793/AD7793.c ****     send_to_SPI(io_comand, sizeof(io_comand));
- 623              		.loc 1 49 45 view .LVU122
- 624 0012 0844     		add	r0, r0, r1
-  49:Drivers/AD7793/AD7793.c ****     send_to_SPI(io_comand, sizeof(io_comand));
- 625              		.loc 1 49 26 view .LVU123
- 626 0014 8DF80500 		strb	r0, [sp, #5]
+  45:Drivers/AD7793/AD7793.c **** void AD7793_IO_Register(uint8_t direction, uint8_t current)
+  46:Drivers/AD7793/AD7793.c **** {
+  47:Drivers/AD7793/AD7793.c ****   uint8_t io_comand[2] = {AD7793_REG_IO, current};
+  48:Drivers/AD7793/AD7793.c ****   io_comand[1] = (direction << 2) + current;
+  49:Drivers/AD7793/AD7793.c ****   send_to_SPI(io_comand, sizeof(io_comand));
   50:Drivers/AD7793/AD7793.c **** }
- 627              		.loc 1 50 5 is_stmt 1 view .LVU124
- 628 0018 0221     		movs	r1, #2
- 629              	.LVL48:
-  50:Drivers/AD7793/AD7793.c **** }
- 630              		.loc 1 50 5 is_stmt 0 view .LVU125
- 631 001a 01A8     		add	r0, sp, #4
- 632 001c FFF7FEFF 		bl	send_to_SPI
- 633              	.LVL49:
   51:Drivers/AD7793/AD7793.c **** 
- 634              		.loc 1 51 1 view .LVU126
- 635 0020 03B0     		add	sp, sp, #12
- 636              	.LCFI22:
- 637              		.cfi_def_cfa_offset 4
- 638              		@ sp needed
- 639 0022 5DF804FB 		ldr	pc, [sp], #4
- 640              		.cfi_endproc
- 641              	.LFE70:
- 643              		.section	.rodata
- 644              		.align	2
- 645              		.set	.LANCHOR0,. + 0
- 646              	.LC0:
- 647 0000 080000   		.ascii	"\010\000\000"
- 648 0003 00       		.space	1
- 649              	.LC1:
- 650 0004 500000   		.ascii	"P\000\000"
- 651              		.text
- 652              	.Letext0:
- 653              		.file 2 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\machine\\_default_types.
- 654              		.file 3 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\sys\\_stdint.h"
- 655              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
- 656              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
- 657              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
- 658              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
- 659              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 15
+  52:Drivers/AD7793/AD7793.c **** void AD7793_Calibrate(uint8_t mode, uint8_t channel)
+  53:Drivers/AD7793/AD7793.c **** {
+  54:Drivers/AD7793/AD7793.c ****   AD7793_Configuration_Register(0, 0, 0, channel);
+  55:Drivers/AD7793/AD7793.c ****   AD7793_Mode_Register(mode, 0, 0);
+  56:Drivers/AD7793/AD7793.c ****   AD7793_WaitRdyGoLow();
+  57:Drivers/AD7793/AD7793.c ****   HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_SET);
+  58:Drivers/AD7793/AD7793.c **** }
+  59:Drivers/AD7793/AD7793.c **** 
+  60:Drivers/AD7793/AD7793.c **** unsigned long AD7793_SingleConversion(void)
+  61:Drivers/AD7793/AD7793.c **** {
+ 142              		.loc 1 61 1 is_stmt 1 view -0
+ 143              		.cfi_startproc
+ 144              		@ args = 0, pretend = 0, frame = 8
+ 145              		@ frame_needed = 0, uses_anonymous_args = 0
+ 146 0000 10B5     		push	{r4, lr}
+ 147              	.LCFI4:
+ 148              		.cfi_def_cfa_offset 8
+ 149              		.cfi_offset 4, -8
+ 150              		.cfi_offset 14, -4
+ 151 0002 84B0     		sub	sp, sp, #16
+ 152              	.LCFI5:
+ 153              		.cfi_def_cfa_offset 24
+  62:Drivers/AD7793/AD7793.c ****   AD7793_Mode_Register(AD7793_MODE_SINGLE, AD7793_CLK_INT, AD7793_RATE_16_7_50_60);
+ 154              		.loc 1 62 3 view .LVU23
+ 155 0004 0A22     		movs	r2, #10
+ 156 0006 0021     		movs	r1, #0
+ 157 0008 0120     		movs	r0, #1
+ 158 000a FFF7FEFF 		bl	AD7793_Mode_Register
+ 159              	.LVL7:
+  63:Drivers/AD7793/AD7793.c ****   AD7793_WaitRdyGoLow();
+ 160              		.loc 1 63 3 view .LVU24
+ 161 000e FFF7FEFF 		bl	AD7793_WaitRdyGoLow
+ 162              	.LVL8:
+  64:Drivers/AD7793/AD7793.c ****   uint8_t conf[4] = {AD7793_REG_DATA};
+ 163              		.loc 1 64 3 view .LVU25
+ 164              		.loc 1 64 11 is_stmt 0 view .LVU26
+ 165 0012 5823     		movs	r3, #88
+ 166 0014 0393     		str	r3, [sp, #12]
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 5
 
 
- 660              		.file 9 "Core/Inc/spi.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s 			page 16
+  65:Drivers/AD7793/AD7793.c ****   uint8_t out[4] = {0x00, 0x00, 0x00, 0x00};
+ 167              		.loc 1 65 3 is_stmt 1 view .LVU27
+ 168              		.loc 1 65 11 is_stmt 0 view .LVU28
+ 169 0016 0023     		movs	r3, #0
+ 170 0018 0293     		str	r3, [sp, #8]
+  66:Drivers/AD7793/AD7793.c **** 
+  67:Drivers/AD7793/AD7793.c ****   HAL_SPI_TransmitReceive(&hspi2, conf, out, sizeof(out), 1);
+ 171              		.loc 1 67 3 is_stmt 1 view .LVU29
+ 172 001a 0124     		movs	r4, #1
+ 173 001c 0094     		str	r4, [sp]
+ 174 001e 0423     		movs	r3, #4
+ 175 0020 02AA     		add	r2, sp, #8
+ 176 0022 03A9     		add	r1, sp, #12
+ 177 0024 0A48     		ldr	r0, .L12
+ 178 0026 FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 179              	.LVL9:
+  68:Drivers/AD7793/AD7793.c ****   HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_SET);
+ 180              		.loc 1 68 3 view .LVU30
+ 181 002a 2246     		mov	r2, r4
+ 182 002c 094B     		ldr	r3, .L12+4
+ 183 002e 1988     		ldrh	r1, [r3]
+ 184 0030 0948     		ldr	r0, .L12+8
+ 185 0032 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 186              	.LVL10:
+  69:Drivers/AD7793/AD7793.c **** 
+  70:Drivers/AD7793/AD7793.c ****   uint32_t data_out = (((int32_t)out[1]) << 16) | (((int32_t)out[2]) << 8) | (((int32_t)out[3]));
+ 187              		.loc 1 70 3 view .LVU31
+ 188              		.loc 1 70 37 is_stmt 0 view .LVU32
+ 189 0036 9DF80900 		ldrb	r0, [sp, #9]	@ zero_extendqisi2
+ 190              		.loc 1 70 65 view .LVU33
+ 191 003a 9DF80A30 		ldrb	r3, [sp, #10]	@ zero_extendqisi2
+ 192              		.loc 1 70 70 view .LVU34
+ 193 003e 1B02     		lsls	r3, r3, #8
+ 194              		.loc 1 70 49 view .LVU35
+ 195 0040 43EA0043 		orr	r3, r3, r0, lsl #16
+ 196              		.loc 1 70 92 view .LVU36
+ 197 0044 9DF80B00 		ldrb	r0, [sp, #11]	@ zero_extendqisi2
+ 198              	.LVL11:
+  71:Drivers/AD7793/AD7793.c ****   return (data_out);
+ 199              		.loc 1 71 3 is_stmt 1 view .LVU37
+  72:Drivers/AD7793/AD7793.c **** }
+ 200              		.loc 1 72 1 is_stmt 0 view .LVU38
+ 201 0048 1843     		orrs	r0, r0, r3
+ 202              	.LVL12:
+ 203              		.loc 1 72 1 view .LVU39
+ 204 004a 04B0     		add	sp, sp, #16
+ 205              	.LCFI6:
+ 206              		.cfi_def_cfa_offset 8
+ 207              		@ sp needed
+ 208 004c 10BD     		pop	{r4, pc}
+ 209              	.L13:
+ 210 004e 00BF     		.align	2
+ 211              	.L12:
+ 212 0050 00000000 		.word	hspi2
+ 213 0054 00000000 		.word	pinNumber
+ 214 0058 000C0140 		.word	1073810432
+ 215              		.cfi_endproc
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 6
+
+
+ 216              	.LFE72:
+ 218              		.section	.text.AD7793_ContinuousReadAvg,"ax",%progbits
+ 219              		.align	1
+ 220              		.global	AD7793_ContinuousReadAvg
+ 221              		.syntax unified
+ 222              		.thumb
+ 223              		.thumb_func
+ 225              	AD7793_ContinuousReadAvg:
+ 226              	.LVL13:
+ 227              	.LFB73:
+  73:Drivers/AD7793/AD7793.c **** 
+  74:Drivers/AD7793/AD7793.c **** unsigned long AD7793_ContinuousReadAvg(uint8_t sampleNumber)
+  75:Drivers/AD7793/AD7793.c **** {
+ 228              		.loc 1 75 1 is_stmt 1 view -0
+ 229              		.cfi_startproc
+ 230              		@ args = 0, pretend = 0, frame = 8
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232              		.loc 1 75 1 is_stmt 0 view .LVU41
+ 233 0000 70B5     		push	{r4, r5, r6, lr}
+ 234              	.LCFI7:
+ 235              		.cfi_def_cfa_offset 16
+ 236              		.cfi_offset 4, -16
+ 237              		.cfi_offset 5, -12
+ 238              		.cfi_offset 6, -8
+ 239              		.cfi_offset 14, -4
+ 240 0002 84B0     		sub	sp, sp, #16
+ 241              	.LCFI8:
+ 242              		.cfi_def_cfa_offset 32
+ 243 0004 0646     		mov	r6, r0
+  76:Drivers/AD7793/AD7793.c ****   AD7793_Mode_Register(AD7793_MODE_CONT, AD7793_CLK_INT, AD7793_RATE_16_7_50);
+ 244              		.loc 1 76 3 is_stmt 1 view .LVU42
+ 245 0006 0922     		movs	r2, #9
+ 246 0008 0021     		movs	r1, #0
+ 247 000a 0846     		mov	r0, r1
+ 248              	.LVL14:
+ 249              		.loc 1 76 3 is_stmt 0 view .LVU43
+ 250 000c FFF7FEFF 		bl	AD7793_Mode_Register
+ 251              	.LVL15:
+  77:Drivers/AD7793/AD7793.c **** 
+  78:Drivers/AD7793/AD7793.c ****   uint8_t conf[4] = {AD7793_REG_DATA};
+ 252              		.loc 1 78 3 is_stmt 1 view .LVU44
+ 253              		.loc 1 78 11 is_stmt 0 view .LVU45
+ 254 0010 5823     		movs	r3, #88
+ 255 0012 0393     		str	r3, [sp, #12]
+  79:Drivers/AD7793/AD7793.c ****   uint8_t out[4] = {0x00, 0x00, 0x00, 0x00};
+ 256              		.loc 1 79 3 is_stmt 1 view .LVU46
+ 257              		.loc 1 79 11 is_stmt 0 view .LVU47
+ 258 0014 0025     		movs	r5, #0
+ 259 0016 0295     		str	r5, [sp, #8]
+  80:Drivers/AD7793/AD7793.c ****   uint32_t samplesAverage = 0x0;
+ 260              		.loc 1 80 3 is_stmt 1 view .LVU48
+ 261              	.LVL16:
+  81:Drivers/AD7793/AD7793.c ****   uint8_t count = 0x0;
+ 262              		.loc 1 81 3 view .LVU49
+  82:Drivers/AD7793/AD7793.c **** 
+  83:Drivers/AD7793/AD7793.c ****   for (count = 0; count < sampleNumber; count++)
+ 263              		.loc 1 83 3 view .LVU50
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 7
+
+
+ 264              		.loc 1 83 14 is_stmt 0 view .LVU51
+ 265 0018 2C46     		mov	r4, r5
+ 266              		.loc 1 83 3 view .LVU52
+ 267 001a 16E0     		b	.L15
+ 268              	.LVL17:
+ 269              	.L16:
+ 270              	.LBB2:
+  84:Drivers/AD7793/AD7793.c ****   {
+  85:Drivers/AD7793/AD7793.c ****     AD7793_WaitRdyGoLow();
+ 271              		.loc 1 85 5 is_stmt 1 discriminator 3 view .LVU53
+ 272 001c FFF7FEFF 		bl	AD7793_WaitRdyGoLow
+ 273              	.LVL18:
+  86:Drivers/AD7793/AD7793.c ****     HAL_SPI_TransmitReceive(&hspi2, conf, out, sizeof(out), 1);
+ 274              		.loc 1 86 5 discriminator 3 view .LVU54
+ 275 0020 0123     		movs	r3, #1
+ 276 0022 0093     		str	r3, [sp]
+ 277 0024 0423     		movs	r3, #4
+ 278 0026 02AA     		add	r2, sp, #8
+ 279 0028 03A9     		add	r1, sp, #12
+ 280 002a 0E48     		ldr	r0, .L18
+ 281 002c FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 282              	.LVL19:
+  87:Drivers/AD7793/AD7793.c ****     uint32_t data_out = (((int32_t)out[1]) << 16) | (((int32_t)out[2]) << 8) | (((int32_t)out[3]));
+ 283              		.loc 1 87 5 discriminator 3 view .LVU55
+ 284              		.loc 1 87 39 is_stmt 0 discriminator 3 view .LVU56
+ 285 0030 9DF80920 		ldrb	r2, [sp, #9]	@ zero_extendqisi2
+ 286              		.loc 1 87 67 discriminator 3 view .LVU57
+ 287 0034 9DF80A30 		ldrb	r3, [sp, #10]	@ zero_extendqisi2
+ 288              		.loc 1 87 72 discriminator 3 view .LVU58
+ 289 0038 1B02     		lsls	r3, r3, #8
+ 290              		.loc 1 87 51 discriminator 3 view .LVU59
+ 291 003a 43EA0243 		orr	r3, r3, r2, lsl #16
+ 292              		.loc 1 87 94 discriminator 3 view .LVU60
+ 293 003e 9DF80B20 		ldrb	r2, [sp, #11]	@ zero_extendqisi2
+ 294              		.loc 1 87 78 discriminator 3 view .LVU61
+ 295 0042 1343     		orrs	r3, r3, r2
+ 296              	.LVL20:
+  88:Drivers/AD7793/AD7793.c ****     samplesAverage += data_out;
+ 297              		.loc 1 88 5 is_stmt 1 discriminator 3 view .LVU62
+ 298              		.loc 1 88 20 is_stmt 0 discriminator 3 view .LVU63
+ 299 0044 1D44     		add	r5, r5, r3
+ 300              	.LVL21:
+ 301              		.loc 1 88 20 discriminator 3 view .LVU64
+ 302              	.LBE2:
+  83:Drivers/AD7793/AD7793.c ****   {
+ 303              		.loc 1 83 41 is_stmt 1 discriminator 3 view .LVU65
+  83:Drivers/AD7793/AD7793.c ****   {
+ 304              		.loc 1 83 46 is_stmt 0 discriminator 3 view .LVU66
+ 305 0046 0134     		adds	r4, r4, #1
+ 306              	.LVL22:
+  83:Drivers/AD7793/AD7793.c ****   {
+ 307              		.loc 1 83 46 discriminator 3 view .LVU67
+ 308 0048 E4B2     		uxtb	r4, r4
+ 309              	.LVL23:
+ 310              	.L15:
+  83:Drivers/AD7793/AD7793.c ****   {
+ 311              		.loc 1 83 19 is_stmt 1 discriminator 1 view .LVU68
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 8
+
+
+  83:Drivers/AD7793/AD7793.c ****   {
+ 312              		.loc 1 83 3 is_stmt 0 discriminator 1 view .LVU69
+ 313 004a B442     		cmp	r4, r6
+ 314 004c E6D3     		bcc	.L16
+  89:Drivers/AD7793/AD7793.c ****   }
+  90:Drivers/AD7793/AD7793.c ****   HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_SET);
+ 315              		.loc 1 90 3 is_stmt 1 view .LVU70
+ 316 004e 0122     		movs	r2, #1
+ 317 0050 054B     		ldr	r3, .L18+4
+ 318 0052 1988     		ldrh	r1, [r3]
+ 319 0054 0548     		ldr	r0, .L18+8
+ 320 0056 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 321              	.LVL24:
+  91:Drivers/AD7793/AD7793.c ****   samplesAverage = samplesAverage / sampleNumber;
+ 322              		.loc 1 91 3 view .LVU71
+  92:Drivers/AD7793/AD7793.c ****   return (samplesAverage);
+ 323              		.loc 1 92 3 view .LVU72
+  93:Drivers/AD7793/AD7793.c **** }
+ 324              		.loc 1 93 1 is_stmt 0 view .LVU73
+ 325 005a B5FBF6F0 		udiv	r0, r5, r6
+ 326              	.LVL25:
+ 327              		.loc 1 93 1 view .LVU74
+ 328 005e 04B0     		add	sp, sp, #16
+ 329              	.LCFI9:
+ 330              		.cfi_def_cfa_offset 16
+ 331              		@ sp needed
+ 332 0060 70BD     		pop	{r4, r5, r6, pc}
+ 333              	.LVL26:
+ 334              	.L19:
+ 335              		.loc 1 93 1 view .LVU75
+ 336 0062 00BF     		.align	2
+ 337              	.L18:
+ 338 0064 00000000 		.word	hspi2
+ 339 0068 00000000 		.word	pinNumber
+ 340 006c 000C0140 		.word	1073810432
+ 341              		.cfi_endproc
+ 342              	.LFE73:
+ 344              		.section	.text.send_to_SPI,"ax",%progbits
+ 345              		.align	1
+ 346              		.global	send_to_SPI
+ 347              		.syntax unified
+ 348              		.thumb
+ 349              		.thumb_func
+ 351              	send_to_SPI:
+ 352              	.LVL27:
+ 353              	.LFB74:
+  94:Drivers/AD7793/AD7793.c **** 
+  95:Drivers/AD7793/AD7793.c **** void send_to_SPI(uint8_t *data, uint16_t size)
+  96:Drivers/AD7793/AD7793.c **** {
+ 354              		.loc 1 96 1 is_stmt 1 view -0
+ 355              		.cfi_startproc
+ 356              		@ args = 0, pretend = 0, frame = 0
+ 357              		@ frame_needed = 0, uses_anonymous_args = 0
+ 358              		.loc 1 96 1 is_stmt 0 view .LVU77
+ 359 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 360              	.LCFI10:
+ 361              		.cfi_def_cfa_offset 24
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 9
+
+
+ 362              		.cfi_offset 3, -24
+ 363              		.cfi_offset 4, -20
+ 364              		.cfi_offset 5, -16
+ 365              		.cfi_offset 6, -12
+ 366              		.cfi_offset 7, -8
+ 367              		.cfi_offset 14, -4
+ 368 0002 0446     		mov	r4, r0
+ 369 0004 0D46     		mov	r5, r1
+  97:Drivers/AD7793/AD7793.c ****   HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_RESET);
+ 370              		.loc 1 97 3 is_stmt 1 view .LVU78
+ 371 0006 094F     		ldr	r7, .L22
+ 372 0008 094E     		ldr	r6, .L22+4
+ 373 000a 0022     		movs	r2, #0
+ 374 000c 3988     		ldrh	r1, [r7]
+ 375              	.LVL28:
+ 376              		.loc 1 97 3 is_stmt 0 view .LVU79
+ 377 000e 3046     		mov	r0, r6
+ 378              	.LVL29:
+ 379              		.loc 1 97 3 view .LVU80
+ 380 0010 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 381              	.LVL30:
+  98:Drivers/AD7793/AD7793.c ****   HAL_SPI_Transmit(&hspi2, data, size, 1);
+ 382              		.loc 1 98 3 is_stmt 1 view .LVU81
+ 383 0014 0123     		movs	r3, #1
+ 384 0016 2A46     		mov	r2, r5
+ 385 0018 2146     		mov	r1, r4
+ 386 001a 0648     		ldr	r0, .L22+8
+ 387 001c FFF7FEFF 		bl	HAL_SPI_Transmit
+ 388              	.LVL31:
+  99:Drivers/AD7793/AD7793.c ****   HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_SET);
+ 389              		.loc 1 99 3 view .LVU82
+ 390 0020 0122     		movs	r2, #1
+ 391 0022 3988     		ldrh	r1, [r7]
+ 392 0024 3046     		mov	r0, r6
+ 393 0026 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 394              	.LVL32:
+ 100:Drivers/AD7793/AD7793.c **** }
+ 395              		.loc 1 100 1 is_stmt 0 view .LVU83
+ 396 002a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 397              	.LVL33:
+ 398              	.L23:
+ 399              		.loc 1 100 1 view .LVU84
+ 400              		.align	2
+ 401              	.L22:
+ 402 002c 00000000 		.word	pinNumber
+ 403 0030 000C0140 		.word	1073810432
+ 404 0034 00000000 		.word	hspi2
+ 405              		.cfi_endproc
+ 406              	.LFE74:
+ 408              		.section	.text.AD7793_Init,"ax",%progbits
+ 409              		.align	1
+ 410              		.global	AD7793_Init
+ 411              		.syntax unified
+ 412              		.thumb
+ 413              		.thumb_func
+ 415              	AD7793_Init:
+ 416              	.LFB65:
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 10
+
+
+   9:Drivers/AD7793/AD7793.c ****   uint8_t init_command[3] = {0x50, 0x00, 0x00};
+ 417              		.loc 1 9 1 is_stmt 1 view -0
+ 418              		.cfi_startproc
+ 419              		@ args = 0, pretend = 0, frame = 8
+ 420              		@ frame_needed = 0, uses_anonymous_args = 0
+ 421 0000 00B5     		push	{lr}
+ 422              	.LCFI11:
+ 423              		.cfi_def_cfa_offset 4
+ 424              		.cfi_offset 14, -4
+ 425 0002 83B0     		sub	sp, sp, #12
+ 426              	.LCFI12:
+ 427              		.cfi_def_cfa_offset 16
+  10:Drivers/AD7793/AD7793.c ****   send_to_SPI(init_command, sizeof(init_command));
+ 428              		.loc 1 10 3 view .LVU86
+  10:Drivers/AD7793/AD7793.c ****   send_to_SPI(init_command, sizeof(init_command));
+ 429              		.loc 1 10 11 is_stmt 0 view .LVU87
+ 430 0004 064B     		ldr	r3, .L26
+ 431 0006 5B68     		ldr	r3, [r3, #4]
+ 432 0008 ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 433 000c 1B0C     		lsrs	r3, r3, #16
+ 434 000e 8DF80630 		strb	r3, [sp, #6]
+  11:Drivers/AD7793/AD7793.c **** }
+ 435              		.loc 1 11 3 is_stmt 1 view .LVU88
+ 436 0012 0321     		movs	r1, #3
+ 437 0014 01A8     		add	r0, sp, #4
+ 438 0016 FFF7FEFF 		bl	send_to_SPI
+ 439              	.LVL34:
+  12:Drivers/AD7793/AD7793.c **** 
+ 440              		.loc 1 12 1 is_stmt 0 view .LVU89
+ 441 001a 03B0     		add	sp, sp, #12
+ 442              	.LCFI13:
+ 443              		.cfi_def_cfa_offset 4
+ 444              		@ sp needed
+ 445 001c 5DF804FB 		ldr	pc, [sp], #4
+ 446              	.L27:
+ 447              		.align	2
+ 448              	.L26:
+ 449 0020 00000000 		.word	.LANCHOR0
+ 450              		.cfi_endproc
+ 451              	.LFE65:
+ 453              		.section	.rodata.AD7793_Reset.str1.4,"aMS",%progbits,1
+ 454              		.align	2
+ 455              	.LC2:
+ 456 0000 03FFFFFF 		.ascii	"\003\377\377\377\377\000"
+ 456      FF00
+ 457              		.section	.text.AD7793_Reset,"ax",%progbits
+ 458              		.align	1
+ 459              		.global	AD7793_Reset
+ 460              		.syntax unified
+ 461              		.thumb
+ 462              		.thumb_func
+ 464              	AD7793_Reset:
+ 465              	.LFB66:
+  15:Drivers/AD7793/AD7793.c ****   uint8_t dataToSend[5] = {0x03, 0xff, 0xff, 0xff, 0xff};
+ 466              		.loc 1 15 1 is_stmt 1 view -0
+ 467              		.cfi_startproc
+ 468              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 11
+
+
+ 469              		@ frame_needed = 0, uses_anonymous_args = 0
+ 470 0000 00B5     		push	{lr}
+ 471              	.LCFI14:
+ 472              		.cfi_def_cfa_offset 4
+ 473              		.cfi_offset 14, -4
+ 474 0002 83B0     		sub	sp, sp, #12
+ 475              	.LCFI15:
+ 476              		.cfi_def_cfa_offset 16
+  16:Drivers/AD7793/AD7793.c ****   send_to_SPI(dataToSend, sizeof(dataToSend));
+ 477              		.loc 1 16 3 view .LVU91
+  16:Drivers/AD7793/AD7793.c ****   send_to_SPI(dataToSend, sizeof(dataToSend));
+ 478              		.loc 1 16 11 is_stmt 0 view .LVU92
+ 479 0004 064B     		ldr	r3, .L30
+ 480 0006 93E80300 		ldm	r3, {r0, r1}
+ 481 000a 0090     		str	r0, [sp]
+ 482 000c 8DF80410 		strb	r1, [sp, #4]
+  17:Drivers/AD7793/AD7793.c **** }
+ 483              		.loc 1 17 3 is_stmt 1 view .LVU93
+ 484 0010 0521     		movs	r1, #5
+ 485 0012 6846     		mov	r0, sp
+ 486 0014 FFF7FEFF 		bl	send_to_SPI
+ 487              	.LVL35:
+  18:Drivers/AD7793/AD7793.c **** 
+ 488              		.loc 1 18 1 is_stmt 0 view .LVU94
+ 489 0018 03B0     		add	sp, sp, #12
+ 490              	.LCFI16:
+ 491              		.cfi_def_cfa_offset 4
+ 492              		@ sp needed
+ 493 001a 5DF804FB 		ldr	pc, [sp], #4
+ 494              	.L31:
+ 495 001e 00BF     		.align	2
+ 496              	.L30:
+ 497 0020 00000000 		.word	.LC2
+ 498              		.cfi_endproc
+ 499              	.LFE66:
+ 501              		.section	.text.AD7793_Configuration_Register,"ax",%progbits
+ 502              		.align	1
+ 503              		.global	AD7793_Configuration_Register
+ 504              		.syntax unified
+ 505              		.thumb
+ 506              		.thumb_func
+ 508              	AD7793_Configuration_Register:
+ 509              	.LVL36:
+ 510              	.LFB69:
+  37:Drivers/AD7793/AD7793.c ****   uint8_t vbias_gain = (vbias << 6) + gain;
+ 511              		.loc 1 37 1 is_stmt 1 view -0
+ 512              		.cfi_startproc
+ 513              		@ args = 0, pretend = 0, frame = 8
+ 514              		@ frame_needed = 0, uses_anonymous_args = 0
+  37:Drivers/AD7793/AD7793.c ****   uint8_t vbias_gain = (vbias << 6) + gain;
+ 515              		.loc 1 37 1 is_stmt 0 view .LVU96
+ 516 0000 00B5     		push	{lr}
+ 517              	.LCFI17:
+ 518              		.cfi_def_cfa_offset 4
+ 519              		.cfi_offset 14, -4
+ 520 0002 83B0     		sub	sp, sp, #12
+ 521              	.LCFI18:
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 12
+
+
+ 522              		.cfi_def_cfa_offset 16
+  38:Drivers/AD7793/AD7793.c ****   uint8_t refsel_chanel = 0x10 | ((refsel << 7) + channel);
+ 523              		.loc 1 38 3 is_stmt 1 view .LVU97
+  38:Drivers/AD7793/AD7793.c ****   uint8_t refsel_chanel = 0x10 | ((refsel << 7) + channel);
+ 524              		.loc 1 38 31 is_stmt 0 view .LVU98
+ 525 0004 8001     		lsls	r0, r0, #6
+ 526              	.LVL37:
+  38:Drivers/AD7793/AD7793.c ****   uint8_t refsel_chanel = 0x10 | ((refsel << 7) + channel);
+ 527              		.loc 1 38 31 view .LVU99
+ 528 0006 C0B2     		uxtb	r0, r0
+  38:Drivers/AD7793/AD7793.c ****   uint8_t refsel_chanel = 0x10 | ((refsel << 7) + channel);
+ 529              		.loc 1 38 11 view .LVU100
+ 530 0008 0844     		add	r0, r0, r1
+ 531              	.LVL38:
+  39:Drivers/AD7793/AD7793.c **** 
+ 532              		.loc 1 39 3 is_stmt 1 view .LVU101
+  39:Drivers/AD7793/AD7793.c **** 
+ 533              		.loc 1 39 43 is_stmt 0 view .LVU102
+ 534 000a D201     		lsls	r2, r2, #7
+ 535              	.LVL39:
+  39:Drivers/AD7793/AD7793.c **** 
+ 536              		.loc 1 39 43 view .LVU103
+ 537 000c D2B2     		uxtb	r2, r2
+  39:Drivers/AD7793/AD7793.c **** 
+ 538              		.loc 1 39 49 view .LVU104
+ 539 000e 1A44     		add	r2, r2, r3
+ 540 0010 52B2     		sxtb	r2, r2
+  39:Drivers/AD7793/AD7793.c **** 
+ 541              		.loc 1 39 32 view .LVU105
+ 542 0012 42F01002 		orr	r2, r2, #16
+ 543              	.LVL40:
+  41:Drivers/AD7793/AD7793.c ****   send_to_SPI(conf_command, sizeof(conf_command));
+ 544              		.loc 1 41 3 is_stmt 1 view .LVU106
+  41:Drivers/AD7793/AD7793.c ****   send_to_SPI(conf_command, sizeof(conf_command));
+ 545              		.loc 1 41 11 is_stmt 0 view .LVU107
+ 546 0016 1023     		movs	r3, #16
+ 547              	.LVL41:
+  41:Drivers/AD7793/AD7793.c ****   send_to_SPI(conf_command, sizeof(conf_command));
+ 548              		.loc 1 41 11 view .LVU108
+ 549 0018 8DF80430 		strb	r3, [sp, #4]
+ 550 001c 8DF80500 		strb	r0, [sp, #5]
+ 551 0020 8DF80620 		strb	r2, [sp, #6]
+  42:Drivers/AD7793/AD7793.c **** }
+ 552              		.loc 1 42 3 is_stmt 1 view .LVU109
+ 553 0024 0321     		movs	r1, #3
+ 554              	.LVL42:
+  42:Drivers/AD7793/AD7793.c **** }
+ 555              		.loc 1 42 3 is_stmt 0 view .LVU110
+ 556 0026 01A8     		add	r0, sp, #4
+ 557              	.LVL43:
+  42:Drivers/AD7793/AD7793.c **** }
+ 558              		.loc 1 42 3 view .LVU111
+ 559 0028 FFF7FEFF 		bl	send_to_SPI
+ 560              	.LVL44:
+  43:Drivers/AD7793/AD7793.c **** 
+ 561              		.loc 1 43 1 view .LVU112
+ 562 002c 03B0     		add	sp, sp, #12
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 13
+
+
+ 563              	.LCFI19:
+ 564              		.cfi_def_cfa_offset 4
+ 565              		@ sp needed
+ 566 002e 5DF804FB 		ldr	pc, [sp], #4
+ 567              		.cfi_endproc
+ 568              	.LFE69:
+ 570              		.section	.text.AD7793_Calibrate,"ax",%progbits
+ 571              		.align	1
+ 572              		.global	AD7793_Calibrate
+ 573              		.syntax unified
+ 574              		.thumb
+ 575              		.thumb_func
+ 577              	AD7793_Calibrate:
+ 578              	.LVL45:
+ 579              	.LFB71:
+  53:Drivers/AD7793/AD7793.c ****   AD7793_Configuration_Register(0, 0, 0, channel);
+ 580              		.loc 1 53 1 is_stmt 1 view -0
+ 581              		.cfi_startproc
+ 582              		@ args = 0, pretend = 0, frame = 0
+ 583              		@ frame_needed = 0, uses_anonymous_args = 0
+  53:Drivers/AD7793/AD7793.c ****   AD7793_Configuration_Register(0, 0, 0, channel);
+ 584              		.loc 1 53 1 is_stmt 0 view .LVU114
+ 585 0000 10B5     		push	{r4, lr}
+ 586              	.LCFI20:
+ 587              		.cfi_def_cfa_offset 8
+ 588              		.cfi_offset 4, -8
+ 589              		.cfi_offset 14, -4
+ 590 0002 0446     		mov	r4, r0
+ 591 0004 0B46     		mov	r3, r1
+  54:Drivers/AD7793/AD7793.c ****   AD7793_Mode_Register(mode, 0, 0);
+ 592              		.loc 1 54 3 is_stmt 1 view .LVU115
+ 593 0006 0022     		movs	r2, #0
+ 594 0008 1146     		mov	r1, r2
+ 595              	.LVL46:
+  54:Drivers/AD7793/AD7793.c ****   AD7793_Mode_Register(mode, 0, 0);
+ 596              		.loc 1 54 3 is_stmt 0 view .LVU116
+ 597 000a 1046     		mov	r0, r2
+ 598              	.LVL47:
+  54:Drivers/AD7793/AD7793.c ****   AD7793_Mode_Register(mode, 0, 0);
+ 599              		.loc 1 54 3 view .LVU117
+ 600 000c FFF7FEFF 		bl	AD7793_Configuration_Register
+ 601              	.LVL48:
+  55:Drivers/AD7793/AD7793.c ****   AD7793_WaitRdyGoLow();
+ 602              		.loc 1 55 3 is_stmt 1 view .LVU118
+ 603 0010 0022     		movs	r2, #0
+ 604 0012 1146     		mov	r1, r2
+ 605 0014 2046     		mov	r0, r4
+ 606 0016 FFF7FEFF 		bl	AD7793_Mode_Register
+ 607              	.LVL49:
+  56:Drivers/AD7793/AD7793.c ****   HAL_GPIO_WritePin(GPIOB, pinNumber, GPIO_PIN_SET);
+ 608              		.loc 1 56 3 view .LVU119
+ 609 001a FFF7FEFF 		bl	AD7793_WaitRdyGoLow
+ 610              	.LVL50:
+  57:Drivers/AD7793/AD7793.c **** }
+ 611              		.loc 1 57 3 view .LVU120
+ 612 001e 0122     		movs	r2, #1
+ 613 0020 024B     		ldr	r3, .L36
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 14
+
+
+ 614 0022 1988     		ldrh	r1, [r3]
+ 615 0024 0248     		ldr	r0, .L36+4
+ 616 0026 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 617              	.LVL51:
+  58:Drivers/AD7793/AD7793.c **** 
+ 618              		.loc 1 58 1 is_stmt 0 view .LVU121
+ 619 002a 10BD     		pop	{r4, pc}
+ 620              	.L37:
+ 621              		.align	2
+ 622              	.L36:
+ 623 002c 00000000 		.word	pinNumber
+ 624 0030 000C0140 		.word	1073810432
+ 625              		.cfi_endproc
+ 626              	.LFE71:
+ 628              		.section	.text.AD7793_IO_Register,"ax",%progbits
+ 629              		.align	1
+ 630              		.global	AD7793_IO_Register
+ 631              		.syntax unified
+ 632              		.thumb
+ 633              		.thumb_func
+ 635              	AD7793_IO_Register:
+ 636              	.LVL52:
+ 637              	.LFB70:
+  46:Drivers/AD7793/AD7793.c ****   uint8_t io_comand[2] = {AD7793_REG_IO, current};
+ 638              		.loc 1 46 1 is_stmt 1 view -0
+ 639              		.cfi_startproc
+ 640              		@ args = 0, pretend = 0, frame = 8
+ 641              		@ frame_needed = 0, uses_anonymous_args = 0
+  46:Drivers/AD7793/AD7793.c ****   uint8_t io_comand[2] = {AD7793_REG_IO, current};
+ 642              		.loc 1 46 1 is_stmt 0 view .LVU123
+ 643 0000 00B5     		push	{lr}
+ 644              	.LCFI21:
+ 645              		.cfi_def_cfa_offset 4
+ 646              		.cfi_offset 14, -4
+ 647 0002 83B0     		sub	sp, sp, #12
+ 648              	.LCFI22:
+ 649              		.cfi_def_cfa_offset 16
+  47:Drivers/AD7793/AD7793.c ****   io_comand[1] = (direction << 2) + current;
+ 650              		.loc 1 47 3 is_stmt 1 view .LVU124
+  47:Drivers/AD7793/AD7793.c ****   io_comand[1] = (direction << 2) + current;
+ 651              		.loc 1 47 11 is_stmt 0 view .LVU125
+ 652 0004 2823     		movs	r3, #40
+ 653 0006 8DF80430 		strb	r3, [sp, #4]
+ 654 000a 8DF80510 		strb	r1, [sp, #5]
+  48:Drivers/AD7793/AD7793.c ****   send_to_SPI(io_comand, sizeof(io_comand));
+ 655              		.loc 1 48 3 is_stmt 1 view .LVU126
+  48:Drivers/AD7793/AD7793.c ****   send_to_SPI(io_comand, sizeof(io_comand));
+ 656              		.loc 1 48 29 is_stmt 0 view .LVU127
+ 657 000e 8000     		lsls	r0, r0, #2
+ 658              	.LVL53:
+  48:Drivers/AD7793/AD7793.c ****   send_to_SPI(io_comand, sizeof(io_comand));
+ 659              		.loc 1 48 29 view .LVU128
+ 660 0010 C0B2     		uxtb	r0, r0
+  48:Drivers/AD7793/AD7793.c ****   send_to_SPI(io_comand, sizeof(io_comand));
+ 661              		.loc 1 48 35 view .LVU129
+ 662 0012 0844     		add	r0, r0, r1
+  48:Drivers/AD7793/AD7793.c ****   send_to_SPI(io_comand, sizeof(io_comand));
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 15
+
+
+ 663              		.loc 1 48 16 view .LVU130
+ 664 0014 8DF80500 		strb	r0, [sp, #5]
+  49:Drivers/AD7793/AD7793.c **** }
+ 665              		.loc 1 49 3 is_stmt 1 view .LVU131
+ 666 0018 0221     		movs	r1, #2
+ 667              	.LVL54:
+  49:Drivers/AD7793/AD7793.c **** }
+ 668              		.loc 1 49 3 is_stmt 0 view .LVU132
+ 669 001a 01A8     		add	r0, sp, #4
+ 670 001c FFF7FEFF 		bl	send_to_SPI
+ 671              	.LVL55:
+  50:Drivers/AD7793/AD7793.c **** 
+ 672              		.loc 1 50 1 view .LVU133
+ 673 0020 03B0     		add	sp, sp, #12
+ 674              	.LCFI23:
+ 675              		.cfi_def_cfa_offset 4
+ 676              		@ sp needed
+ 677 0022 5DF804FB 		ldr	pc, [sp], #4
+ 678              		.cfi_endproc
+ 679              	.LFE70:
+ 681              		.section	.rodata
+ 682              		.align	2
+ 683              		.set	.LANCHOR0,. + 0
+ 684              	.LC0:
+ 685 0000 080000   		.ascii	"\010\000\000"
+ 686 0003 00       		.space	1
+ 687              	.LC1:
+ 688 0004 500000   		.ascii	"P\000\000"
+ 689              		.text
+ 690              	.Letext0:
+ 691              		.file 2 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\machine\\_default_types.
+ 692              		.file 3 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 693              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
+ 694              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
+ 695              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 696              		.file 7 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h"
+ 697              		.file 8 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h"
+ 698              		.file 9 "Core/Inc/spi.h"
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 AD7793.c
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:18     .text.AD7793_WaitRdyGoLow:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:24     .text.AD7793_WaitRdyGoLow:00000000 AD7793_WaitRdyGoLow
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:52     .text.AD7793_WaitRdyGoLow:00000014 $d
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:57     .text.AD7793_Mode_Register:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:63     .text.AD7793_Mode_Register:00000000 AD7793_Mode_Register
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:126    .text.AD7793_Mode_Register:00000040 $d
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:134    .text.AD7793_Calibrate:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:140    .text.AD7793_Calibrate:00000000 AD7793_Calibrate
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:154    .text.AD7793_SingleConversion:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:160    .text.AD7793_SingleConversion:00000000 AD7793_SingleConversion
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:232    .text.AD7793_SingleConversion:00000050 $d
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:239    .text.AD7793_ContinuousReadAvg:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:245    .text.AD7793_ContinuousReadAvg:00000000 AD7793_ContinuousReadAvg
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:358    .text.AD7793_ContinuousReadAvg:00000064 $d
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:365    .text.send_to_SPI:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:371    .text.send_to_SPI:00000000 send_to_SPI
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:422    .text.send_to_SPI:0000002c $d
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:429    .text.AD7793_Init:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:435    .text.AD7793_Init:00000000 AD7793_Init
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:469    .text.AD7793_Init:00000020 $d
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:474    .rodata.AD7793_Reset.str1.4:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:478    .text.AD7793_Reset:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:484    .text.AD7793_Reset:00000000 AD7793_Reset
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:517    .text.AD7793_Reset:00000020 $d
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:522    .text.AD7793_Configuration_Register:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:528    .text.AD7793_Configuration_Register:00000000 AD7793_Configuration_Register
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:591    .text.AD7793_IO_Register:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:597    .text.AD7793_IO_Register:00000000 AD7793_IO_Register
-C:\Users\Andre\AppData\Local\Temp\cckqDRXX.s:644    .rodata:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:18     .text.AD7793_WaitRdyGoLow:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:24     .text.AD7793_WaitRdyGoLow:00000000 AD7793_WaitRdyGoLow
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:52     .text.AD7793_WaitRdyGoLow:00000014 $d
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:57     .text.AD7793_Mode_Register:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:63     .text.AD7793_Mode_Register:00000000 AD7793_Mode_Register
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:126    .text.AD7793_Mode_Register:00000040 $d
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:134    .text.AD7793_SingleConversion:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:140    .text.AD7793_SingleConversion:00000000 AD7793_SingleConversion
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:212    .text.AD7793_SingleConversion:00000050 $d
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:219    .text.AD7793_ContinuousReadAvg:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:225    .text.AD7793_ContinuousReadAvg:00000000 AD7793_ContinuousReadAvg
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:338    .text.AD7793_ContinuousReadAvg:00000064 $d
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:345    .text.send_to_SPI:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:351    .text.send_to_SPI:00000000 send_to_SPI
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:402    .text.send_to_SPI:0000002c $d
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:409    .text.AD7793_Init:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:415    .text.AD7793_Init:00000000 AD7793_Init
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:449    .text.AD7793_Init:00000020 $d
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:454    .rodata.AD7793_Reset.str1.4:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:458    .text.AD7793_Reset:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:464    .text.AD7793_Reset:00000000 AD7793_Reset
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:497    .text.AD7793_Reset:00000020 $d
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:502    .text.AD7793_Configuration_Register:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:508    .text.AD7793_Configuration_Register:00000000 AD7793_Configuration_Register
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:571    .text.AD7793_Calibrate:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:577    .text.AD7793_Calibrate:00000000 AD7793_Calibrate
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:623    .text.AD7793_Calibrate:0000002c $d
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:629    .text.AD7793_IO_Register:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:635    .text.AD7793_IO_Register:00000000 AD7793_IO_Register
+C:\Users\Andre\AppData\Local\Temp\ccWQhnYh.s:682    .rodata:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_ReadPin

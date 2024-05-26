@@ -2,10 +2,13 @@
 #include "mb.h"
 #include "mbport.h"
 
+#include "usart.h"
+
 #if MB_SLAVE_RTU_ENABLED > 0 || MB_SLAVE_ASCII_ENABLED > 0
 
 /* ----------------------- Static variables ---------------------------------*/
 UART_HandleTypeDef *uart;
+
 static uint8_t singlechar;
 
 /* ----------------------- User defenitions ---------------------------------*/
@@ -17,6 +20,9 @@ static uint8_t singlechar;
 BOOL xMBPortSerialInit( void *dHUART, ULONG ulBaudRate, void *dHTIM )
 {
 	uart = (UART_HandleTypeDef *)dHUART;
+
+	uart->Init.BaudRate = ulBaudRate;		/* Override baud rate */
+	HAL_UART_Init(dHUART);					/* Initialization UART */
 
 	return TRUE;
 }

@@ -1,7 +1,8 @@
 #ifndef __ReceiveTransmit_H
 #define __ReceiveTransmit_H
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 // #include "main.h"
@@ -11,14 +12,26 @@ extern "C" {
 #include "mbport.h"
 #include "user_mb_app.h"
 
-#define Chanel_1_tempRTD            0
-#define Chanel_1_tempChip           2
+#define Chanel_1_tempRTD        0
+#define Chanel_1_tempChip       2
 
-#define Chanel_2_tempRTD            4
-#define Chanel_2_tempChip           6 
+#define Chanel_2_tempRTD        4
+#define Chanel_2_tempChip       6
 
-float dataReceive (int registr);
-void dataTransmit (int registr, float out);
+/* Parameters for temperature and vref STM32 */
+#define vrefCPU_STM32           10
+#define tempCPU_STM32           12
+
+
+  float dataReceiveMB_float(int registr);
+
+  uint32_t dataReceiveMB_uint(int registr);
+
+  void dataTransmitMB_float(int registr, float out);
+
+  void dataTransmitMB_uint(int registr, uint32_t out);
+
+  void dataReceiveMBHold_uint(int registr, uint32_t out);
 
 #ifdef __cplusplus
 }

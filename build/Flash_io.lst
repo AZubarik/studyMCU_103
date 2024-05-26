@@ -1,0 +1,312 @@
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"Flash_io.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.storeParametersToFlash,"ax",%progbits
+  18              		.align	1
+  19              		.global	storeParametersToFlash
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	storeParametersToFlash:
+  25              	.LFB65:
+  26              		.file 1 "Drivers/Flash/Flash_io.c"
+   1:Drivers/Flash/Flash_io.c **** #include "Flash_io.h"
+   2:Drivers/Flash/Flash_io.c **** #include "Flash.h"
+   3:Drivers/Flash/Flash_io.c **** #include "ReceiveTransmit.h"
+   4:Drivers/Flash/Flash_io.c **** 
+   5:Drivers/Flash/Flash_io.c **** extern uint16_t usSRegHoldBuf[];
+   6:Drivers/Flash/Flash_io.c **** 
+   7:Drivers/Flash/Flash_io.c **** static memoryChip memoryDevice;
+   8:Drivers/Flash/Flash_io.c **** 
+   9:Drivers/Flash/Flash_io.c **** void storeParametersToFlash()
+  10:Drivers/Flash/Flash_io.c **** {
+  27              		.loc 1 10 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  11:Drivers/Flash/Flash_io.c ****   if (usSRegHoldBuf[9] == TRUE)
+  31              		.loc 1 11 3 view .LVU1
+  32              		.loc 1 11 20 is_stmt 0 view .LVU2
+  33 0000 2A4B     		ldr	r3, .L20
+  34 0002 5B8A     		ldrh	r3, [r3, #18]
+  35              		.loc 1 11 6 view .LVU3
+  36 0004 012B     		cmp	r3, #1
+  37 0006 00D0     		beq	.L17
+  38 0008 7047     		bx	lr
+  39              	.L17:
+  10:Drivers/Flash/Flash_io.c ****   if (usSRegHoldBuf[9] == TRUE)
+  40              		.loc 1 10 1 view .LVU4
+  41 000a 10B5     		push	{r4, lr}
+  42              	.LCFI0:
+  43              		.cfi_def_cfa_offset 8
+  44              		.cfi_offset 4, -8
+  45              		.cfi_offset 14, -4
+  12:Drivers/Flash/Flash_io.c ****   { /* Чтение дыннх из Flash */
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 2
+
+
+  13:Drivers/Flash/Flash_io.c ****     if (usSRegHoldBuf[10] == TRUE)
+  46              		.loc 1 13 5 is_stmt 1 view .LVU5
+  47              		.loc 1 13 22 is_stmt 0 view .LVU6
+  48 000c 274B     		ldr	r3, .L20
+  49 000e 9B8A     		ldrh	r3, [r3, #20]
+  50              		.loc 1 13 8 view .LVU7
+  51 0010 012B     		cmp	r3, #1
+  52 0012 21D0     		beq	.L18
+  53              	.L4:
+  14:Drivers/Flash/Flash_io.c ****     {
+  15:Drivers/Flash/Flash_io.c ****       for (int i = 0; i < 6; i += 2)
+  16:Drivers/Flash/Flash_io.c ****       {
+  17:Drivers/Flash/Flash_io.c ****         dataReceiveMBHold_uint(12 + i, readFlashData(0x0801FC00 + (i * 2)));
+  18:Drivers/Flash/Flash_io.c ****       }
+  19:Drivers/Flash/Flash_io.c ****       usSRegHoldBuf[10] = FALSE;
+  20:Drivers/Flash/Flash_io.c ****     }
+  21:Drivers/Flash/Flash_io.c **** 
+  22:Drivers/Flash/Flash_io.c ****     memoryDevice.deviceIdMB = dataReceiveMB_uint(12);
+  54              		.loc 1 22 5 is_stmt 1 view .LVU8
+  55              		.loc 1 22 31 is_stmt 0 view .LVU9
+  56 0014 0C20     		movs	r0, #12
+  57 0016 FFF7FEFF 		bl	dataReceiveMB_uint
+  58              	.LVL0:
+  59              		.loc 1 22 29 view .LVU10
+  60 001a 254B     		ldr	r3, .L20+4
+  61 001c 5870     		strb	r0, [r3, #1]
+  23:Drivers/Flash/Flash_io.c ****     switch (dataReceiveMB_uint(14))
+  62              		.loc 1 23 5 is_stmt 1 view .LVU11
+  63              		.loc 1 23 13 is_stmt 0 view .LVU12
+  64 001e 0E20     		movs	r0, #14
+  65 0020 FFF7FEFF 		bl	dataReceiveMB_uint
+  66              	.LVL1:
+  67              		.loc 1 23 5 view .LVU13
+  68 0024 0138     		subs	r0, r0, #1
+  69 0026 0328     		cmp	r0, #3
+  70 0028 1CD8     		bhi	.L6
+  71 002a DFE800F0 		tbb	[pc, r0]
+  72              	.L8:
+  73 002e 17       		.byte	(.L11-.L8)/2
+  74 002f 20       		.byte	(.L10-.L8)/2
+  75 0030 25       		.byte	(.L9-.L8)/2
+  76 0031 2A       		.byte	(.L7-.L8)/2
+  77              	.LVL2:
+  78              		.p2align 1
+  79              	.L5:
+  80              	.LBB2:
+  17:Drivers/Flash/Flash_io.c ****       }
+  81              		.loc 1 17 9 is_stmt 1 discriminator 3 view .LVU14
+  17:Drivers/Flash/Flash_io.c ****       }
+  82              		.loc 1 17 65 is_stmt 0 discriminator 3 view .LVU15
+  83 0032 04F18060 		add	r0, r4, #67108864
+  84 0036 00F57E40 		add	r0, r0, #65024
+  17:Drivers/Flash/Flash_io.c ****       }
+  85              		.loc 1 17 9 discriminator 3 view .LVU16
+  86 003a 4000     		lsls	r0, r0, #1
+  87 003c FFF7FEFF 		bl	readFlashData
+  88              	.LVL3:
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 3
+
+
+  89 0040 0146     		mov	r1, r0
+  90 0042 04F10C00 		add	r0, r4, #12
+  91 0046 FFF7FEFF 		bl	dataReceiveMBHold_uint
+  92              	.LVL4:
+  15:Drivers/Flash/Flash_io.c ****       {
+  93              		.loc 1 15 30 is_stmt 1 discriminator 3 view .LVU17
+  15:Drivers/Flash/Flash_io.c ****       {
+  94              		.loc 1 15 32 is_stmt 0 discriminator 3 view .LVU18
+  95 004a 0234     		adds	r4, r4, #2
+  96              	.LVL5:
+  97              	.L3:
+  15:Drivers/Flash/Flash_io.c ****       {
+  98              		.loc 1 15 23 is_stmt 1 discriminator 1 view .LVU19
+  15:Drivers/Flash/Flash_io.c ****       {
+  99              		.loc 1 15 7 is_stmt 0 discriminator 1 view .LVU20
+ 100 004c 052C     		cmp	r4, #5
+ 101 004e F0DD     		ble	.L5
+ 102              	.LBE2:
+  19:Drivers/Flash/Flash_io.c ****     }
+ 103              		.loc 1 19 7 is_stmt 1 view .LVU21
+  19:Drivers/Flash/Flash_io.c ****     }
+ 104              		.loc 1 19 25 is_stmt 0 view .LVU22
+ 105 0050 164B     		ldr	r3, .L20
+ 106 0052 0022     		movs	r2, #0
+ 107 0054 9A82     		strh	r2, [r3, #20]	@ movhi
+ 108 0056 DDE7     		b	.L4
+ 109              	.LVL6:
+ 110              	.L18:
+ 111              	.LBB3:
+  15:Drivers/Flash/Flash_io.c ****       {
+ 112              		.loc 1 15 16 view .LVU23
+ 113 0058 0024     		movs	r4, #0
+ 114 005a F7E7     		b	.L3
+ 115              	.L11:
+ 116              	.LBE3:
+  24:Drivers/Flash/Flash_io.c ****     {
+  25:Drivers/Flash/Flash_io.c ****       case 1:
+  26:Drivers/Flash/Flash_io.c ****           memoryDevice.BaudRate = 9600;
+ 117              		.loc 1 26 11 is_stmt 1 view .LVU24
+ 118              		.loc 1 26 33 is_stmt 0 view .LVU25
+ 119 005c 144B     		ldr	r3, .L20+4
+ 120 005e 4FF41652 		mov	r2, #9600
+ 121 0062 5A60     		str	r2, [r3, #4]
+  27:Drivers/Flash/Flash_io.c ****           break;
+ 122              		.loc 1 27 11 is_stmt 1 view .LVU26
+ 123              	.L6:
+  28:Drivers/Flash/Flash_io.c ****       case 2:
+  29:Drivers/Flash/Flash_io.c ****           memoryDevice.BaudRate = 19200;
+  30:Drivers/Flash/Flash_io.c ****           break;
+  31:Drivers/Flash/Flash_io.c ****       case 3:
+  32:Drivers/Flash/Flash_io.c ****           memoryDevice.BaudRate = 38400;
+  33:Drivers/Flash/Flash_io.c ****           break;
+  34:Drivers/Flash/Flash_io.c ****       case 4:
+  35:Drivers/Flash/Flash_io.c ****           memoryDevice.BaudRate = 115200;
+  36:Drivers/Flash/Flash_io.c ****           break;
+  37:Drivers/Flash/Flash_io.c ****     }
+  38:Drivers/Flash/Flash_io.c **** 
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 4
+
+
+  39:Drivers/Flash/Flash_io.c ****     /* Запись данных в Flash */
+  40:Drivers/Flash/Flash_io.c ****     if (usSRegHoldBuf[11] == TRUE)
+ 124              		.loc 1 40 5 view .LVU27
+ 125              		.loc 1 40 22 is_stmt 0 view .LVU28
+ 126 0064 114B     		ldr	r3, .L20
+ 127 0066 DB8A     		ldrh	r3, [r3, #22]
+ 128              		.loc 1 40 8 view .LVU29
+ 129 0068 012B     		cmp	r3, #1
+ 130 006a 0FD0     		beq	.L19
+ 131              	.L1:
+  41:Drivers/Flash/Flash_io.c ****       {
+  42:Drivers/Flash/Flash_io.c ****         ErasingMemory();
+  43:Drivers/Flash/Flash_io.c ****         writeFlashData(0x0801FC00, memoryDevice.deviceIdMB);
+  44:Drivers/Flash/Flash_io.c ****         writeFlashData(0x0801FC04, memoryDevice.BaudRate);
+  45:Drivers/Flash/Flash_io.c ****         usSRegHoldBuf[11] = FALSE;
+  46:Drivers/Flash/Flash_io.c ****       }
+  47:Drivers/Flash/Flash_io.c ****     }
+  48:Drivers/Flash/Flash_io.c **** }
+ 132              		.loc 1 48 1 view .LVU30
+ 133 006c 10BD     		pop	{r4, pc}
+ 134              	.L10:
+  29:Drivers/Flash/Flash_io.c ****           break;
+ 135              		.loc 1 29 11 is_stmt 1 view .LVU31
+  29:Drivers/Flash/Flash_io.c ****           break;
+ 136              		.loc 1 29 33 is_stmt 0 view .LVU32
+ 137 006e 104B     		ldr	r3, .L20+4
+ 138 0070 4FF49642 		mov	r2, #19200
+ 139 0074 5A60     		str	r2, [r3, #4]
+  30:Drivers/Flash/Flash_io.c ****       case 3:
+ 140              		.loc 1 30 11 is_stmt 1 view .LVU33
+ 141 0076 F5E7     		b	.L6
+ 142              	.L9:
+  32:Drivers/Flash/Flash_io.c ****           break;
+ 143              		.loc 1 32 11 view .LVU34
+  32:Drivers/Flash/Flash_io.c ****           break;
+ 144              		.loc 1 32 33 is_stmt 0 view .LVU35
+ 145 0078 0D4B     		ldr	r3, .L20+4
+ 146 007a 4FF41642 		mov	r2, #38400
+ 147 007e 5A60     		str	r2, [r3, #4]
+  33:Drivers/Flash/Flash_io.c ****       case 4:
+ 148              		.loc 1 33 11 is_stmt 1 view .LVU36
+ 149 0080 F0E7     		b	.L6
+ 150              	.L7:
+  35:Drivers/Flash/Flash_io.c ****           break;
+ 151              		.loc 1 35 11 view .LVU37
+  35:Drivers/Flash/Flash_io.c ****           break;
+ 152              		.loc 1 35 33 is_stmt 0 view .LVU38
+ 153 0082 0B4B     		ldr	r3, .L20+4
+ 154 0084 4FF4E132 		mov	r2, #115200
+ 155 0088 5A60     		str	r2, [r3, #4]
+  36:Drivers/Flash/Flash_io.c ****     }
+ 156              		.loc 1 36 11 is_stmt 1 view .LVU39
+ 157 008a EBE7     		b	.L6
+ 158              	.L19:
+  42:Drivers/Flash/Flash_io.c ****         writeFlashData(0x0801FC00, memoryDevice.deviceIdMB);
+ 159              		.loc 1 42 9 view .LVU40
+ 160 008c FFF7FEFF 		bl	ErasingMemory
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 5
+
+
+ 161              	.LVL7:
+  43:Drivers/Flash/Flash_io.c ****         writeFlashData(0x0801FC04, memoryDevice.BaudRate);
+ 162              		.loc 1 43 9 view .LVU41
+  43:Drivers/Flash/Flash_io.c ****         writeFlashData(0x0801FC04, memoryDevice.BaudRate);
+ 163              		.loc 1 43 48 is_stmt 0 view .LVU42
+ 164 0090 074C     		ldr	r4, .L20+4
+  43:Drivers/Flash/Flash_io.c ****         writeFlashData(0x0801FC04, memoryDevice.BaudRate);
+ 165              		.loc 1 43 9 view .LVU43
+ 166 0092 6178     		ldrb	r1, [r4, #1]	@ zero_extendqisi2
+ 167 0094 0748     		ldr	r0, .L20+8
+ 168 0096 FFF7FEFF 		bl	writeFlashData
+ 169              	.LVL8:
+  44:Drivers/Flash/Flash_io.c ****         usSRegHoldBuf[11] = FALSE;
+ 170              		.loc 1 44 9 is_stmt 1 view .LVU44
+ 171 009a 6168     		ldr	r1, [r4, #4]
+ 172 009c 0648     		ldr	r0, .L20+12
+ 173 009e FFF7FEFF 		bl	writeFlashData
+ 174              	.LVL9:
+  45:Drivers/Flash/Flash_io.c ****       }
+ 175              		.loc 1 45 9 view .LVU45
+  45:Drivers/Flash/Flash_io.c ****       }
+ 176              		.loc 1 45 27 is_stmt 0 view .LVU46
+ 177 00a2 024B     		ldr	r3, .L20
+ 178 00a4 0022     		movs	r2, #0
+ 179 00a6 DA82     		strh	r2, [r3, #22]	@ movhi
+ 180              		.loc 1 48 1 view .LVU47
+ 181 00a8 E0E7     		b	.L1
+ 182              	.L21:
+ 183 00aa 00BF     		.align	2
+ 184              	.L20:
+ 185 00ac 00000000 		.word	usSRegHoldBuf
+ 186 00b0 00000000 		.word	.LANCHOR0
+ 187 00b4 00FC0108 		.word	134347776
+ 188 00b8 04FC0108 		.word	134347780
+ 189              		.cfi_endproc
+ 190              	.LFE65:
+ 192              		.section	.bss.memoryDevice,"aw",%nobits
+ 193              		.align	2
+ 194              		.set	.LANCHOR0,. + 0
+ 197              	memoryDevice:
+ 198 0000 00000000 		.space	8
+ 198      00000000 
+ 199              		.text
+ 200              	.Letext0:
+ 201              		.file 2 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\machine\\_default_types.
+ 202              		.file 3 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 203              		.file 4 "Drivers/Flash/Flash_io.h"
+ 204              		.file 5 "Drivers/Flash/Flash.h"
+ 205              		.file 6 "Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h"
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Flash_io.c
+C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:18     .text.storeParametersToFlash:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:24     .text.storeParametersToFlash:00000000 storeParametersToFlash
+C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:73     .text.storeParametersToFlash:0000002e $d
+C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:78     .text.storeParametersToFlash:00000032 $t
+C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:185    .text.storeParametersToFlash:000000ac $d
+C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:193    .bss.memoryDevice:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:197    .bss.memoryDevice:00000000 memoryDevice
+
+UNDEFINED SYMBOLS
+dataReceiveMB_uint
+readFlashData
+dataReceiveMBHold_uint
+ErasingMemory
+writeFlashData
+usSRegHoldBuf

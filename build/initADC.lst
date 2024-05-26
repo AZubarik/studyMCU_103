@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 1
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -29,7 +29,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 1
   26              		.thumb
   27              		.thumb_func
   29              	tempCPU_AD:
-  30              	.LFB66:
+  30              	.LFB67:
   31              		.file 1 "Drivers/AD7793/initADC.c"
    1:Drivers/AD7793/initADC.c **** #include "initADC.h"
    2:Drivers/AD7793/initADC.c **** #include "AD7793.h"
@@ -39,41 +39,101 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 1
    6:Drivers/AD7793/initADC.c **** extern uint16_t usSRegHoldBuf[];
    7:Drivers/AD7793/initADC.c **** 
    8:Drivers/AD7793/initADC.c **** uint16_t pinNumber;
-   9:Drivers/AD7793/initADC.c **** unsigned long conv;
+   9:Drivers/AD7793/initADC.c **** BOOL Flag;
   10:Drivers/AD7793/initADC.c **** 
-  11:Drivers/AD7793/initADC.c **** float GAIN = 1;                                       /* Gain of the AD7793 unternal instrumentatio
-  12:Drivers/AD7793/initADC.c **** float V;                                              /* The voltage read on the analog input chann
-  13:Drivers/AD7793/initADC.c **** float RRTD;                                           /* The measured resistance of the RTD */ 
-  14:Drivers/AD7793/initADC.c **** float tempRTD, tempChip;                              /* The temperature read on the analog input c
-  15:Drivers/AD7793/initADC.c **** const float RREF = 2000.0;                            /* The reference resistor: here, 2.0 Kohm, 0.
-  16:Drivers/AD7793/initADC.c **** const float Vref = 1.17;                              /* The external reference voltage applied bet
-  17:Drivers/AD7793/initADC.c **** const float R0 = 1000.0;                              /* RTD resistance at 0C */
-  18:Drivers/AD7793/initADC.c **** const float A = 3.9083E-3;                            /* Coefficient for t in the Callender-Van Dus
-  19:Drivers/AD7793/initADC.c **** const float B = -5.775E-7;                            /* Coefficient for t squared in the Callender
+  11:Drivers/AD7793/initADC.c **** float GAIN = 1;            /* Gain of the AD7793 unternal instrumentation amplifier */
+  12:Drivers/AD7793/initADC.c **** float V;                   /* The voltage read on the analog input channel 2 (should be between -0.
+  13:Drivers/AD7793/initADC.c **** float RRTD;                /* The measured resistance of the RTD */
+  14:Drivers/AD7793/initADC.c **** float tempChip;            /* The temperature read on the analog input channel 1 */
+  15:Drivers/AD7793/initADC.c **** const float RREF = 2000.0; /* The reference resistor: here, 2.0 Kohm, 0.1%, 10ppm/C */
+  16:Drivers/AD7793/initADC.c **** const float Vref = 1.17;   /* The external reference voltage applied between pins REFIN(+) and REFI
+  17:Drivers/AD7793/initADC.c **** const float R0 = 1000.0;   /* RTD resistance at 0C */
+  18:Drivers/AD7793/initADC.c **** const float A = 3.9083E-3; /* Coefficient for t in the Callender-Van Dusen equation for temperature
+  19:Drivers/AD7793/initADC.c **** const float B = -5.775E-7; /* Coefficient for t squared in the Callender-Van Dusen equation for tem
   20:Drivers/AD7793/initADC.c **** 
   21:Drivers/AD7793/initADC.c **** void ADC_chanel(uint16_t CS)
   22:Drivers/AD7793/initADC.c **** {
-  23:Drivers/AD7793/initADC.c ****     pinNumber = CS;
-  24:Drivers/AD7793/initADC.c ****     if(!usSRegHoldBuf[0]) {
-  25:Drivers/AD7793/initADC.c ****         AD7793_Init();
-  26:Drivers/AD7793/initADC.c ****         tempCPU_AD(); 
-  27:Drivers/AD7793/initADC.c ****         dataTransmit(Chanel_1_tempChip, tempChip);
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 2
+  23:Drivers/AD7793/initADC.c ****   pinNumber = CS;
+  24:Drivers/AD7793/initADC.c ****   if (!usSRegHoldBuf[0])
+  25:Drivers/AD7793/initADC.c ****   {
+  26:Drivers/AD7793/initADC.c ****     AD7793_Init();
+  27:Drivers/AD7793/initADC.c ****     tempCPU_AD();
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 2
 
 
-  28:Drivers/AD7793/initADC.c ****         usSRegHoldBuf[0] = TRUE;
-  29:Drivers/AD7793/initADC.c ****     }
-  30:Drivers/AD7793/initADC.c ****     AD7793_Reset();
-  31:Drivers/AD7793/initADC.c ****     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793
-  32:Drivers/AD7793/initADC.c ****     AD7793_IO_Register(AD7793_DIR_IEXC1_IOUT1_IEXC2_IOUT2, AD7793_EN_IXCEN_210uA);
-  33:Drivers/AD7793/initADC.c ****     tempRTD = temp(AD7793_ContinuousReadAvg(5));
-  34:Drivers/AD7793/initADC.c **** 
-  35:Drivers/AD7793/initADC.c ****     dataTransmit(Chanel_1_tempRTD, tempRTD);
-  36:Drivers/AD7793/initADC.c **** }
-  37:Drivers/AD7793/initADC.c **** 
-  38:Drivers/AD7793/initADC.c **** void tempCPU_AD ()
-  39:Drivers/AD7793/initADC.c **** {
-  32              		.loc 1 39 1 view -0
+  28:Drivers/AD7793/initADC.c ****     dataTransmitMB_float(Chanel_1_tempChip, tempChip);
+  29:Drivers/AD7793/initADC.c ****     usSRegHoldBuf[0] = TRUE;
+  30:Drivers/AD7793/initADC.c ****     Flag = 0;
+  31:Drivers/AD7793/initADC.c ****   }
+  32:Drivers/AD7793/initADC.c ****   if (usSRegHoldBuf[1])
+  33:Drivers/AD7793/initADC.c ****   {
+  34:Drivers/AD7793/initADC.c ****     AD7793_Calibrate(AD7793_MODE_CAL_INT_ZERO, AD7793_CH_AIN1P_AIN1M); /* Performs Internal Zero ca
+  35:Drivers/AD7793/initADC.c ****     AD7793_Calibrate(AD7793_MODE_CAL_INT_FULL, AD7793_CH_AIN1P_AIN1M); /* Performs Internal Full Ca
+  36:Drivers/AD7793/initADC.c ****     usSRegHoldBuf[1] = FALSE;
+  37:Drivers/AD7793/initADC.c ****   }
+  38:Drivers/AD7793/initADC.c **** 
+  39:Drivers/AD7793/initADC.c ****   if (!usSRegHoldBuf[2])
+  40:Drivers/AD7793/initADC.c ****   {
+  41:Drivers/AD7793/initADC.c ****     AD7793_Reset();
+  42:Drivers/AD7793/initADC.c ****     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793
+  43:Drivers/AD7793/initADC.c ****     AD7793_IO_Register(AD7793_DIR_IEXC1_IOUT1_IEXC2_IOUT2, AD7793_EN_IXCEN_210uA);
+  44:Drivers/AD7793/initADC.c **** 
+  45:Drivers/AD7793/initADC.c ****     float tempRTD = temp(AD7793_ContinuousReadAvg(10));
+  46:Drivers/AD7793/initADC.c **** 
+  47:Drivers/AD7793/initADC.c ****     if ((tempRTD > 0) && (tempRTD < 100))
+  48:Drivers/AD7793/initADC.c ****     {
+  49:Drivers/AD7793/initADC.c ****       dataTransmitMB_float(Chanel_1_tempRTD, tempRTD);
+  50:Drivers/AD7793/initADC.c ****     }
+  51:Drivers/AD7793/initADC.c ****     else
+  52:Drivers/AD7793/initADC.c ****     {
+  53:Drivers/AD7793/initADC.c ****       dataTransmitMB_float(Chanel_1_tempRTD, 404);
+  54:Drivers/AD7793/initADC.c ****     }
+  55:Drivers/AD7793/initADC.c ****   }
+  56:Drivers/AD7793/initADC.c **** }
+  57:Drivers/AD7793/initADC.c **** 
+  58:Drivers/AD7793/initADC.c **** void ADC_chanel_(uint16_t CS)
+  59:Drivers/AD7793/initADC.c **** {
+  60:Drivers/AD7793/initADC.c ****   pinNumber = CS;
+  61:Drivers/AD7793/initADC.c ****   if (!usSRegHoldBuf[3])
+  62:Drivers/AD7793/initADC.c ****   {
+  63:Drivers/AD7793/initADC.c ****     AD7793_Init();
+  64:Drivers/AD7793/initADC.c ****     tempCPU_AD();
+  65:Drivers/AD7793/initADC.c ****     dataTransmitMB_float(Chanel_2_tempChip, tempChip);
+  66:Drivers/AD7793/initADC.c ****     usSRegHoldBuf[3] = TRUE;
+  67:Drivers/AD7793/initADC.c ****   }
+  68:Drivers/AD7793/initADC.c ****   if (usSRegHoldBuf[4])
+  69:Drivers/AD7793/initADC.c ****   {
+  70:Drivers/AD7793/initADC.c ****     AD7793_Calibrate(AD7793_MODE_CAL_INT_ZERO, AD7793_CH_AIN1P_AIN1M); /* Performs Internal Zero ca
+  71:Drivers/AD7793/initADC.c ****     AD7793_Calibrate(AD7793_MODE_CAL_INT_FULL, AD7793_CH_AIN1P_AIN1M); /* Performs Internal Full Ca
+  72:Drivers/AD7793/initADC.c ****     usSRegHoldBuf[4] = FALSE;
+  73:Drivers/AD7793/initADC.c ****   }
+  74:Drivers/AD7793/initADC.c **** 
+  75:Drivers/AD7793/initADC.c ****   if (!usSRegHoldBuf[5])
+  76:Drivers/AD7793/initADC.c ****   {
+  77:Drivers/AD7793/initADC.c ****     AD7793_Reset();
+  78:Drivers/AD7793/initADC.c ****     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793
+  79:Drivers/AD7793/initADC.c ****     AD7793_IO_Register(AD7793_DIR_IEXC1_IOUT1_IEXC2_IOUT2, AD7793_EN_IXCEN_210uA);
+  80:Drivers/AD7793/initADC.c ****     float tempRTD = temp(AD7793_ContinuousReadAvg(10));
+  81:Drivers/AD7793/initADC.c ****     dataTransmitMB_float(Chanel_2_tempRTD, tempRTD);
+  82:Drivers/AD7793/initADC.c **** 
+  83:Drivers/AD7793/initADC.c ****     // if ((tempRTD > 0) && (tempRTD < 100))
+  84:Drivers/AD7793/initADC.c ****     // {
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 3
+
+
+  85:Drivers/AD7793/initADC.c ****     //   dataTransmitMB_float(Chanel_2_tempRTD, tempRTD);
+  86:Drivers/AD7793/initADC.c ****     // }
+  87:Drivers/AD7793/initADC.c ****     // else
+  88:Drivers/AD7793/initADC.c ****     // {
+  89:Drivers/AD7793/initADC.c ****     //   dataTransmitMB_float(Chanel_2_tempRTD, 404);
+  90:Drivers/AD7793/initADC.c ****     // }
+  91:Drivers/AD7793/initADC.c ****   }
+  92:Drivers/AD7793/initADC.c **** }
+  93:Drivers/AD7793/initADC.c **** 
+  94:Drivers/AD7793/initADC.c **** 
+  95:Drivers/AD7793/initADC.c **** void tempCPU_AD()
+  96:Drivers/AD7793/initADC.c **** {
+  32              		.loc 1 96 1 view -0
   33              		.cfi_startproc
   34              		@ args = 0, pretend = 0, frame = 0
   35              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -82,21 +142,21 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 1
   38              		.cfi_def_cfa_offset 8
   39              		.cfi_offset 3, -8
   40              		.cfi_offset 14, -4
-  40:Drivers/AD7793/initADC.c ****     AD7793_Reset();
-  41              		.loc 1 40 5 view .LVU1
+  97:Drivers/AD7793/initADC.c ****   AD7793_Reset();
+  41              		.loc 1 97 3 view .LVU1
   42 0002 FFF7FEFF 		bl	AD7793_Reset
   43              	.LVL0:
-  41:Drivers/AD7793/initADC.c ****     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793
-  44              		.loc 1 41 5 view .LVU2
+  98:Drivers/AD7793/initADC.c ****   AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793_C
+  44              		.loc 1 98 3 view .LVU2
   45 0006 0623     		movs	r3, #6
   46 0008 0022     		movs	r2, #0
   47 000a 1146     		mov	r1, r2
   48 000c 1046     		mov	r0, r2
   49 000e FFF7FEFF 		bl	AD7793_Configuration_Register
   50              	.LVL1:
-  42:Drivers/AD7793/initADC.c ****     tempChip = tempChip(AD7793_ContinuousReadAvg(2));
-  51              		.loc 1 42 5 view .LVU3
-  52              		.loc 1 42 16 is_stmt 0 view .LVU4
+  99:Drivers/AD7793/initADC.c ****   tempChip = tempChip(AD7793_ContinuousReadAvg(2));
+  51              		.loc 1 99 3 view .LVU3
+  52              		.loc 1 99 14 is_stmt 0 view .LVU4
   53 0012 0220     		movs	r0, #2
   54 0014 FFF7FEFF 		bl	AD7793_ContinuousReadAvg
   55              	.LVL2:
@@ -118,7 +178,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 1
   71 003a 104B     		ldr	r3, .L3+28
   72 003c FFF7FEFF 		bl	__aeabi_dmul
   73              	.LVL7:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 3
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 4
 
 
   74 0040 09A3     		adr	r3, .L3+8
@@ -131,11 +191,11 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 1
   81              	.LVL9:
   82 0054 FFF7FEFF 		bl	__aeabi_d2f
   83              	.LVL10:
-  84              		.loc 1 42 14 view .LVU5
+  84              		.loc 1 99 12 view .LVU5
   85 0058 094B     		ldr	r3, .L3+32
   86 005a 1860     		str	r0, [r3]	@ float
-  43:Drivers/AD7793/initADC.c **** }
-  87              		.loc 1 43 1 view .LVU6
+ 100:Drivers/AD7793/initADC.c **** }
+  87              		.loc 1 100 1 view .LVU6
   88 005c 08BD     		pop	{r3, pc}
   89              	.L4:
   90 005e 00BF     		.align	3
@@ -150,312 +210,681 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 1
   99 007c 00408F40 		.word	1083129856
  100 0080 00000000 		.word	.LANCHOR0
  101              		.cfi_endproc
- 102              	.LFE66:
+ 102              	.LFE67:
  104              		.global	__aeabi_f2d
  105              		.global	__aeabi_dadd
- 106              		.section	.text.ADC_chanel,"ax",%progbits
- 107              		.align	1
- 108              		.global	ADC_chanel
- 109              		.syntax unified
- 110              		.thumb
- 111              		.thumb_func
- 113              	ADC_chanel:
- 114              	.LVL11:
- 115              	.LFB65:
-  22:Drivers/AD7793/initADC.c ****     pinNumber = CS;
- 116              		.loc 1 22 1 is_stmt 1 view -0
- 117              		.cfi_startproc
- 118              		@ args = 0, pretend = 0, frame = 0
- 119              		@ frame_needed = 0, uses_anonymous_args = 0
-  22:Drivers/AD7793/initADC.c ****     pinNumber = CS;
- 120              		.loc 1 22 1 is_stmt 0 view .LVU8
- 121 0000 38B5     		push	{r3, r4, r5, lr}
- 122              	.LCFI1:
- 123              		.cfi_def_cfa_offset 16
- 124              		.cfi_offset 3, -16
- 125              		.cfi_offset 4, -12
- 126              		.cfi_offset 5, -8
- 127              		.cfi_offset 14, -4
-  23:Drivers/AD7793/initADC.c ****     if(!usSRegHoldBuf[0]) {
- 128              		.loc 1 23 5 is_stmt 1 view .LVU9
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 4
+ 106              		.global	__aeabi_fcmpgt
+ 107              		.global	__aeabi_fcmplt
+ 108              		.section	.text.ADC_chanel,"ax",%progbits
+ 109              		.align	1
+ 110              		.global	ADC_chanel
+ 111              		.syntax unified
+ 112              		.thumb
+ 113              		.thumb_func
+ 115              	ADC_chanel:
+ 116              	.LVL11:
+ 117              	.LFB65:
+  22:Drivers/AD7793/initADC.c ****   pinNumber = CS;
+ 118              		.loc 1 22 1 is_stmt 1 view -0
+ 119              		.cfi_startproc
+ 120              		@ args = 0, pretend = 0, frame = 0
+ 121              		@ frame_needed = 0, uses_anonymous_args = 0
+  22:Drivers/AD7793/initADC.c ****   pinNumber = CS;
+ 122              		.loc 1 22 1 is_stmt 0 view .LVU8
+ 123 0000 38B5     		push	{r3, r4, r5, lr}
+ 124              	.LCFI1:
+ 125              		.cfi_def_cfa_offset 16
+ 126              		.cfi_offset 3, -16
+ 127              		.cfi_offset 4, -12
+ 128              		.cfi_offset 5, -8
+ 129              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 5
 
 
-  23:Drivers/AD7793/initADC.c ****     if(!usSRegHoldBuf[0]) {
- 129              		.loc 1 23 15 is_stmt 0 view .LVU10
- 130 0002 3B4B     		ldr	r3, .L9+32
- 131 0004 1880     		strh	r0, [r3]	@ movhi
-  24:Drivers/AD7793/initADC.c ****         AD7793_Init();
- 132              		.loc 1 24 5 is_stmt 1 view .LVU11
-  24:Drivers/AD7793/initADC.c ****         AD7793_Init();
- 133              		.loc 1 24 22 is_stmt 0 view .LVU12
- 134 0006 3B4B     		ldr	r3, .L9+36
- 135 0008 1B88     		ldrh	r3, [r3]
-  24:Drivers/AD7793/initADC.c ****         AD7793_Init();
- 136              		.loc 1 24 7 view .LVU13
- 137 000a 002B     		cmp	r3, #0
- 138 000c 51D0     		beq	.L8
- 139              	.LVL12:
- 140              	.L6:
-  30:Drivers/AD7793/initADC.c ****     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793
- 141              		.loc 1 30 5 is_stmt 1 view .LVU14
- 142 000e FFF7FEFF 		bl	AD7793_Reset
- 143              	.LVL13:
-  31:Drivers/AD7793/initADC.c ****     AD7793_IO_Register(AD7793_DIR_IEXC1_IOUT1_IEXC2_IOUT2, AD7793_EN_IXCEN_210uA);
- 144              		.loc 1 31 5 view .LVU15
- 145 0012 0023     		movs	r3, #0
- 146 0014 1A46     		mov	r2, r3
- 147 0016 1946     		mov	r1, r3
- 148 0018 1846     		mov	r0, r3
- 149 001a FFF7FEFF 		bl	AD7793_Configuration_Register
- 150              	.LVL14:
-  32:Drivers/AD7793/initADC.c ****     tempRTD = temp(AD7793_ContinuousReadAvg(5));
- 151              		.loc 1 32 5 view .LVU16
- 152 001e 0221     		movs	r1, #2
- 153 0020 0020     		movs	r0, #0
- 154 0022 FFF7FEFF 		bl	AD7793_IO_Register
- 155              	.LVL15:
-  33:Drivers/AD7793/initADC.c **** 
- 156              		.loc 1 33 5 view .LVU17
-  33:Drivers/AD7793/initADC.c **** 
- 157              		.loc 1 33 15 is_stmt 0 view .LVU18
- 158 0026 0520     		movs	r0, #5
- 159 0028 FFF7FEFF 		bl	AD7793_ContinuousReadAvg
- 160              	.LVL16:
- 161 002c FFF7FEFF 		bl	__aeabi_ui2d
- 162              	.LVL17:
- 163 0030 0022     		movs	r2, #0
- 164 0032 314B     		ldr	r3, .L9+40
- 165 0034 FFF7FEFF 		bl	__aeabi_dsub
- 166              	.LVL18:
- 167 0038 0022     		movs	r2, #0
- 168 003a 304B     		ldr	r3, .L9+44
- 169 003c FFF7FEFF 		bl	__aeabi_dmul
- 170              	.LVL19:
- 171 0040 0446     		mov	r4, r0
- 172 0042 0D46     		mov	r5, r1
- 173 0044 2E4B     		ldr	r3, .L9+48
- 174 0046 1868     		ldr	r0, [r3]	@ float
- 175 0048 FFF7FEFF 		bl	__aeabi_f2d
- 176              	.LVL20:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 5
+  23:Drivers/AD7793/initADC.c ****   if (!usSRegHoldBuf[0])
+ 130              		.loc 1 23 3 is_stmt 1 view .LVU9
+  23:Drivers/AD7793/initADC.c ****   if (!usSRegHoldBuf[0])
+ 131              		.loc 1 23 13 is_stmt 0 view .LVU10
+ 132 0002 4B4B     		ldr	r3, .L19+32
+ 133 0004 1880     		strh	r0, [r3]	@ movhi
+  24:Drivers/AD7793/initADC.c ****   {
+ 134              		.loc 1 24 3 is_stmt 1 view .LVU11
+  24:Drivers/AD7793/initADC.c ****   {
+ 135              		.loc 1 24 21 is_stmt 0 view .LVU12
+ 136 0006 4B4B     		ldr	r3, .L19+36
+ 137 0008 1B88     		ldrh	r3, [r3]
+  24:Drivers/AD7793/initADC.c ****   {
+ 138              		.loc 1 24 6 view .LVU13
+ 139 000a 33B1     		cbz	r3, .L15
+ 140              	.LVL12:
+ 141              	.L6:
+  32:Drivers/AD7793/initADC.c ****   {
+ 142              		.loc 1 32 3 is_stmt 1 view .LVU14
+  32:Drivers/AD7793/initADC.c ****   {
+ 143              		.loc 1 32 20 is_stmt 0 view .LVU15
+ 144 000c 494B     		ldr	r3, .L19+36
+ 145 000e 5B88     		ldrh	r3, [r3, #2]
+  32:Drivers/AD7793/initADC.c ****   {
+ 146              		.loc 1 32 6 view .LVU16
+ 147 0010 9BB9     		cbnz	r3, .L16
+ 148              	.L7:
+  39:Drivers/AD7793/initADC.c ****   {
+ 149              		.loc 1 39 3 is_stmt 1 view .LVU17
+  39:Drivers/AD7793/initADC.c ****   {
+ 150              		.loc 1 39 21 is_stmt 0 view .LVU18
+ 151 0012 484B     		ldr	r3, .L19+36
+ 152 0014 9B88     		ldrh	r3, [r3, #4]
+  39:Drivers/AD7793/initADC.c ****   {
+ 153              		.loc 1 39 6 view .LVU19
+ 154 0016 E3B1     		cbz	r3, .L17
+ 155              	.L5:
+  56:Drivers/AD7793/initADC.c **** 
+ 156              		.loc 1 56 1 view .LVU20
+ 157 0018 38BD     		pop	{r3, r4, r5, pc}
+ 158              	.LVL13:
+ 159              	.L15:
+  26:Drivers/AD7793/initADC.c ****     tempCPU_AD();
+ 160              		.loc 1 26 5 is_stmt 1 view .LVU21
+ 161 001a FFF7FEFF 		bl	AD7793_Init
+ 162              	.LVL14:
+  27:Drivers/AD7793/initADC.c ****     dataTransmitMB_float(Chanel_1_tempChip, tempChip);
+ 163              		.loc 1 27 5 view .LVU22
+ 164 001e FFF7FEFF 		bl	tempCPU_AD
+ 165              	.LVL15:
+  28:Drivers/AD7793/initADC.c ****     usSRegHoldBuf[0] = TRUE;
+ 166              		.loc 1 28 5 view .LVU23
+ 167 0022 454B     		ldr	r3, .L19+40
+ 168 0024 1968     		ldr	r1, [r3]	@ float
+ 169 0026 0220     		movs	r0, #2
+ 170 0028 FFF7FEFF 		bl	dataTransmitMB_float
+ 171              	.LVL16:
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 6
 
 
- 177 004c 0022     		movs	r2, #0
- 178 004e 2A4B     		ldr	r3, .L9+40
- 179 0050 FFF7FEFF 		bl	__aeabi_dmul
- 180              	.LVL21:
- 181 0054 0246     		mov	r2, r0
- 182 0056 0B46     		mov	r3, r1
- 183 0058 2046     		mov	r0, r4
- 184 005a 2946     		mov	r1, r5
- 185 005c FFF7FEFF 		bl	__aeabi_ddiv
- 186              	.LVL22:
- 187 0060 0022     		movs	r2, #0
- 188 0062 284B     		ldr	r3, .L9+52
- 189 0064 FFF7FEFF 		bl	__aeabi_ddiv
- 190              	.LVL23:
- 191 0068 0246     		mov	r2, r0
- 192 006a 0B46     		mov	r3, r1
- 193 006c 0020     		movs	r0, #0
- 194 006e 2649     		ldr	r1, .L9+56
- 195 0070 FFF7FEFF 		bl	__aeabi_dsub
- 196              	.LVL24:
- 197 0074 16A3     		adr	r3, .L9
- 198 0076 D3E90023 		ldrd	r2, [r3]
- 199 007a FFF7FEFF 		bl	__aeabi_dmul
- 200              	.LVL25:
- 201 007e 16A3     		adr	r3, .L9+8
- 202 0080 D3E90023 		ldrd	r2, [r3]
- 203 0084 FFF7FEFF 		bl	__aeabi_dadd
- 204              	.LVL26:
- 205 0088 FFF7FEFF 		bl	sqrt
- 206              	.LVL27:
- 207 008c 14A3     		adr	r3, .L9+16
- 208 008e D3E90023 		ldrd	r2, [r3]
- 209 0092 FFF7FEFF 		bl	__aeabi_dsub
- 210              	.LVL28:
- 211 0096 14A3     		adr	r3, .L9+24
- 212 0098 D3E90023 		ldrd	r2, [r3]
- 213 009c FFF7FEFF 		bl	__aeabi_ddiv
- 214              	.LVL29:
- 215 00a0 FFF7FEFF 		bl	__aeabi_d2f
- 216              	.LVL30:
- 217 00a4 0146     		mov	r1, r0
-  33:Drivers/AD7793/initADC.c **** 
- 218              		.loc 1 33 13 view .LVU19
- 219 00a6 194B     		ldr	r3, .L9+60
- 220 00a8 1860     		str	r0, [r3]	@ float
-  35:Drivers/AD7793/initADC.c **** }
- 221              		.loc 1 35 5 is_stmt 1 view .LVU20
- 222 00aa 0020     		movs	r0, #0
- 223 00ac FFF7FEFF 		bl	dataTransmit
- 224              	.LVL31:
-  36:Drivers/AD7793/initADC.c **** 
- 225              		.loc 1 36 1 is_stmt 0 view .LVU21
- 226 00b0 38BD     		pop	{r3, r4, r5, pc}
- 227              	.LVL32:
- 228              	.L8:
-  25:Drivers/AD7793/initADC.c ****         tempCPU_AD(); 
- 229              		.loc 1 25 9 is_stmt 1 view .LVU22
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 6
+  29:Drivers/AD7793/initADC.c ****     Flag = 0;
+ 172              		.loc 1 29 5 view .LVU24
+  29:Drivers/AD7793/initADC.c ****     Flag = 0;
+ 173              		.loc 1 29 22 is_stmt 0 view .LVU25
+ 174 002c 414B     		ldr	r3, .L19+36
+ 175 002e 0122     		movs	r2, #1
+ 176 0030 1A80     		strh	r2, [r3]	@ movhi
+  30:Drivers/AD7793/initADC.c ****   }
+ 177              		.loc 1 30 5 is_stmt 1 view .LVU26
+  30:Drivers/AD7793/initADC.c ****   }
+ 178              		.loc 1 30 10 is_stmt 0 view .LVU27
+ 179 0032 424B     		ldr	r3, .L19+44
+ 180 0034 0022     		movs	r2, #0
+ 181 0036 1A70     		strb	r2, [r3]
+ 182 0038 E8E7     		b	.L6
+ 183              	.L16:
+  34:Drivers/AD7793/initADC.c ****     AD7793_Calibrate(AD7793_MODE_CAL_INT_FULL, AD7793_CH_AIN1P_AIN1M); /* Performs Internal Full Ca
+ 184              		.loc 1 34 5 is_stmt 1 view .LVU28
+ 185 003a 0021     		movs	r1, #0
+ 186 003c 0420     		movs	r0, #4
+ 187 003e FFF7FEFF 		bl	AD7793_Calibrate
+ 188              	.LVL17:
+  35:Drivers/AD7793/initADC.c ****     usSRegHoldBuf[1] = FALSE;
+ 189              		.loc 1 35 5 view .LVU29
+ 190 0042 0021     		movs	r1, #0
+ 191 0044 0520     		movs	r0, #5
+ 192 0046 FFF7FEFF 		bl	AD7793_Calibrate
+ 193              	.LVL18:
+  36:Drivers/AD7793/initADC.c ****   }
+ 194              		.loc 1 36 5 view .LVU30
+  36:Drivers/AD7793/initADC.c ****   }
+ 195              		.loc 1 36 22 is_stmt 0 view .LVU31
+ 196 004a 3A4B     		ldr	r3, .L19+36
+ 197 004c 0022     		movs	r2, #0
+ 198 004e 5A80     		strh	r2, [r3, #2]	@ movhi
+ 199 0050 DFE7     		b	.L7
+ 200              	.L17:
+ 201              	.LBB2:
+  41:Drivers/AD7793/initADC.c ****     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793
+ 202              		.loc 1 41 5 is_stmt 1 view .LVU32
+ 203 0052 FFF7FEFF 		bl	AD7793_Reset
+ 204              	.LVL19:
+  42:Drivers/AD7793/initADC.c ****     AD7793_IO_Register(AD7793_DIR_IEXC1_IOUT1_IEXC2_IOUT2, AD7793_EN_IXCEN_210uA);
+ 205              		.loc 1 42 5 view .LVU33
+ 206 0056 0023     		movs	r3, #0
+ 207 0058 1A46     		mov	r2, r3
+ 208 005a 1946     		mov	r1, r3
+ 209 005c 1846     		mov	r0, r3
+ 210 005e FFF7FEFF 		bl	AD7793_Configuration_Register
+ 211              	.LVL20:
+  43:Drivers/AD7793/initADC.c **** 
+ 212              		.loc 1 43 5 view .LVU34
+ 213 0062 0221     		movs	r1, #2
+ 214 0064 0020     		movs	r0, #0
+ 215 0066 FFF7FEFF 		bl	AD7793_IO_Register
+ 216              	.LVL21:
+  45:Drivers/AD7793/initADC.c **** 
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 7
 
 
- 230 00b2 FFF7FEFF 		bl	AD7793_Init
- 231              	.LVL33:
-  26:Drivers/AD7793/initADC.c ****         dataTransmit(Chanel_1_tempChip, tempChip);
- 232              		.loc 1 26 9 view .LVU23
- 233 00b6 FFF7FEFF 		bl	tempCPU_AD
- 234              	.LVL34:
-  27:Drivers/AD7793/initADC.c ****         usSRegHoldBuf[0] = TRUE;
- 235              		.loc 1 27 9 view .LVU24
- 236 00ba 154B     		ldr	r3, .L9+64
- 237 00bc 1968     		ldr	r1, [r3]	@ float
- 238 00be 0220     		movs	r0, #2
- 239 00c0 FFF7FEFF 		bl	dataTransmit
- 240              	.LVL35:
-  28:Drivers/AD7793/initADC.c ****     }
- 241              		.loc 1 28 9 view .LVU25
-  28:Drivers/AD7793/initADC.c ****     }
- 242              		.loc 1 28 26 is_stmt 0 view .LVU26
- 243 00c4 0B4B     		ldr	r3, .L9+36
- 244 00c6 0122     		movs	r2, #1
- 245 00c8 1A80     		strh	r2, [r3]	@ movhi
- 246 00ca A0E7     		b	.L6
- 247              	.L10:
- 248 00cc AFF30080 		.align	3
- 249              	.L9:
- 250 00d0 000000E0 		.word	-536870912
- 251 00d4 AF60C33E 		.word	1052991663
- 252 00d8 0071EBC9 		.word	-907316992
- 253 00dc 4C04F03E 		.word	1055917132
- 254 00e0 00000040 		.word	1073741824
- 255 00e4 2602703F 		.word	1064305190
- 256 00e8 000000E0 		.word	-536870912
- 257 00ec AF60B3BE 		.word	-1095540561
- 258 00f0 00000000 		.word	.LANCHOR1
- 259 00f4 00000000 		.word	usSRegHoldBuf
- 260 00f8 00006041 		.word	1096810496
- 261 00fc 00409F40 		.word	1084178432
- 262 0100 00000000 		.word	.LANCHOR2
- 263 0104 00408F40 		.word	1083129856
- 264 0108 0000F03F 		.word	1072693248
- 265 010c 00000000 		.word	.LANCHOR3
- 266 0110 00000000 		.word	.LANCHOR0
- 267              		.cfi_endproc
- 268              	.LFE65:
- 270              		.global	B
- 271              		.global	A
- 272              		.global	R0
- 273              		.global	Vref
- 274              		.global	RREF
- 275              		.global	tempChip
- 276              		.global	tempRTD
- 277              		.global	RRTD
- 278              		.global	V
- 279              		.global	GAIN
- 280              		.global	conv
- 281              		.global	pinNumber
- 282              		.section	.bss.RRTD,"aw",%nobits
- 283              		.align	2
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 7
+ 217              		.loc 1 45 5 view .LVU35
+  45:Drivers/AD7793/initADC.c **** 
+ 218              		.loc 1 45 21 is_stmt 0 view .LVU36
+ 219 006a 0A20     		movs	r0, #10
+ 220 006c FFF7FEFF 		bl	AD7793_ContinuousReadAvg
+ 221              	.LVL22:
+ 222 0070 FFF7FEFF 		bl	__aeabi_ui2d
+ 223              	.LVL23:
+ 224 0074 0022     		movs	r2, #0
+ 225 0076 324B     		ldr	r3, .L19+48
+ 226 0078 FFF7FEFF 		bl	__aeabi_dsub
+ 227              	.LVL24:
+ 228 007c 0022     		movs	r2, #0
+ 229 007e 314B     		ldr	r3, .L19+52
+ 230 0080 FFF7FEFF 		bl	__aeabi_dmul
+ 231              	.LVL25:
+ 232 0084 0446     		mov	r4, r0
+ 233 0086 0D46     		mov	r5, r1
+ 234 0088 2F4B     		ldr	r3, .L19+56
+ 235 008a 1868     		ldr	r0, [r3]	@ float
+ 236 008c FFF7FEFF 		bl	__aeabi_f2d
+ 237              	.LVL26:
+ 238 0090 0022     		movs	r2, #0
+ 239 0092 2B4B     		ldr	r3, .L19+48
+ 240 0094 FFF7FEFF 		bl	__aeabi_dmul
+ 241              	.LVL27:
+ 242 0098 0246     		mov	r2, r0
+ 243 009a 0B46     		mov	r3, r1
+ 244 009c 2046     		mov	r0, r4
+ 245 009e 2946     		mov	r1, r5
+ 246 00a0 FFF7FEFF 		bl	__aeabi_ddiv
+ 247              	.LVL28:
+ 248 00a4 0022     		movs	r2, #0
+ 249 00a6 294B     		ldr	r3, .L19+60
+ 250 00a8 FFF7FEFF 		bl	__aeabi_ddiv
+ 251              	.LVL29:
+ 252 00ac 0246     		mov	r2, r0
+ 253 00ae 0B46     		mov	r3, r1
+ 254 00b0 0020     		movs	r0, #0
+ 255 00b2 2749     		ldr	r1, .L19+64
+ 256 00b4 FFF7FEFF 		bl	__aeabi_dsub
+ 257              	.LVL30:
+ 258 00b8 15A3     		adr	r3, .L19
+ 259 00ba D3E90023 		ldrd	r2, [r3]
+ 260 00be FFF7FEFF 		bl	__aeabi_dmul
+ 261              	.LVL31:
+ 262 00c2 15A3     		adr	r3, .L19+8
+ 263 00c4 D3E90023 		ldrd	r2, [r3]
+ 264 00c8 FFF7FEFF 		bl	__aeabi_dadd
+ 265              	.LVL32:
+ 266 00cc FFF7FEFF 		bl	sqrt
+ 267              	.LVL33:
+ 268 00d0 13A3     		adr	r3, .L19+16
+ 269 00d2 D3E90023 		ldrd	r2, [r3]
+ 270 00d6 FFF7FEFF 		bl	__aeabi_dsub
+ 271              	.LVL34:
+ 272 00da 13A3     		adr	r3, .L19+24
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 8
 
 
- 286              	RRTD:
- 287 0000 00000000 		.space	4
- 288              		.section	.bss.V,"aw",%nobits
- 289              		.align	2
- 292              	V:
- 293 0000 00000000 		.space	4
- 294              		.section	.bss.conv,"aw",%nobits
- 295              		.align	2
- 298              	conv:
- 299 0000 00000000 		.space	4
- 300              		.section	.bss.pinNumber,"aw",%nobits
- 301              		.align	1
- 302              		.set	.LANCHOR1,. + 0
- 305              	pinNumber:
- 306 0000 0000     		.space	2
- 307              		.section	.bss.tempChip,"aw",%nobits
- 308              		.align	2
- 309              		.set	.LANCHOR0,. + 0
- 312              	tempChip:
- 313 0000 00000000 		.space	4
- 314              		.section	.bss.tempRTD,"aw",%nobits
- 315              		.align	2
- 316              		.set	.LANCHOR3,. + 0
- 319              	tempRTD:
- 320 0000 00000000 		.space	4
- 321              		.section	.data.GAIN,"aw"
- 322              		.align	2
- 323              		.set	.LANCHOR2,. + 0
- 326              	GAIN:
- 327 0000 0000803F 		.word	1065353216
- 328              		.section	.rodata.A,"a"
- 329              		.align	2
- 332              	A:
- 333 0000 3211803B 		.word	998248754
- 334              		.section	.rodata.B,"a"
- 335              		.align	2
- 338              	B:
- 339 0000 7F051BB5 		.word	-1256520321
- 340              		.section	.rodata.R0,"a"
- 341              		.align	2
- 344              	R0:
- 345 0000 00007A44 		.word	1148846080
- 346              		.section	.rodata.RREF,"a"
- 347              		.align	2
- 350              	RREF:
- 351 0000 0000FA44 		.word	1157234688
- 352              		.section	.rodata.Vref,"a"
- 353              		.align	2
- 356              	Vref:
- 357 0000 8FC2953F 		.word	1066779279
- 358              		.text
- 359              	.Letext0:
- 360              		.file 2 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\machine\\_default_types.
- 361              		.file 3 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\sys\\_stdint.h"
- 362              		.file 4 "Drivers/AD7793/AD7793.h"
- 363              		.file 5 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\math.h"
- 364              		.file 6 "Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 8
+ 273 00dc D3E90023 		ldrd	r2, [r3]
+ 274 00e0 FFF7FEFF 		bl	__aeabi_ddiv
+ 275              	.LVL35:
+  45:Drivers/AD7793/initADC.c **** 
+ 276              		.loc 1 45 11 view .LVU37
+ 277 00e4 FFF7FEFF 		bl	__aeabi_d2f
+ 278              	.LVL36:
+ 279 00e8 0446     		mov	r4, r0
+ 280              	.LVL37:
+  47:Drivers/AD7793/initADC.c ****     {
+ 281              		.loc 1 47 5 is_stmt 1 view .LVU38
+  47:Drivers/AD7793/initADC.c ****     {
+ 282              		.loc 1 47 8 is_stmt 0 view .LVU39
+ 283 00ea 0021     		movs	r1, #0
+ 284 00ec FFF7FEFF 		bl	__aeabi_fcmpgt
+ 285              	.LVL38:
+  47:Drivers/AD7793/initADC.c ****     {
+ 286              		.loc 1 47 8 view .LVU40
+ 287 00f0 20B1     		cbz	r0, .L9
+  47:Drivers/AD7793/initADC.c ****     {
+ 288              		.loc 1 47 23 discriminator 1 view .LVU41
+ 289 00f2 1849     		ldr	r1, .L19+68
+ 290 00f4 2046     		mov	r0, r4
+ 291 00f6 FFF7FEFF 		bl	__aeabi_fcmplt
+ 292              	.LVL39:
+ 293 00fa 20B9     		cbnz	r0, .L18
+ 294              	.L9:
+  53:Drivers/AD7793/initADC.c ****     }
+ 295              		.loc 1 53 7 is_stmt 1 view .LVU42
+ 296 00fc 1649     		ldr	r1, .L19+72
+ 297 00fe 0020     		movs	r0, #0
+ 298 0100 FFF7FEFF 		bl	dataTransmitMB_float
+ 299              	.LVL40:
+ 300              	.LBE2:
+  56:Drivers/AD7793/initADC.c **** 
+ 301              		.loc 1 56 1 is_stmt 0 view .LVU43
+ 302 0104 88E7     		b	.L5
+ 303              	.L18:
+ 304              	.LBB3:
+  49:Drivers/AD7793/initADC.c ****     }
+ 305              		.loc 1 49 7 is_stmt 1 view .LVU44
+ 306 0106 2146     		mov	r1, r4
+ 307 0108 0020     		movs	r0, #0
+ 308 010a FFF7FEFF 		bl	dataTransmitMB_float
+ 309              	.LVL41:
+ 310 010e 83E7     		b	.L5
+ 311              	.L20:
+ 312              		.align	3
+ 313              	.L19:
+ 314 0110 000000E0 		.word	-536870912
+ 315 0114 AF60C33E 		.word	1052991663
+ 316 0118 0071EBC9 		.word	-907316992
+ 317 011c 4C04F03E 		.word	1055917132
+ 318 0120 00000040 		.word	1073741824
+ 319 0124 2602703F 		.word	1064305190
+ 320 0128 000000E0 		.word	-536870912
+ 321 012c AF60B3BE 		.word	-1095540561
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 9
 
 
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s 			page 9
+ 322 0130 00000000 		.word	.LANCHOR1
+ 323 0134 00000000 		.word	usSRegHoldBuf
+ 324 0138 00000000 		.word	.LANCHOR0
+ 325 013c 00000000 		.word	.LANCHOR2
+ 326 0140 00006041 		.word	1096810496
+ 327 0144 00409F40 		.word	1084178432
+ 328 0148 00000000 		.word	.LANCHOR3
+ 329 014c 00408F40 		.word	1083129856
+ 330 0150 0000F03F 		.word	1072693248
+ 331 0154 0000C842 		.word	1120403456
+ 332 0158 0000CA43 		.word	1137311744
+ 333              	.LBE3:
+ 334              		.cfi_endproc
+ 335              	.LFE65:
+ 337              		.section	.text.ADC_chanel_,"ax",%progbits
+ 338              		.align	1
+ 339              		.global	ADC_chanel_
+ 340              		.syntax unified
+ 341              		.thumb
+ 342              		.thumb_func
+ 344              	ADC_chanel_:
+ 345              	.LVL42:
+ 346              	.LFB66:
+  59:Drivers/AD7793/initADC.c ****   pinNumber = CS;
+ 347              		.loc 1 59 1 view -0
+ 348              		.cfi_startproc
+ 349              		@ args = 0, pretend = 0, frame = 0
+ 350              		@ frame_needed = 0, uses_anonymous_args = 0
+  59:Drivers/AD7793/initADC.c ****   pinNumber = CS;
+ 351              		.loc 1 59 1 is_stmt 0 view .LVU46
+ 352 0000 38B5     		push	{r3, r4, r5, lr}
+ 353              	.LCFI2:
+ 354              		.cfi_def_cfa_offset 16
+ 355              		.cfi_offset 3, -16
+ 356              		.cfi_offset 4, -12
+ 357              		.cfi_offset 5, -8
+ 358              		.cfi_offset 14, -4
+  60:Drivers/AD7793/initADC.c ****   if (!usSRegHoldBuf[3])
+ 359              		.loc 1 60 3 is_stmt 1 view .LVU47
+  60:Drivers/AD7793/initADC.c ****   if (!usSRegHoldBuf[3])
+ 360              		.loc 1 60 13 is_stmt 0 view .LVU48
+ 361 0002 434B     		ldr	r3, .L29+32
+ 362 0004 1880     		strh	r0, [r3]	@ movhi
+  61:Drivers/AD7793/initADC.c ****   {
+ 363              		.loc 1 61 3 is_stmt 1 view .LVU49
+  61:Drivers/AD7793/initADC.c ****   {
+ 364              		.loc 1 61 21 is_stmt 0 view .LVU50
+ 365 0006 434B     		ldr	r3, .L29+36
+ 366 0008 DB88     		ldrh	r3, [r3, #6]
+  61:Drivers/AD7793/initADC.c ****   {
+ 367              		.loc 1 61 6 view .LVU51
+ 368 000a 33B1     		cbz	r3, .L26
+ 369              	.LVL43:
+ 370              	.L22:
+  68:Drivers/AD7793/initADC.c ****   {
+ 371              		.loc 1 68 3 is_stmt 1 view .LVU52
+  68:Drivers/AD7793/initADC.c ****   {
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 10
+
+
+ 372              		.loc 1 68 20 is_stmt 0 view .LVU53
+ 373 000c 414B     		ldr	r3, .L29+36
+ 374 000e 1B89     		ldrh	r3, [r3, #8]
+  68:Drivers/AD7793/initADC.c ****   {
+ 375              		.loc 1 68 6 view .LVU54
+ 376 0010 83B9     		cbnz	r3, .L27
+ 377              	.L23:
+  75:Drivers/AD7793/initADC.c ****   {
+ 378              		.loc 1 75 3 is_stmt 1 view .LVU55
+  75:Drivers/AD7793/initADC.c ****   {
+ 379              		.loc 1 75 21 is_stmt 0 view .LVU56
+ 380 0012 404B     		ldr	r3, .L29+36
+ 381 0014 5B89     		ldrh	r3, [r3, #10]
+  75:Drivers/AD7793/initADC.c ****   {
+ 382              		.loc 1 75 6 view .LVU57
+ 383 0016 CBB1     		cbz	r3, .L28
+ 384              	.L21:
+  92:Drivers/AD7793/initADC.c **** 
+ 385              		.loc 1 92 1 view .LVU58
+ 386 0018 38BD     		pop	{r3, r4, r5, pc}
+ 387              	.LVL44:
+ 388              	.L26:
+  63:Drivers/AD7793/initADC.c ****     tempCPU_AD();
+ 389              		.loc 1 63 5 is_stmt 1 view .LVU59
+ 390 001a FFF7FEFF 		bl	AD7793_Init
+ 391              	.LVL45:
+  64:Drivers/AD7793/initADC.c ****     dataTransmitMB_float(Chanel_2_tempChip, tempChip);
+ 392              		.loc 1 64 5 view .LVU60
+ 393 001e FFF7FEFF 		bl	tempCPU_AD
+ 394              	.LVL46:
+  65:Drivers/AD7793/initADC.c ****     usSRegHoldBuf[3] = TRUE;
+ 395              		.loc 1 65 5 view .LVU61
+ 396 0022 3D4B     		ldr	r3, .L29+40
+ 397 0024 1968     		ldr	r1, [r3]	@ float
+ 398 0026 0620     		movs	r0, #6
+ 399 0028 FFF7FEFF 		bl	dataTransmitMB_float
+ 400              	.LVL47:
+  66:Drivers/AD7793/initADC.c ****   }
+ 401              		.loc 1 66 5 view .LVU62
+  66:Drivers/AD7793/initADC.c ****   }
+ 402              		.loc 1 66 22 is_stmt 0 view .LVU63
+ 403 002c 394B     		ldr	r3, .L29+36
+ 404 002e 0122     		movs	r2, #1
+ 405 0030 DA80     		strh	r2, [r3, #6]	@ movhi
+ 406 0032 EBE7     		b	.L22
+ 407              	.L27:
+  70:Drivers/AD7793/initADC.c ****     AD7793_Calibrate(AD7793_MODE_CAL_INT_FULL, AD7793_CH_AIN1P_AIN1M); /* Performs Internal Full Ca
+ 408              		.loc 1 70 5 is_stmt 1 view .LVU64
+ 409 0034 0021     		movs	r1, #0
+ 410 0036 0420     		movs	r0, #4
+ 411 0038 FFF7FEFF 		bl	AD7793_Calibrate
+ 412              	.LVL48:
+  71:Drivers/AD7793/initADC.c ****     usSRegHoldBuf[4] = FALSE;
+ 413              		.loc 1 71 5 view .LVU65
+ 414 003c 0021     		movs	r1, #0
+ 415 003e 0520     		movs	r0, #5
+ 416 0040 FFF7FEFF 		bl	AD7793_Calibrate
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 11
+
+
+ 417              	.LVL49:
+  72:Drivers/AD7793/initADC.c ****   }
+ 418              		.loc 1 72 5 view .LVU66
+  72:Drivers/AD7793/initADC.c ****   }
+ 419              		.loc 1 72 22 is_stmt 0 view .LVU67
+ 420 0044 334B     		ldr	r3, .L29+36
+ 421 0046 0022     		movs	r2, #0
+ 422 0048 1A81     		strh	r2, [r3, #8]	@ movhi
+ 423 004a E2E7     		b	.L23
+ 424              	.L28:
+ 425              	.LBB4:
+  77:Drivers/AD7793/initADC.c ****     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793
+ 426              		.loc 1 77 5 is_stmt 1 view .LVU68
+ 427 004c FFF7FEFF 		bl	AD7793_Reset
+ 428              	.LVL50:
+  78:Drivers/AD7793/initADC.c ****     AD7793_IO_Register(AD7793_DIR_IEXC1_IOUT1_IEXC2_IOUT2, AD7793_EN_IXCEN_210uA);
+ 429              		.loc 1 78 5 view .LVU69
+ 430 0050 0023     		movs	r3, #0
+ 431 0052 1A46     		mov	r2, r3
+ 432 0054 1946     		mov	r1, r3
+ 433 0056 1846     		mov	r0, r3
+ 434 0058 FFF7FEFF 		bl	AD7793_Configuration_Register
+ 435              	.LVL51:
+  79:Drivers/AD7793/initADC.c ****     float tempRTD = temp(AD7793_ContinuousReadAvg(10));
+ 436              		.loc 1 79 5 view .LVU70
+ 437 005c 0221     		movs	r1, #2
+ 438 005e 0020     		movs	r0, #0
+ 439 0060 FFF7FEFF 		bl	AD7793_IO_Register
+ 440              	.LVL52:
+  80:Drivers/AD7793/initADC.c ****     dataTransmitMB_float(Chanel_2_tempRTD, tempRTD);
+ 441              		.loc 1 80 5 view .LVU71
+  80:Drivers/AD7793/initADC.c ****     dataTransmitMB_float(Chanel_2_tempRTD, tempRTD);
+ 442              		.loc 1 80 21 is_stmt 0 view .LVU72
+ 443 0064 0A20     		movs	r0, #10
+ 444 0066 FFF7FEFF 		bl	AD7793_ContinuousReadAvg
+ 445              	.LVL53:
+ 446 006a FFF7FEFF 		bl	__aeabi_ui2d
+ 447              	.LVL54:
+ 448 006e 0022     		movs	r2, #0
+ 449 0070 2A4B     		ldr	r3, .L29+44
+ 450 0072 FFF7FEFF 		bl	__aeabi_dsub
+ 451              	.LVL55:
+ 452 0076 0022     		movs	r2, #0
+ 453 0078 294B     		ldr	r3, .L29+48
+ 454 007a FFF7FEFF 		bl	__aeabi_dmul
+ 455              	.LVL56:
+ 456 007e 0446     		mov	r4, r0
+ 457 0080 0D46     		mov	r5, r1
+ 458 0082 284B     		ldr	r3, .L29+52
+ 459 0084 1868     		ldr	r0, [r3]	@ float
+ 460 0086 FFF7FEFF 		bl	__aeabi_f2d
+ 461              	.LVL57:
+ 462 008a 0022     		movs	r2, #0
+ 463 008c 234B     		ldr	r3, .L29+44
+ 464 008e FFF7FEFF 		bl	__aeabi_dmul
+ 465              	.LVL58:
+ 466 0092 0246     		mov	r2, r0
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 12
+
+
+ 467 0094 0B46     		mov	r3, r1
+ 468 0096 2046     		mov	r0, r4
+ 469 0098 2946     		mov	r1, r5
+ 470 009a FFF7FEFF 		bl	__aeabi_ddiv
+ 471              	.LVL59:
+ 472 009e 0022     		movs	r2, #0
+ 473 00a0 214B     		ldr	r3, .L29+56
+ 474 00a2 FFF7FEFF 		bl	__aeabi_ddiv
+ 475              	.LVL60:
+ 476 00a6 0246     		mov	r2, r0
+ 477 00a8 0B46     		mov	r3, r1
+ 478 00aa 0020     		movs	r0, #0
+ 479 00ac 1F49     		ldr	r1, .L29+60
+ 480 00ae FFF7FEFF 		bl	__aeabi_dsub
+ 481              	.LVL61:
+ 482 00b2 0FA3     		adr	r3, .L29
+ 483 00b4 D3E90023 		ldrd	r2, [r3]
+ 484 00b8 FFF7FEFF 		bl	__aeabi_dmul
+ 485              	.LVL62:
+ 486 00bc 0EA3     		adr	r3, .L29+8
+ 487 00be D3E90023 		ldrd	r2, [r3]
+ 488 00c2 FFF7FEFF 		bl	__aeabi_dadd
+ 489              	.LVL63:
+ 490 00c6 FFF7FEFF 		bl	sqrt
+ 491              	.LVL64:
+ 492 00ca 0DA3     		adr	r3, .L29+16
+ 493 00cc D3E90023 		ldrd	r2, [r3]
+ 494 00d0 FFF7FEFF 		bl	__aeabi_dsub
+ 495              	.LVL65:
+ 496 00d4 0CA3     		adr	r3, .L29+24
+ 497 00d6 D3E90023 		ldrd	r2, [r3]
+ 498 00da FFF7FEFF 		bl	__aeabi_ddiv
+ 499              	.LVL66:
+  80:Drivers/AD7793/initADC.c ****     dataTransmitMB_float(Chanel_2_tempRTD, tempRTD);
+ 500              		.loc 1 80 11 view .LVU73
+ 501 00de FFF7FEFF 		bl	__aeabi_d2f
+ 502              	.LVL67:
+ 503 00e2 0146     		mov	r1, r0
+ 504              	.LVL68:
+  81:Drivers/AD7793/initADC.c **** 
+ 505              		.loc 1 81 5 is_stmt 1 view .LVU74
+ 506 00e4 0420     		movs	r0, #4
+ 507              	.LVL69:
+  81:Drivers/AD7793/initADC.c **** 
+ 508              		.loc 1 81 5 is_stmt 0 view .LVU75
+ 509 00e6 FFF7FEFF 		bl	dataTransmitMB_float
+ 510              	.LVL70:
+  81:Drivers/AD7793/initADC.c **** 
+ 511              		.loc 1 81 5 view .LVU76
+ 512              	.LBE4:
+  92:Drivers/AD7793/initADC.c **** 
+ 513              		.loc 1 92 1 view .LVU77
+ 514 00ea 95E7     		b	.L21
+ 515              	.L30:
+ 516 00ec AFF30080 		.align	3
+ 517              	.L29:
+ 518 00f0 000000E0 		.word	-536870912
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 13
+
+
+ 519 00f4 AF60C33E 		.word	1052991663
+ 520 00f8 0071EBC9 		.word	-907316992
+ 521 00fc 4C04F03E 		.word	1055917132
+ 522 0100 00000040 		.word	1073741824
+ 523 0104 2602703F 		.word	1064305190
+ 524 0108 000000E0 		.word	-536870912
+ 525 010c AF60B3BE 		.word	-1095540561
+ 526 0110 00000000 		.word	.LANCHOR1
+ 527 0114 00000000 		.word	usSRegHoldBuf
+ 528 0118 00000000 		.word	.LANCHOR0
+ 529 011c 00006041 		.word	1096810496
+ 530 0120 00409F40 		.word	1084178432
+ 531 0124 00000000 		.word	.LANCHOR3
+ 532 0128 00408F40 		.word	1083129856
+ 533 012c 0000F03F 		.word	1072693248
+ 534              		.cfi_endproc
+ 535              	.LFE66:
+ 537              		.section	.text.Calibrate,"ax",%progbits
+ 538              		.align	1
+ 539              		.global	Calibrate
+ 540              		.syntax unified
+ 541              		.thumb
+ 542              		.thumb_func
+ 544              	Calibrate:
+ 545              	.LFB68:
+ 101:Drivers/AD7793/initADC.c **** 
+ 102:Drivers/AD7793/initADC.c **** void Calibrate()
+ 103:Drivers/AD7793/initADC.c **** {
+ 546              		.loc 1 103 1 is_stmt 1 view -0
+ 547              		.cfi_startproc
+ 548              		@ args = 0, pretend = 0, frame = 0
+ 549              		@ frame_needed = 0, uses_anonymous_args = 0
+ 550 0000 08B5     		push	{r3, lr}
+ 551              	.LCFI3:
+ 552              		.cfi_def_cfa_offset 8
+ 553              		.cfi_offset 3, -8
+ 554              		.cfi_offset 14, -4
+ 104:Drivers/AD7793/initADC.c ****   AD7793_Calibrate(AD7793_MODE_CAL_INT_ZERO, AD7793_CH_AIN1P_AIN1M); /* Performs Internal Zero cali
+ 555              		.loc 1 104 3 view .LVU79
+ 556 0002 0021     		movs	r1, #0
+ 557 0004 0420     		movs	r0, #4
+ 558 0006 FFF7FEFF 		bl	AD7793_Calibrate
+ 559              	.LVL71:
+ 105:Drivers/AD7793/initADC.c ****   AD7793_Calibrate(AD7793_MODE_CAL_INT_FULL, AD7793_CH_AIN1P_AIN1M); /* Performs Internal Full Cali
+ 560              		.loc 1 105 3 view .LVU80
+ 561 000a 0021     		movs	r1, #0
+ 562 000c 0520     		movs	r0, #5
+ 563 000e FFF7FEFF 		bl	AD7793_Calibrate
+ 564              	.LVL72:
+ 106:Drivers/AD7793/initADC.c **** }
+ 565              		.loc 1 106 1 is_stmt 0 view .LVU81
+ 566 0012 08BD     		pop	{r3, pc}
+ 567              		.cfi_endproc
+ 568              	.LFE68:
+ 570              		.global	B
+ 571              		.global	A
+ 572              		.global	R0
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 14
+
+
+ 573              		.global	Vref
+ 574              		.global	RREF
+ 575              		.global	tempChip
+ 576              		.global	RRTD
+ 577              		.global	V
+ 578              		.global	GAIN
+ 579              		.global	Flag
+ 580              		.global	pinNumber
+ 581              		.section	.bss.Flag,"aw",%nobits
+ 582              		.set	.LANCHOR2,. + 0
+ 585              	Flag:
+ 586 0000 00       		.space	1
+ 587              		.section	.bss.RRTD,"aw",%nobits
+ 588              		.align	2
+ 591              	RRTD:
+ 592 0000 00000000 		.space	4
+ 593              		.section	.bss.V,"aw",%nobits
+ 594              		.align	2
+ 597              	V:
+ 598 0000 00000000 		.space	4
+ 599              		.section	.bss.pinNumber,"aw",%nobits
+ 600              		.align	1
+ 601              		.set	.LANCHOR1,. + 0
+ 604              	pinNumber:
+ 605 0000 0000     		.space	2
+ 606              		.section	.bss.tempChip,"aw",%nobits
+ 607              		.align	2
+ 608              		.set	.LANCHOR0,. + 0
+ 611              	tempChip:
+ 612 0000 00000000 		.space	4
+ 613              		.section	.data.GAIN,"aw"
+ 614              		.align	2
+ 615              		.set	.LANCHOR3,. + 0
+ 618              	GAIN:
+ 619 0000 0000803F 		.word	1065353216
+ 620              		.section	.rodata.A,"a"
+ 621              		.align	2
+ 624              	A:
+ 625 0000 3211803B 		.word	998248754
+ 626              		.section	.rodata.B,"a"
+ 627              		.align	2
+ 630              	B:
+ 631 0000 7F051BB5 		.word	-1256520321
+ 632              		.section	.rodata.R0,"a"
+ 633              		.align	2
+ 636              	R0:
+ 637 0000 00007A44 		.word	1148846080
+ 638              		.section	.rodata.RREF,"a"
+ 639              		.align	2
+ 642              	RREF:
+ 643 0000 0000FA44 		.word	1157234688
+ 644              		.section	.rodata.Vref,"a"
+ 645              		.align	2
+ 648              	Vref:
+ 649 0000 8FC2953F 		.word	1066779279
+ 650              		.text
+ 651              	.Letext0:
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 15
+
+
+ 652              		.file 2 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\machine\\_default_types.
+ 653              		.file 3 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 654              		.file 4 "Drivers/FreeModbus/port/port.h"
+ 655              		.file 5 "Drivers/AD7793/AD7793.h"
+ 656              		.file 6 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\math.h"
+ 657              		.file 7 "Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h"
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 initADC.c
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:23     .text.tempCPU_AD:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:29     .text.tempCPU_AD:00000000 tempCPU_AD
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:92     .text.tempCPU_AD:00000060 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:107    .text.ADC_chanel:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:113    .text.ADC_chanel:00000000 ADC_chanel
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:250    .text.ADC_chanel:000000d0 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:338    .rodata.B:00000000 B
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:332    .rodata.A:00000000 A
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:344    .rodata.R0:00000000 R0
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:356    .rodata.Vref:00000000 Vref
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:350    .rodata.RREF:00000000 RREF
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:312    .bss.tempChip:00000000 tempChip
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:319    .bss.tempRTD:00000000 tempRTD
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:286    .bss.RRTD:00000000 RRTD
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:292    .bss.V:00000000 V
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:326    .data.GAIN:00000000 GAIN
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:298    .bss.conv:00000000 conv
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:305    .bss.pinNumber:00000000 pinNumber
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:283    .bss.RRTD:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:289    .bss.V:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:295    .bss.conv:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:301    .bss.pinNumber:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:308    .bss.tempChip:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:315    .bss.tempRTD:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:322    .data.GAIN:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:329    .rodata.A:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:335    .rodata.B:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:341    .rodata.R0:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:347    .rodata.RREF:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccfjui8q.s:353    .rodata.Vref:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:23     .text.tempCPU_AD:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:29     .text.tempCPU_AD:00000000 tempCPU_AD
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:92     .text.tempCPU_AD:00000060 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:109    .text.ADC_chanel:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:115    .text.ADC_chanel:00000000 ADC_chanel
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:314    .text.ADC_chanel:00000110 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:338    .text.ADC_chanel_:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:344    .text.ADC_chanel_:00000000 ADC_chanel_
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:518    .text.ADC_chanel_:000000f0 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:538    .text.Calibrate:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:544    .text.Calibrate:00000000 Calibrate
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:630    .rodata.B:00000000 B
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:624    .rodata.A:00000000 A
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:636    .rodata.R0:00000000 R0
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:648    .rodata.Vref:00000000 Vref
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:642    .rodata.RREF:00000000 RREF
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:611    .bss.tempChip:00000000 tempChip
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:591    .bss.RRTD:00000000 RRTD
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:597    .bss.V:00000000 V
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:618    .data.GAIN:00000000 GAIN
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:585    .bss.Flag:00000000 Flag
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:604    .bss.pinNumber:00000000 pinNumber
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:586    .bss.Flag:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:588    .bss.RRTD:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:594    .bss.V:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:600    .bss.pinNumber:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:607    .bss.tempChip:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:614    .data.GAIN:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:621    .rodata.A:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:627    .rodata.B:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:633    .rodata.R0:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:639    .rodata.RREF:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:645    .rodata.Vref:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_ui2d
@@ -468,8 +897,11 @@ AD7793_Configuration_Register
 AD7793_ContinuousReadAvg
 __aeabi_f2d
 __aeabi_dadd
+__aeabi_fcmpgt
+__aeabi_fcmplt
+AD7793_Init
+dataTransmitMB_float
+AD7793_Calibrate
 AD7793_IO_Register
 sqrt
-dataTransmit
-AD7793_Init
 usSRegHoldBuf

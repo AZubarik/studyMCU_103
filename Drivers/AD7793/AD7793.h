@@ -122,6 +122,7 @@ uint32_t AD7793_SingleConversion(void);
 /*  Returns the average of several conversion results. */
 uint32_t AD7793_ContinuousReadAvg(uint8_t sampleNumber);
 
+/*  Sending a package via SPI*/
 void send_to_SPI(uint8_t *data, uint16_t size);
 
 #endif

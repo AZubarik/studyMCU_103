@@ -10,6 +10,7 @@
                 "${workspaceRoot}\\Drivers\\**",
                 "${workspaceRoot}\\Drivers\\FreeModbus\\**",
                 "${workspaceRoot}\\Drivers\\AD7793\\**",
+                "${workspaceRoot}\\Drivers\\Flash\\**",
                 "${workspaceRoot}\\Core\\Src\\**",
                 "${workspaceRoot}\\Core\\Inc\\**",
                 "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F1xx/Include",

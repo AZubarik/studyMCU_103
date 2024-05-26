@@ -156,8 +156,9 @@ eMBInit( eMBMode eMode, UCHAR ucSlaveAddress, void *dHUART, ULONG ulBaudRate, vo
             pxMBFrameCBByteReceived = xMBRTUReceiveFSM;
             pxMBFrameCBTransmitterEmpty = xMBRTUTransmitFSM;
             pxMBPortCBTimerExpired = xMBRTUTimerT35Expired;
-
-            eStatus = eMBRTUInit( ucMBAddress, dHUART, ulBaudRate, dHTIM );
+            HAL_UART_DeInit(dHUART);
+            // HAL_UART_MspDeInit(dHUART); /**/
+            eStatus = eMBRTUInit(ucMBAddress, dHUART, ulBaudRate, dHTIM );
             break;
 #endif
 #if MB_SLAVE_ASCII_ENABLED > 0

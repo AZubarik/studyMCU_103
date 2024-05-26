@@ -16,6 +16,9 @@ build/stm32f1xx_it.o: Core/Src/stm32f1xx_it.c Core/Inc/main.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h \
+ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h \
+ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h \
+ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_crc.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
@@ -31,7 +34,8 @@ build/stm32f1xx_it.o: Core/Src/stm32f1xx_it.c Core/Inc/main.h \
  Drivers/FreeModbus/include/mbport.h Drivers/FreeModbus/include/mbproto.h \
  Drivers/FreeModbus/include/mbport.h Drivers/FreeModbus/app/user_mb_app.h \
  Drivers/FreeModbus/include/mb_m.h Drivers/FreeModbus/include/mbframe.h \
- Drivers/FreeModbus/include/mbutils.h Drivers/AD7793/initADC.h
+ Drivers/FreeModbus/include/mbutils.h Drivers/AD7793/initADC.h \
+ Drivers/Flash/Flash_io.h
 Core/Inc/main.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
 Core/Inc/stm32f1xx_hal_conf.h:
@@ -52,6 +56,9 @@ Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h:
+Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h:
+Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h:
+Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_crc.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h:
 Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
@@ -73,3 +80,4 @@ Drivers/FreeModbus/include/mb_m.h:
 Drivers/FreeModbus/include/mbframe.h:
 Drivers/FreeModbus/include/mbutils.h:
 Drivers/AD7793/initADC.h:
+Drivers/Flash/Flash_io.h:

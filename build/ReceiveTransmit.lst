@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s 			page 1
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -17,75 +17,78 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.section	.text.dataReceive,"ax",%progbits
+  17              		.section	.text.dataReceiveMB_float,"ax",%progbits
   18              		.align	1
-  19              		.global	dataReceive
+  19              		.global	dataReceiveMB_float
   20              		.syntax unified
   21              		.thumb
   22              		.thumb_func
-  24              	dataReceive:
+  24              	dataReceiveMB_float:
   25              	.LVL0:
   26              	.LFB65:
   27              		.file 1 "Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c"
-   1:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** #include "ReceiveTransmit.h"
-   2:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
-   3:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** extern uint16_t usSRegInBuf[];
-   4:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** extern uint16_t usSRegHoldBuf[];
-   5:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
-   6:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** uint16_t out;
-   7:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** uint16_t* tmpe = 0;
-   8:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
-   9:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** uint16_t RegisterValueOne,
-  10:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****          RegisterValueTwo = 0;
-  11:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** uint32_t result = 0;
-  12:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** float value;
-  13:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
-  14:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** float dataReceive (int registr) {
-  28              		.loc 1 14 33 view -0
+   1:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** #include "main.h"
+   2:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** #include "ReceiveTransmit.h"
+   3:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+   4:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** extern uint16_t usSRegInBuf[];
+   5:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** extern uint16_t usSRegHoldBuf[];
+   6:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+   7:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** // uint16_t out;
+   8:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** uint16_t *tmpe = 0;
+   9:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  10:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** uint16_t RegisterValueOne;
+  11:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** uint16_t RegisterValueTwo;
+  12:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  13:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** uint32_t result = 0;
+  14:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** float value;
+  15:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  16:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** float dataReceiveMB_float(int registr)
+  17:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** {
+  28              		.loc 1 17 1 view -0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		@ link register save eliminated.
-  15:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   RegisterValueOne = usSRegHoldBuf[registr];
-  33              		.loc 1 15 3 view .LVU1
-  34              		.loc 1 15 35 is_stmt 0 view .LVU2
+  18:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   RegisterValueOne = usSRegHoldBuf[registr];
+  33              		.loc 1 18 3 view .LVU1
+  34              		.loc 1 18 35 is_stmt 0 view .LVU2
   35 0000 084A     		ldr	r2, .L2
   36 0002 32F81030 		ldrh	r3, [r2, r0, lsl #1]
-  37              		.loc 1 15 20 view .LVU3
+  37              		.loc 1 18 20 view .LVU3
   38 0006 0849     		ldr	r1, .L2+4
   39 0008 0B80     		strh	r3, [r1]	@ movhi
-  16:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   RegisterValueTwo = usSRegHoldBuf[registr + 1];
-  40              		.loc 1 16 3 is_stmt 1 view .LVU4
-  41              		.loc 1 16 44 is_stmt 0 view .LVU5
+  19:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   RegisterValueTwo = usSRegHoldBuf[registr + 1];
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s 			page 2
+
+
+  40              		.loc 1 19 3 is_stmt 1 view .LVU4
+  41              		.loc 1 19 44 is_stmt 0 view .LVU5
   42 000a 0130     		adds	r0, r0, #1
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s 			page 2
-
-
   43              	.LVL1:
-  44              		.loc 1 16 35 view .LVU6
+  44              		.loc 1 19 35 view .LVU6
   45 000c 32F81000 		ldrh	r0, [r2, r0, lsl #1]
   46              	.LVL2:
-  47              		.loc 1 16 20 view .LVU7
+  47              		.loc 1 19 20 view .LVU7
   48 0010 064A     		ldr	r2, .L2+8
   49 0012 1080     		strh	r0, [r2]	@ movhi
-  17:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
-  18:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   result = (RegisterValueOne ) | (RegisterValueTwo << 16);
-  50              		.loc 1 18 3 is_stmt 1 view .LVU8
-  51              		.loc 1 18 32 is_stmt 0 view .LVU9
+  20:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  21:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   result = (RegisterValueOne) | (RegisterValueTwo << 16);
+  50              		.loc 1 21 3 is_stmt 1 view .LVU8
+  51              		.loc 1 21 31 is_stmt 0 view .LVU9
   52 0014 43EA0040 		orr	r0, r3, r0, lsl #16
-  53              		.loc 1 18 10 view .LVU10
+  53              		.loc 1 21 10 view .LVU10
   54 0018 054B     		ldr	r3, .L2+12
   55 001a 1860     		str	r0, [r3]
-  19:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
-  20:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   memcpy(&value, &result, sizeof(value));
-  56              		.loc 1 20 3 is_stmt 1 view .LVU11
+  22:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  23:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   memcpy(&value, &result, sizeof(value));
+  56              		.loc 1 23 3 is_stmt 1 view .LVU11
   57 001c 054B     		ldr	r3, .L2+16
   58 001e 1860     		str	r0, [r3]
-  21:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
-  22:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   return value;
-  59              		.loc 1 22 3 view .LVU12
-  23:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** }
-  60              		.loc 1 23 1 is_stmt 0 view .LVU13
+  24:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  25:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   return value;
+  59              		.loc 1 25 3 view .LVU12
+  26:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** }
+  60              		.loc 1 26 1 is_stmt 0 view .LVU13
   61 0020 7047     		bx	lr
   62              	.L3:
   63 0022 00BF     		.align	2
@@ -97,130 +100,315 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s 			page 1
   69 0034 00000000 		.word	.LANCHOR3
   70              		.cfi_endproc
   71              	.LFE65:
-  73              		.section	.text.dataTransmit,"ax",%progbits
+  73              		.section	.text.dataReceiveMB_uint,"ax",%progbits
   74              		.align	1
-  75              		.global	dataTransmit
+  75              		.global	dataReceiveMB_uint
   76              		.syntax unified
   77              		.thumb
   78              		.thumb_func
-  80              	dataTransmit:
+  80              	dataReceiveMB_uint:
   81              	.LVL3:
   82              	.LFB66:
-  24:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
-  25:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** void dataTransmit (int registr, float out) {
-  83              		.loc 1 25 44 is_stmt 1 view -0
+  27:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  28:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** uint32_t dataReceiveMB_uint(int registr)
+  29:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** {
+  83              		.loc 1 29 1 is_stmt 1 view -0
   84              		.cfi_startproc
-  85              		@ args = 0, pretend = 0, frame = 8
+  85              		@ args = 0, pretend = 0, frame = 0
   86              		@ frame_needed = 0, uses_anonymous_args = 0
   87              		@ link register save eliminated.
-  88              		.loc 1 25 44 is_stmt 0 view .LVU15
-  89 0000 82B0     		sub	sp, sp, #8
-  90              	.LCFI0:
-  91              		.cfi_def_cfa_offset 8
-  92 0002 0191     		str	r1, [sp, #4]	@ float
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s 			page 3
+  30:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   RegisterValueOne = usSRegHoldBuf[registr];
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s 			page 3
 
 
-  26:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 	  tmpe = (uint16_t*) &out;
-  93              		.loc 1 26 4 is_stmt 1 view .LVU16
-  94              		.loc 1 26 9 is_stmt 0 view .LVU17
-  95 0004 074B     		ldr	r3, .L6
-  96 0006 01AA     		add	r2, sp, #4
-  97 0008 1A60     		str	r2, [r3]
-  27:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****     usSRegInBuf[registr] = *tmpe;
-  98              		.loc 1 27 5 is_stmt 1 view .LVU18
-  99              		.loc 1 27 28 is_stmt 0 view .LVU19
- 100 000a BDF80420 		ldrh	r2, [sp, #4]
- 101              		.loc 1 27 26 view .LVU20
- 102 000e 064B     		ldr	r3, .L6+4
- 103 0010 23F81020 		strh	r2, [r3, r0, lsl #1]	@ movhi
-  28:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****     usSRegInBuf[registr + 1] = *(tmpe + 1);
- 104              		.loc 1 28 5 is_stmt 1 view .LVU21
- 105              		.loc 1 28 25 is_stmt 0 view .LVU22
- 106 0014 0130     		adds	r0, r0, #1
- 107              	.LVL4:
- 108              		.loc 1 28 30 view .LVU23
- 109 0016 BDF80620 		ldrh	r2, [sp, #6]
- 110 001a 23F81020 		strh	r2, [r3, r0, lsl #1]	@ movhi
-  29:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** }...
- 111              		.loc 1 29 1 view .LVU24
- 112 001e 02B0     		add	sp, sp, #8
- 113              	.LCFI1:
- 114              		.cfi_def_cfa_offset 0
- 115              		@ sp needed
- 116 0020 7047     		bx	lr
- 117              	.L7:
- 118 0022 00BF     		.align	2
- 119              	.L6:
- 120 0024 00000000 		.word	.LANCHOR4
- 121 0028 00000000 		.word	usSRegInBuf
- 122              		.cfi_endproc
- 123              	.LFE66:
- 125              		.global	value
- 126              		.global	result
- 127              		.global	RegisterValueTwo
- 128              		.global	RegisterValueOne
- 129              		.global	tmpe
- 130              		.global	out
- 131              		.section	.bss.RegisterValueOne,"aw",%nobits
- 132              		.align	1
- 133              		.set	.LANCHOR0,. + 0
- 136              	RegisterValueOne:
- 137 0000 0000     		.space	2
- 138              		.section	.bss.RegisterValueTwo,"aw",%nobits
- 139              		.align	1
- 140              		.set	.LANCHOR1,. + 0
- 143              	RegisterValueTwo:
- 144 0000 0000     		.space	2
- 145              		.section	.bss.out,"aw",%nobits
- 146              		.align	1
- 149              	out:
- 150 0000 0000     		.space	2
- 151              		.section	.bss.result,"aw",%nobits
- 152              		.align	2
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s 			page 4
+  88              		.loc 1 30 3 view .LVU15
+  89              		.loc 1 30 35 is_stmt 0 view .LVU16
+  90 0000 074A     		ldr	r2, .L5
+  91 0002 32F81030 		ldrh	r3, [r2, r0, lsl #1]
+  92              		.loc 1 30 20 view .LVU17
+  93 0006 0749     		ldr	r1, .L5+4
+  94 0008 0B80     		strh	r3, [r1]	@ movhi
+  31:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   RegisterValueTwo = usSRegHoldBuf[registr + 1];
+  95              		.loc 1 31 3 is_stmt 1 view .LVU18
+  96              		.loc 1 31 44 is_stmt 0 view .LVU19
+  97 000a 0130     		adds	r0, r0, #1
+  98              	.LVL4:
+  99              		.loc 1 31 35 view .LVU20
+ 100 000c 32F81000 		ldrh	r0, [r2, r0, lsl #1]
+ 101              	.LVL5:
+ 102              		.loc 1 31 20 view .LVU21
+ 103 0010 054A     		ldr	r2, .L5+8
+ 104 0012 1080     		strh	r0, [r2]	@ movhi
+  32:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  33:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   result = (RegisterValueOne) | (RegisterValueTwo << 16);
+ 105              		.loc 1 33 3 is_stmt 1 view .LVU22
+ 106              		.loc 1 33 31 is_stmt 0 view .LVU23
+ 107 0014 43EA0040 		orr	r0, r3, r0, lsl #16
+ 108              		.loc 1 33 10 view .LVU24
+ 109 0018 044B     		ldr	r3, .L5+12
+ 110 001a 1860     		str	r0, [r3]
+  34:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  35:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   return result;
+ 111              		.loc 1 35 3 is_stmt 1 view .LVU25
+  36:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** }
+ 112              		.loc 1 36 1 is_stmt 0 view .LVU26
+ 113 001c 7047     		bx	lr
+ 114              	.L6:
+ 115 001e 00BF     		.align	2
+ 116              	.L5:
+ 117 0020 00000000 		.word	usSRegHoldBuf
+ 118 0024 00000000 		.word	.LANCHOR0
+ 119 0028 00000000 		.word	.LANCHOR1
+ 120 002c 00000000 		.word	.LANCHOR2
+ 121              		.cfi_endproc
+ 122              	.LFE66:
+ 124              		.section	.text.dataReceiveMBHold_uint,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	dataReceiveMBHold_uint
+ 127              		.syntax unified
+ 128              		.thumb
+ 129              		.thumb_func
+ 131              	dataReceiveMBHold_uint:
+ 132              	.LVL6:
+ 133              	.LFB67:
+  37:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  38:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** void dataReceiveMBHold_uint(int registr, uint32_t out)
+  39:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** {
+ 134              		.loc 1 39 1 is_stmt 1 view -0
+ 135              		.cfi_startproc
+ 136              		@ args = 0, pretend = 0, frame = 8
+ 137              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s 			page 4
 
 
- 153              		.set	.LANCHOR2,. + 0
- 156              	result:
- 157 0000 00000000 		.space	4
- 158              		.section	.bss.tmpe,"aw",%nobits
- 159              		.align	2
- 160              		.set	.LANCHOR4,. + 0
- 163              	tmpe:
- 164 0000 00000000 		.space	4
- 165              		.section	.bss.value,"aw",%nobits
- 166              		.align	2
- 167              		.set	.LANCHOR3,. + 0
- 170              	value:
- 171 0000 00000000 		.space	4
- 172              		.text
- 173              	.Letext0:
- 174              		.file 2 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\machine\\_default_types.
- 175              		.file 3 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\sys\\_stdint.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s 			page 5
+ 138              		@ link register save eliminated.
+ 139              		.loc 1 39 1 is_stmt 0 view .LVU28
+ 140 0000 82B0     		sub	sp, sp, #8
+ 141              	.LCFI0:
+ 142              		.cfi_def_cfa_offset 8
+ 143 0002 0191     		str	r1, [sp, #4]
+  40:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   tmpe = (uint16_t *)&out;
+ 144              		.loc 1 40 3 is_stmt 1 view .LVU29
+ 145              		.loc 1 40 8 is_stmt 0 view .LVU30
+ 146 0004 074B     		ldr	r3, .L9
+ 147 0006 01AA     		add	r2, sp, #4
+ 148 0008 1A60     		str	r2, [r3]
+  41:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   usSRegHoldBuf[registr] = *tmpe;
+ 149              		.loc 1 41 3 is_stmt 1 view .LVU31
+ 150              		.loc 1 41 28 is_stmt 0 view .LVU32
+ 151 000a BDF80420 		ldrh	r2, [sp, #4]
+ 152              		.loc 1 41 26 view .LVU33
+ 153 000e 064B     		ldr	r3, .L9+4
+ 154 0010 23F81020 		strh	r2, [r3, r0, lsl #1]	@ movhi
+  42:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   usSRegHoldBuf[registr + 1] = *(tmpe + 1);
+ 155              		.loc 1 42 3 is_stmt 1 view .LVU34
+ 156              		.loc 1 42 25 is_stmt 0 view .LVU35
+ 157 0014 0130     		adds	r0, r0, #1
+ 158              	.LVL7:
+ 159              		.loc 1 42 30 view .LVU36
+ 160 0016 BDF80620 		ldrh	r2, [sp, #6]
+ 161 001a 23F81020 		strh	r2, [r3, r0, lsl #1]	@ movhi
+  43:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** }
+ 162              		.loc 1 43 1 view .LVU37
+ 163 001e 02B0     		add	sp, sp, #8
+ 164              	.LCFI1:
+ 165              		.cfi_def_cfa_offset 0
+ 166              		@ sp needed
+ 167 0020 7047     		bx	lr
+ 168              	.L10:
+ 169 0022 00BF     		.align	2
+ 170              	.L9:
+ 171 0024 00000000 		.word	.LANCHOR4
+ 172 0028 00000000 		.word	usSRegHoldBuf
+ 173              		.cfi_endproc
+ 174              	.LFE67:
+ 176              		.section	.text.dataTransmitMB_float,"ax",%progbits
+ 177              		.align	1
+ 178              		.global	dataTransmitMB_float
+ 179              		.syntax unified
+ 180              		.thumb
+ 181              		.thumb_func
+ 183              	dataTransmitMB_float:
+ 184              	.LVL8:
+ 185              	.LFB68:
+  44:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  45:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** void dataTransmitMB_float(int registr, float out)
+  46:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** {
+ 186              		.loc 1 46 1 is_stmt 1 view -0
+ 187              		.cfi_startproc
+ 188              		@ args = 0, pretend = 0, frame = 8
+ 189              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s 			page 5
+
+
+ 190              		@ link register save eliminated.
+ 191              		.loc 1 46 1 is_stmt 0 view .LVU39
+ 192 0000 82B0     		sub	sp, sp, #8
+ 193              	.LCFI2:
+ 194              		.cfi_def_cfa_offset 8
+ 195 0002 0191     		str	r1, [sp, #4]	@ float
+  47:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   tmpe = (uint16_t *)&out;
+ 196              		.loc 1 47 3 is_stmt 1 view .LVU40
+ 197              		.loc 1 47 8 is_stmt 0 view .LVU41
+ 198 0004 074B     		ldr	r3, .L13
+ 199 0006 01AA     		add	r2, sp, #4
+ 200 0008 1A60     		str	r2, [r3]
+  48:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   usSRegInBuf[registr] = *tmpe;
+ 201              		.loc 1 48 3 is_stmt 1 view .LVU42
+ 202              		.loc 1 48 26 is_stmt 0 view .LVU43
+ 203 000a BDF80420 		ldrh	r2, [sp, #4]
+ 204              		.loc 1 48 24 view .LVU44
+ 205 000e 064B     		ldr	r3, .L13+4
+ 206 0010 23F81020 		strh	r2, [r3, r0, lsl #1]	@ movhi
+  49:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   usSRegInBuf[registr + 1] = *(tmpe + 1);
+ 207              		.loc 1 49 3 is_stmt 1 view .LVU45
+ 208              		.loc 1 49 23 is_stmt 0 view .LVU46
+ 209 0014 0130     		adds	r0, r0, #1
+ 210              	.LVL9:
+ 211              		.loc 1 49 28 view .LVU47
+ 212 0016 BDF80620 		ldrh	r2, [sp, #6]
+ 213 001a 23F81020 		strh	r2, [r3, r0, lsl #1]	@ movhi
+  50:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** }
+ 214              		.loc 1 50 1 view .LVU48
+ 215 001e 02B0     		add	sp, sp, #8
+ 216              	.LCFI3:
+ 217              		.cfi_def_cfa_offset 0
+ 218              		@ sp needed
+ 219 0020 7047     		bx	lr
+ 220              	.L14:
+ 221 0022 00BF     		.align	2
+ 222              	.L13:
+ 223 0024 00000000 		.word	.LANCHOR4
+ 224 0028 00000000 		.word	usSRegInBuf
+ 225              		.cfi_endproc
+ 226              	.LFE68:
+ 228              		.section	.text.dataTransmitMB_uint,"ax",%progbits
+ 229              		.align	1
+ 230              		.global	dataTransmitMB_uint
+ 231              		.syntax unified
+ 232              		.thumb
+ 233              		.thumb_func
+ 235              	dataTransmitMB_uint:
+ 236              	.LVL10:
+ 237              	.LFB69:
+  51:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** 
+  52:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** void dataTransmitMB_uint(int registr, uint32_t out)
+  53:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** {
+ 238              		.loc 1 53 1 is_stmt 1 view -0
+ 239              		.cfi_startproc
+ 240              		@ args = 0, pretend = 0, frame = 8
+ 241              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s 			page 6
+
+
+ 242              		@ link register save eliminated.
+ 243              		.loc 1 53 1 is_stmt 0 view .LVU50
+ 244 0000 82B0     		sub	sp, sp, #8
+ 245              	.LCFI4:
+ 246              		.cfi_def_cfa_offset 8
+ 247 0002 0191     		str	r1, [sp, #4]
+  54:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   tmpe = (uint16_t *)&out;
+ 248              		.loc 1 54 3 is_stmt 1 view .LVU51
+ 249              		.loc 1 54 8 is_stmt 0 view .LVU52
+ 250 0004 074B     		ldr	r3, .L17
+ 251 0006 01AA     		add	r2, sp, #4
+ 252 0008 1A60     		str	r2, [r3]
+  55:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   usSRegInBuf[registr] = *tmpe;
+ 253              		.loc 1 55 3 is_stmt 1 view .LVU53
+ 254              		.loc 1 55 26 is_stmt 0 view .LVU54
+ 255 000a BDF80420 		ldrh	r2, [sp, #4]
+ 256              		.loc 1 55 24 view .LVU55
+ 257 000e 064B     		ldr	r3, .L17+4
+ 258 0010 23F81020 		strh	r2, [r3, r0, lsl #1]	@ movhi
+  56:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c ****   usSRegInBuf[registr + 1] = *(tmpe + 1);
+ 259              		.loc 1 56 3 is_stmt 1 view .LVU56
+ 260              		.loc 1 56 23 is_stmt 0 view .LVU57
+ 261 0014 0130     		adds	r0, r0, #1
+ 262              	.LVL11:
+ 263              		.loc 1 56 28 view .LVU58
+ 264 0016 BDF80620 		ldrh	r2, [sp, #6]
+ 265 001a 23F81020 		strh	r2, [r3, r0, lsl #1]	@ movhi
+  57:Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.c **** }
+ 266              		.loc 1 57 1 view .LVU59
+ 267 001e 02B0     		add	sp, sp, #8
+ 268              	.LCFI5:
+ 269              		.cfi_def_cfa_offset 0
+ 270              		@ sp needed
+ 271 0020 7047     		bx	lr
+ 272              	.L18:
+ 273 0022 00BF     		.align	2
+ 274              	.L17:
+ 275 0024 00000000 		.word	.LANCHOR4
+ 276 0028 00000000 		.word	usSRegInBuf
+ 277              		.cfi_endproc
+ 278              	.LFE69:
+ 280              		.global	value
+ 281              		.global	result
+ 282              		.global	RegisterValueTwo
+ 283              		.global	RegisterValueOne
+ 284              		.global	tmpe
+ 285              		.section	.bss.RegisterValueOne,"aw",%nobits
+ 286              		.align	1
+ 287              		.set	.LANCHOR0,. + 0
+ 290              	RegisterValueOne:
+ 291 0000 0000     		.space	2
+ 292              		.section	.bss.RegisterValueTwo,"aw",%nobits
+ 293              		.align	1
+ 294              		.set	.LANCHOR1,. + 0
+ 297              	RegisterValueTwo:
+ 298 0000 0000     		.space	2
+ 299              		.section	.bss.result,"aw",%nobits
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s 			page 7
+
+
+ 300              		.align	2
+ 301              		.set	.LANCHOR2,. + 0
+ 304              	result:
+ 305 0000 00000000 		.space	4
+ 306              		.section	.bss.tmpe,"aw",%nobits
+ 307              		.align	2
+ 308              		.set	.LANCHOR4,. + 0
+ 311              	tmpe:
+ 312 0000 00000000 		.space	4
+ 313              		.section	.bss.value,"aw",%nobits
+ 314              		.align	2
+ 315              		.set	.LANCHOR3,. + 0
+ 318              	value:
+ 319 0000 00000000 		.space	4
+ 320              		.text
+ 321              	.Letext0:
+ 322              		.file 2 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\machine\\_default_types.
+ 323              		.file 3 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 ReceiveTransmit.c
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:18     .text.dataReceive:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:24     .text.dataReceive:00000000 dataReceive
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:65     .text.dataReceive:00000024 $d
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:74     .text.dataTransmit:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:80     .text.dataTransmit:00000000 dataTransmit
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:120    .text.dataTransmit:00000024 $d
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:170    .bss.value:00000000 value
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:156    .bss.result:00000000 result
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:143    .bss.RegisterValueTwo:00000000 RegisterValueTwo
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:136    .bss.RegisterValueOne:00000000 RegisterValueOne
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:163    .bss.tmpe:00000000 tmpe
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:149    .bss.out:00000000 out
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:132    .bss.RegisterValueOne:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:139    .bss.RegisterValueTwo:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:146    .bss.out:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:152    .bss.result:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:159    .bss.tmpe:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccdrvZPJ.s:166    .bss.value:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:18     .text.dataReceiveMB_float:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:24     .text.dataReceiveMB_float:00000000 dataReceiveMB_float
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:65     .text.dataReceiveMB_float:00000024 $d
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:74     .text.dataReceiveMB_uint:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:80     .text.dataReceiveMB_uint:00000000 dataReceiveMB_uint
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:117    .text.dataReceiveMB_uint:00000020 $d
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:125    .text.dataReceiveMBHold_uint:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:131    .text.dataReceiveMBHold_uint:00000000 dataReceiveMBHold_uint
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:171    .text.dataReceiveMBHold_uint:00000024 $d
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:177    .text.dataTransmitMB_float:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:183    .text.dataTransmitMB_float:00000000 dataTransmitMB_float
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:223    .text.dataTransmitMB_float:00000024 $d
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:229    .text.dataTransmitMB_uint:00000000 $t
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:235    .text.dataTransmitMB_uint:00000000 dataTransmitMB_uint
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:275    .text.dataTransmitMB_uint:00000024 $d
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:318    .bss.value:00000000 value
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:304    .bss.result:00000000 result
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:297    .bss.RegisterValueTwo:00000000 RegisterValueTwo
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:290    .bss.RegisterValueOne:00000000 RegisterValueOne
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:311    .bss.tmpe:00000000 tmpe
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:286    .bss.RegisterValueOne:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:293    .bss.RegisterValueTwo:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:300    .bss.result:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:307    .bss.tmpe:00000000 $d
+C:\Users\Andre\AppData\Local\Temp\ccAZ1XH4.s:314    .bss.value:00000000 $d
 
 UNDEFINED SYMBOLS
 usSRegHoldBuf

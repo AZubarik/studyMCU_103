@@ -4,6 +4,7 @@
 #include "main.h"
 
 void ADC_chanel(uint16_t CS);
+void ADC_chanel_(uint16_t CS);
 
 // void funcADC(uint16_t Pin);
 void tempCPU_AD(void);
