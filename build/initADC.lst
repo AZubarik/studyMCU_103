@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
   25:Drivers/AD7793/initADC.c ****   {
   26:Drivers/AD7793/initADC.c ****     AD7793_Init();
   27:Drivers/AD7793/initADC.c ****     tempCPU_AD();
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 2
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 2
 
 
   28:Drivers/AD7793/initADC.c ****     dataTransmitMB_float(Chanel_1_tempChip, tempChip);
@@ -78,7 +78,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
   42:Drivers/AD7793/initADC.c ****     AD7793_Configuration_Register(AD7793_VBIAS_GEN_DISABL, AD7793_GAIN_1, AD7793_REFSEL_EXT, AD7793
   43:Drivers/AD7793/initADC.c ****     AD7793_IO_Register(AD7793_DIR_IEXC1_IOUT1_IEXC2_IOUT2, AD7793_EN_IXCEN_210uA);
   44:Drivers/AD7793/initADC.c **** 
-  45:Drivers/AD7793/initADC.c ****     float tempRTD = temp(AD7793_ContinuousReadAvg(10));
+  45:Drivers/AD7793/initADC.c ****      float tempRTD = temp(AD7793_ContinuousReadAvg(10));
   46:Drivers/AD7793/initADC.c **** 
   47:Drivers/AD7793/initADC.c ****     if ((tempRTD > 0) && (tempRTD < 100))
   48:Drivers/AD7793/initADC.c ****     {
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
   82:Drivers/AD7793/initADC.c **** 
   83:Drivers/AD7793/initADC.c ****     // if ((tempRTD > 0) && (tempRTD < 100))
   84:Drivers/AD7793/initADC.c ****     // {
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 3
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 3
 
 
   85:Drivers/AD7793/initADC.c ****     //   dataTransmitMB_float(Chanel_2_tempRTD, tempRTD);
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
   71 003a 104B     		ldr	r3, .L3+28
   72 003c FFF7FEFF 		bl	__aeabi_dmul
   73              	.LVL7:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 4
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 4
 
 
   74 0040 09A3     		adr	r3, .L3+8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
  127              		.cfi_offset 4, -12
  128              		.cfi_offset 5, -8
  129              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 5
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 5
 
 
   23:Drivers/AD7793/initADC.c ****   if (!usSRegHoldBuf[0])
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
  169 0026 0220     		movs	r0, #2
  170 0028 FFF7FEFF 		bl	dataTransmitMB_float
  171              	.LVL16:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 6
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 6
 
 
   29:Drivers/AD7793/initADC.c ****     Flag = 0;
@@ -358,12 +358,12 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
  215 0066 FFF7FEFF 		bl	AD7793_IO_Register
  216              	.LVL21:
   45:Drivers/AD7793/initADC.c **** 
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 7
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 7
 
 
- 217              		.loc 1 45 5 view .LVU35
+ 217              		.loc 1 45 6 view .LVU35
   45:Drivers/AD7793/initADC.c **** 
- 218              		.loc 1 45 21 is_stmt 0 view .LVU36
+ 218              		.loc 1 45 22 is_stmt 0 view .LVU36
  219 006a 0A20     		movs	r0, #10
  220 006c FFF7FEFF 		bl	AD7793_ContinuousReadAvg
  221              	.LVL22:
@@ -418,14 +418,14 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
  270 00d6 FFF7FEFF 		bl	__aeabi_dsub
  271              	.LVL34:
  272 00da 13A3     		adr	r3, .L19+24
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 8
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 8
 
 
  273 00dc D3E90023 		ldrd	r2, [r3]
  274 00e0 FFF7FEFF 		bl	__aeabi_ddiv
  275              	.LVL35:
   45:Drivers/AD7793/initADC.c **** 
- 276              		.loc 1 45 11 view .LVU37
+ 276              		.loc 1 45 12 view .LVU37
  277 00e4 FFF7FEFF 		bl	__aeabi_d2f
  278              	.LVL36:
  279 00e8 0446     		mov	r4, r0
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
  319 0124 2602703F 		.word	1064305190
  320 0128 000000E0 		.word	-536870912
  321 012c AF60B3BE 		.word	-1095540561
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 9
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 9
 
 
  322 0130 00000000 		.word	.LANCHOR1
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
   68:Drivers/AD7793/initADC.c ****   {
  371              		.loc 1 68 3 is_stmt 1 view .LVU52
   68:Drivers/AD7793/initADC.c ****   {
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 10
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 10
 
 
  372              		.loc 1 68 20 is_stmt 0 view .LVU53
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
  414 003c 0021     		movs	r1, #0
  415 003e 0520     		movs	r0, #5
  416 0040 FFF7FEFF 		bl	AD7793_Calibrate
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 11
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 11
 
 
  417              	.LVL49:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
  464 008e FFF7FEFF 		bl	__aeabi_dmul
  465              	.LVL58:
  466 0092 0246     		mov	r2, r0
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 12
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 12
 
 
  467 0094 0B46     		mov	r3, r1
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
  516 00ec AFF30080 		.align	3
  517              	.L29:
  518 00f0 000000E0 		.word	-536870912
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 13
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 13
 
 
  519 00f4 AF60C33E 		.word	1052991663
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
  570              		.global	B
  571              		.global	A
  572              		.global	R0
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 14
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 14
 
 
  573              		.global	Vref
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
  649 0000 8FC2953F 		.word	1066779279
  650              		.text
  651              	.Letext0:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 15
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 15
 
 
  652              		.file 2 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\machine\\_default_types.
@@ -847,44 +847,44 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 1
  655              		.file 5 "Drivers/AD7793/AD7793.h"
  656              		.file 6 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\math.h"
  657              		.file 7 "Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s 			page 16
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc2GmELT.s 			page 16
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 initADC.c
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:23     .text.tempCPU_AD:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:29     .text.tempCPU_AD:00000000 tempCPU_AD
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:92     .text.tempCPU_AD:00000060 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:109    .text.ADC_chanel:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:115    .text.ADC_chanel:00000000 ADC_chanel
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:314    .text.ADC_chanel:00000110 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:338    .text.ADC_chanel_:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:344    .text.ADC_chanel_:00000000 ADC_chanel_
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:518    .text.ADC_chanel_:000000f0 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:538    .text.Calibrate:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:544    .text.Calibrate:00000000 Calibrate
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:630    .rodata.B:00000000 B
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:624    .rodata.A:00000000 A
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:636    .rodata.R0:00000000 R0
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:648    .rodata.Vref:00000000 Vref
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:642    .rodata.RREF:00000000 RREF
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:611    .bss.tempChip:00000000 tempChip
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:591    .bss.RRTD:00000000 RRTD
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:597    .bss.V:00000000 V
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:618    .data.GAIN:00000000 GAIN
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:585    .bss.Flag:00000000 Flag
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:604    .bss.pinNumber:00000000 pinNumber
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:586    .bss.Flag:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:588    .bss.RRTD:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:594    .bss.V:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:600    .bss.pinNumber:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:607    .bss.tempChip:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:614    .data.GAIN:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:621    .rodata.A:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:627    .rodata.B:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:633    .rodata.R0:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:639    .rodata.RREF:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccW5B0oT.s:645    .rodata.Vref:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:23     .text.tempCPU_AD:00000000 $t
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:29     .text.tempCPU_AD:00000000 tempCPU_AD
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:92     .text.tempCPU_AD:00000060 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:109    .text.ADC_chanel:00000000 $t
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:115    .text.ADC_chanel:00000000 ADC_chanel
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:314    .text.ADC_chanel:00000110 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:338    .text.ADC_chanel_:00000000 $t
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:344    .text.ADC_chanel_:00000000 ADC_chanel_
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:518    .text.ADC_chanel_:000000f0 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:538    .text.Calibrate:00000000 $t
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:544    .text.Calibrate:00000000 Calibrate
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:630    .rodata.B:00000000 B
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:624    .rodata.A:00000000 A
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:636    .rodata.R0:00000000 R0
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:648    .rodata.Vref:00000000 Vref
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:642    .rodata.RREF:00000000 RREF
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:611    .bss.tempChip:00000000 tempChip
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:591    .bss.RRTD:00000000 RRTD
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:597    .bss.V:00000000 V
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:618    .data.GAIN:00000000 GAIN
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:585    .bss.Flag:00000000 Flag
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:604    .bss.pinNumber:00000000 pinNumber
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:586    .bss.Flag:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:588    .bss.RRTD:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:594    .bss.V:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:600    .bss.pinNumber:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:607    .bss.tempChip:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:614    .data.GAIN:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:621    .rodata.A:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:627    .rodata.B:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:633    .rodata.R0:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:639    .rodata.RREF:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc2GmELT.s:645    .rodata.Vref:00000000 $d
 
 UNDEFINED SYMBOLS
 __aeabi_ui2d

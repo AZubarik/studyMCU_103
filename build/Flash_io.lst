@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 1
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccZsZDvP.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 1
   44              		.cfi_offset 4, -8
   45              		.cfi_offset 14, -4
   12:Drivers/Flash/Flash_io.c ****   { /* Чтение дыннх из Flash */
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 2
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccZsZDvP.s 			page 2
 
 
   13:Drivers/Flash/Flash_io.c ****     if (usSRegHoldBuf[10] == TRUE)
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 1
   86 003a 4000     		lsls	r0, r0, #1
   87 003c FFF7FEFF 		bl	readFlashData
   88              	.LVL3:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 3
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccZsZDvP.s 			page 3
 
 
   89 0040 0146     		mov	r1, r0
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 1
   36:Drivers/Flash/Flash_io.c ****           break;
   37:Drivers/Flash/Flash_io.c ****     }
   38:Drivers/Flash/Flash_io.c **** 
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 4
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccZsZDvP.s 			page 4
 
 
   39:Drivers/Flash/Flash_io.c ****     /* Запись данных в Flash */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 1
   42:Drivers/Flash/Flash_io.c ****         writeFlashData(0x0801FC00, memoryDevice.deviceIdMB);
  159              		.loc 1 42 9 view .LVU40
  160 008c FFF7FEFF 		bl	ErasingMemory
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 5
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccZsZDvP.s 			page 5
 
 
  161              	.LVL7:
@@ -290,18 +290,18 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 1
  203              		.file 4 "Drivers/Flash/Flash_io.h"
  204              		.file 5 "Drivers/Flash/Flash.h"
  205              		.file 6 "Drivers/FreeModbus/ReceiveTransmit/ReceiveTransmit.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s 			page 6
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccZsZDvP.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Flash_io.c
-C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:18     .text.storeParametersToFlash:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:24     .text.storeParametersToFlash:00000000 storeParametersToFlash
-C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:73     .text.storeParametersToFlash:0000002e $d
-C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:78     .text.storeParametersToFlash:00000032 $t
-C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:185    .text.storeParametersToFlash:000000ac $d
-C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:193    .bss.memoryDevice:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\cckh1XH4.s:197    .bss.memoryDevice:00000000 memoryDevice
+C:\Users\az\AppData\Local\Temp\ccZsZDvP.s:18     .text.storeParametersToFlash:00000000 $t
+C:\Users\az\AppData\Local\Temp\ccZsZDvP.s:24     .text.storeParametersToFlash:00000000 storeParametersToFlash
+C:\Users\az\AppData\Local\Temp\ccZsZDvP.s:73     .text.storeParametersToFlash:0000002e $d
+C:\Users\az\AppData\Local\Temp\ccZsZDvP.s:78     .text.storeParametersToFlash:00000032 $t
+C:\Users\az\AppData\Local\Temp\ccZsZDvP.s:185    .text.storeParametersToFlash:000000ac $d
+C:\Users\az\AppData\Local\Temp\ccZsZDvP.s:193    .bss.memoryDevice:00000000 $d
+C:\Users\az\AppData\Local\Temp\ccZsZDvP.s:197    .bss.memoryDevice:00000000 memoryDevice
 
 UNDEFINED SYMBOLS
 dataReceiveMB_uint

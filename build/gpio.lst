@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 1
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccPYuiQk.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 1
   30:Core/Src/gpio.c **** /*----------------------------------------------------------------------------*/
   31:Core/Src/gpio.c **** /* USER CODE BEGIN 1 */
   32:Core/Src/gpio.c **** 
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 2
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccPYuiQk.s 			page 2
 
 
   33:Core/Src/gpio.c **** /* USER CODE END 1 */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 1
   49:Core/Src/gpio.c ****   __HAL_RCC_GPIOD_CLK_ENABLE();
   65              		.loc 1 49 3 view .LVU9
   66              	.LBB3:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 3
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccPYuiQk.s 			page 3
 
 
   67              		.loc 1 49 3 view .LVU10
@@ -178,14 +178,14 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 1
  116              	.LVL0:
   55:Core/Src/gpio.c **** 
   56:Core/Src/gpio.c ****   /*Configure GPIO pin Output Level */
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 4
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccPYuiQk.s 			page 4
 
 
-  57:Core/Src/gpio.c ****   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);
+  57:Core/Src/gpio.c ****   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1|GPIO_PIN_11|GPIO_PIN_12, GPIO_PIN_SET);
  117              		.loc 1 57 3 view .LVU28
  118 0066 224E     		ldr	r6, .L3+8
  119 0068 0122     		movs	r2, #1
- 120 006a 4FF48051 		mov	r1, #4096
+ 120 006a 41F60201 		movw	r1, #6146
  121 006e 3046     		mov	r0, r6
  122 0070 FFF7FEFF 		bl	HAL_GPIO_WritePin
  123              	.LVL1:
@@ -216,11 +216,11 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 1
  141 0086 FFF7FEFF 		bl	HAL_GPIO_Init
  142              	.LVL2:
   65:Core/Src/gpio.c **** 
-  66:Core/Src/gpio.c ****   /*Configure GPIO pin : PB12 */
-  67:Core/Src/gpio.c ****   GPIO_InitStruct.Pin = GPIO_PIN_12;
+  66:Core/Src/gpio.c ****   /*Configure GPIO pins : PB1 PB11 PB12 */
+  67:Core/Src/gpio.c ****   GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_11|GPIO_PIN_12;
  143              		.loc 1 67 3 view .LVU38
  144              		.loc 1 67 23 is_stmt 0 view .LVU39
- 145 008a 4FF48053 		mov	r3, #4096
+ 145 008a 41F60203 		movw	r3, #6146
  146 008e 0493     		str	r3, [sp, #16]
   68:Core/Src/gpio.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
  147              		.loc 1 68 3 is_stmt 1 view .LVU40
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 1
   71:Core/Src/gpio.c ****   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
  157              		.loc 1 71 3 is_stmt 1 view .LVU46
  158 0098 04A9     		add	r1, sp, #16
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 5
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccPYuiQk.s 			page 5
 
 
  159 009a 3046     		mov	r0, r6
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 1
  198              	.LVL6:
   87:Core/Src/gpio.c ****   HAL_NVIC_EnableIRQ(EXTI3_IRQn);
  199              		.loc 1 87 3 view .LVU62
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 6
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccPYuiQk.s 			page 6
 
 
  200 00ce 0920     		movs	r0, #9
@@ -342,14 +342,14 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 1
  234              		.file 4 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h"
  235              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
  236              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s 			page 7
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccPYuiQk.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gpio.c
-C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s:18     .text.MX_GPIO_Init:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s:24     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\Andre\AppData\Local\Temp\cc7MCxDX.s:222    .text.MX_GPIO_Init:000000e8 $d
+C:\Users\az\AppData\Local\Temp\ccPYuiQk.s:18     .text.MX_GPIO_Init:00000000 $t
+C:\Users\az\AppData\Local\Temp\ccPYuiQk.s:24     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\az\AppData\Local\Temp\ccPYuiQk.s:222    .text.MX_GPIO_Init:000000e8 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

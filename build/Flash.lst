@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 1
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc7qclzN.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 1
   12:Drivers/Flash/Flash.c **** 	EraseInitStruct.PageAddress = ((uint32_t)0x0801FC00); // Адрес 127-ой страницы
   45              		.loc 1 12 2 is_stmt 1 view .LVU4
   46              		.loc 1 12 30 is_stmt 0 view .LVU5
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 2
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc7qclzN.s 			page 2
 
 
   47 000a 094A     		ldr	r2, .L3+4
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 1
   93              	.LFB66:
   23:Drivers/Flash/Flash.c **** 
   24:Drivers/Flash/Flash.c **** void writeFlashData(uint32_t address, uint32_t data)
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 3
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc7qclzN.s 			page 3
 
 
   25:Drivers/Flash/Flash.c **** {
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 1
  140              		.thumb
  141              		.thumb_func
  143              	readFlashData:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 4
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc7qclzN.s 			page 4
 
 
  144              	.LVL9:
@@ -217,20 +217,20 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 1
  171              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h"
  172              		.file 5 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h"
  173              		.file 6 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s 			page 5
+ARM GAS  C:\Users\az\AppData\Local\Temp\cc7qclzN.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Flash.c
-C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:18     .text.ErasingMemory:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:24     .text.ErasingMemory:00000000 ErasingMemory
-C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:79     .text.ErasingMemory:0000002c $d
-C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:85     .text.writeFlashData:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:91     .text.writeFlashData:00000000 writeFlashData
-C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:137    .text.readFlashData:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:143    .text.readFlashData:00000000 readFlashData
-C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:161    .bss.EraseInitStruct.0:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccoD1XH4.s:165    .bss.EraseInitStruct.0:00000000 EraseInitStruct.0
+C:\Users\az\AppData\Local\Temp\cc7qclzN.s:18     .text.ErasingMemory:00000000 $t
+C:\Users\az\AppData\Local\Temp\cc7qclzN.s:24     .text.ErasingMemory:00000000 ErasingMemory
+C:\Users\az\AppData\Local\Temp\cc7qclzN.s:79     .text.ErasingMemory:0000002c $d
+C:\Users\az\AppData\Local\Temp\cc7qclzN.s:85     .text.writeFlashData:00000000 $t
+C:\Users\az\AppData\Local\Temp\cc7qclzN.s:91     .text.writeFlashData:00000000 writeFlashData
+C:\Users\az\AppData\Local\Temp\cc7qclzN.s:137    .text.readFlashData:00000000 $t
+C:\Users\az\AppData\Local\Temp\cc7qclzN.s:143    .text.readFlashData:00000000 readFlashData
+C:\Users\az\AppData\Local\Temp\cc7qclzN.s:161    .bss.EraseInitStruct.0:00000000 $d
+C:\Users\az\AppData\Local\Temp\cc7qclzN.s:165    .bss.EraseInitStruct.0:00000000 EraseInitStruct.0
 
 UNDEFINED SYMBOLS
 HAL_FLASH_Unlock

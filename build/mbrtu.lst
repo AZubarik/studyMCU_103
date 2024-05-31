@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
   29:Drivers/FreeModbus/rtu/mbrtu.c ****  */
   30:Drivers/FreeModbus/rtu/mbrtu.c **** 
   31:Drivers/FreeModbus/rtu/mbrtu.c **** /* ----------------------- System includes ----------------------------------*/
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 2
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 2
 
 
   32:Drivers/FreeModbus/rtu/mbrtu.c **** #include "stdlib.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
   31              		@ frame_needed = 0, uses_anonymous_args = 0
   32              		.loc 1 82 1 is_stmt 0 view .LVU1
   33 0000 70B5     		push	{r4, r5, r6, lr}
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 3
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 3
 
 
   34              	.LCFI0:
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  107:Drivers/FreeModbus/rtu/mbrtu.c ****              * ChTimeValue = Ticks_per_1s / ( Baudrate / 11 )
  108:Drivers/FreeModbus/rtu/mbrtu.c ****              *             = 11 * Ticks_per_1s / Baudrate
  109:Drivers/FreeModbus/rtu/mbrtu.c ****              *             = 220000 / Baudrate
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 4
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 4
 
 
  110:Drivers/FreeModbus/rtu/mbrtu.c ****              * The reload for t3.5 is 1.5 times this value and similary
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
   95 003a 0128     		cmp	r0, #1
   96 003c 03D0     		beq	.L9
  117:Drivers/FreeModbus/rtu/mbrtu.c ****         }
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 5
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 5
 
 
   97              		.loc 1 117 21 view .LVU22
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  140 0006 0021     		movs	r1, #0
  141 0008 044B     		ldr	r3, .L14
  142 000a 1970     		strb	r1, [r3]
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 6
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 6
 
 
  135:Drivers/FreeModbus/rtu/mbrtu.c ****     vMBPortSerialEnable( TRUE, FALSE );
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  146:Drivers/FreeModbus/rtu/mbrtu.c ****     vMBPortTimersDisable(  );
  188              		.loc 1 146 5 view .LVU36
  189 000e FFF7FEFF 		bl	vMBPortTimersDisable
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 7
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 7
 
 
  190              	.LVL19:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  233 000e 1B88     		ldrh	r3, [r3]
  234 0010 9BB2     		uxth	r3, r3
  235              		.loc 1 159 7 view .LVU46
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 8
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 8
 
 
  236 0012 032B     		cmp	r3, #3
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  263 0030 12F8013B 		ldrb	r3, [r2], #1	@ zero_extendqisi2
  165:Drivers/FreeModbus/rtu/mbrtu.c **** 
  264              		.loc 1 165 24 view .LVU55
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 9
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 9
 
 
  265 0034 3370     		strb	r3, [r6]
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  308              		.cfi_startproc
  309              		@ args = 0, pretend = 0, frame = 0
  310              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 10
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 10
 
 
  311              		.loc 1 186 1 is_stmt 0 view .LVU66
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  214:Drivers/FreeModbus/rtu/mbrtu.c ****     }
  215:Drivers/FreeModbus/rtu/mbrtu.c ****     else
  216:Drivers/FreeModbus/rtu/mbrtu.c ****     {
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 11
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 11
 
 
  217:Drivers/FreeModbus/rtu/mbrtu.c ****         eStatus = MB_EIO;
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  376 0046 FFF7FEFF 		bl	usMBCRC16
  377              	.LVL37:
  208:Drivers/FreeModbus/rtu/mbrtu.c ****         ucRTUBuf[usSndBufferCount++] = ( UCHAR )( usCRC16 >> 8 );
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 12
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 12
 
 
  378              		.loc 1 208 9 is_stmt 1 view .LVU88
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  420 0084 00000000 		.word	.LANCHOR3
  421 0088 00000000 		.word	.LANCHOR4
  422 008c 00000000 		.word	.LANCHOR2
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 13
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 13
 
 
  423 0090 00000000 		.word	.LANCHOR5
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  466 001c 1D       		.byte	(.L37-.L36)/2
  467 001d 08       		.byte	(.L35-.L36)/2
  468              		.p2align 1
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 14
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 14
 
 
  469              	.L39:
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  476              		.loc 1 281 1 is_stmt 0 view .LVU111
  477 0022 0020     		movs	r0, #0
  478 0024 03B0     		add	sp, sp, #12
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 15
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 15
 
 
  479              	.LCFI7:
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  269:Drivers/FreeModbus/rtu/mbrtu.c ****         {
  521              		.loc 1 269 28 is_stmt 0 view .LVU124
  522 0054 0B4B     		ldr	r3, .L43+4
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 16
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 16
 
 
  523 0056 1B88     		ldrh	r3, [r3]
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  282:Drivers/FreeModbus/rtu/mbrtu.c **** 
  283:Drivers/FreeModbus/rtu/mbrtu.c **** BOOL
  284:Drivers/FreeModbus/rtu/mbrtu.c **** xMBRTUTransmitFSM( void )
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 17
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 17
 
 
  285:Drivers/FreeModbus/rtu/mbrtu.c **** {
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  315:Drivers/FreeModbus/rtu/mbrtu.c ****             /* Disable transmitter. This prevents another transmit buffer
  316:Drivers/FreeModbus/rtu/mbrtu.c ****              * empty interrupt. */
  317:Drivers/FreeModbus/rtu/mbrtu.c ****             vMBPortSerialEnable( TRUE, FALSE );
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 18
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 18
 
 
  318:Drivers/FreeModbus/rtu/mbrtu.c ****             eSndState = STATE_TX_IDLE;
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  632 003c 0820     		movs	r0, #8
  633 003e FFF7FEFF 		bl	xMBPortEventPost
  634              	.LVL52:
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 19
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 19
 
 
  635 0042 0446     		mov	r4, r0
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  681 0008 03F0FF02 		and	r2, r3, #255
  682 000c 022A     		cmp	r2, #2
  683 000e 0CD0     		beq	.L55
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 20
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 20
 
 
  684 0010 0024     		movs	r4, #0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  336:Drivers/FreeModbus/rtu/mbrtu.c **** 
  708              		.loc 1 336 9 is_stmt 1 view .LVU162
  709 0028 F3E7     		b	.L56
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 21
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 21
 
 
  710              	.LVL61:
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  770              	.Letext0:
  771              		.file 2 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\machine\\_default_types.
  772              		.file 3 "c:\\vscodeide\\software\\armembeddedgcc\\arm-none-eabi\\include\\sys\\_stdint.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 22
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 22
 
 
  773              		.file 4 "Drivers/FreeModbus/port/port.h"
@@ -1266,48 +1266,48 @@ ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 1
  775              		.file 6 "Drivers/FreeModbus/include/mb.h"
  776              		.file 7 "Drivers/FreeModbus/port/portcritical.h"
  777              		.file 8 "Drivers/FreeModbus/rtu/mbcrc.h"
-ARM GAS  C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s 			page 23
+ARM GAS  C:\Users\az\AppData\Local\Temp\ccNSujnt.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 mbrtu.c
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:18     .text.eMBRTUInit:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:24     .text.eMBRTUInit:00000000 eMBRTUInit
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:113    .text.eMBRTUInit:0000004c $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:118    .text.eMBRTUStart:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:124    .text.eMBRTUStart:00000000 eMBRTUStart
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:158    .text.eMBRTUStart:0000001c $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:163    .text.eMBRTUStop:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:169    .text.eMBRTUStop:00000000 eMBRTUStop
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:200    .text.eMBRTUReceive:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:206    .text.eMBRTUReceive:00000000 eMBRTUReceive
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:292    .text.eMBRTUReceive:0000004c $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:298    .text.eMBRTUSend:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:304    .text.eMBRTUSend:00000000 eMBRTUSend
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:419    .text.eMBRTUSend:00000080 $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:428    .text.xMBRTUReceiveFSM:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:434    .text.xMBRTUReceiveFSM:00000000 xMBRTUReceiveFSM
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:464    .text.xMBRTUReceiveFSM:0000001a $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:468    .text.xMBRTUReceiveFSM:0000001e $t
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:556    .text.xMBRTUReceiveFSM:00000080 $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:563    .text.xMBRTUTransmitFSM:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:569    .text.xMBRTUTransmitFSM:00000000 xMBRTUTransmitFSM
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:651    .text.xMBRTUTransmitFSM:00000054 $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:658    .text.xMBRTUTimerT35Expired:00000000 $t
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:664    .text.xMBRTUTimerT35Expired:00000000 xMBRTUTimerT35Expired
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:724    .text.xMBRTUTimerT35Expired:00000034 $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:753    .bss.ucRTUBuf:00000000 ucRTUBuf
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:733    .bss.eRcvState:00000000 eRcvState
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:734    .bss.eRcvState:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:739    .bss.eSndState:00000000 eSndState
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:740    .bss.eSndState:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:742    .bss.pucSndBufferCur:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:746    .bss.pucSndBufferCur:00000000 pucSndBufferCur
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:749    .bss.ucRTUBuf:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:756    .bss.usRcvBufferPos:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:760    .bss.usRcvBufferPos:00000000 usRcvBufferPos
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:763    .bss.usSndBufferCount:00000000 $d
-C:\Users\Andre\AppData\Local\Temp\ccOQ4EXE.s:767    .bss.usSndBufferCount:00000000 usSndBufferCount
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:18     .text.eMBRTUInit:00000000 $t
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:24     .text.eMBRTUInit:00000000 eMBRTUInit
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:113    .text.eMBRTUInit:0000004c $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:118    .text.eMBRTUStart:00000000 $t
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:124    .text.eMBRTUStart:00000000 eMBRTUStart
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:158    .text.eMBRTUStart:0000001c $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:163    .text.eMBRTUStop:00000000 $t
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:169    .text.eMBRTUStop:00000000 eMBRTUStop
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:200    .text.eMBRTUReceive:00000000 $t
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:206    .text.eMBRTUReceive:00000000 eMBRTUReceive
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:292    .text.eMBRTUReceive:0000004c $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:298    .text.eMBRTUSend:00000000 $t
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:304    .text.eMBRTUSend:00000000 eMBRTUSend
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:419    .text.eMBRTUSend:00000080 $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:428    .text.xMBRTUReceiveFSM:00000000 $t
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:434    .text.xMBRTUReceiveFSM:00000000 xMBRTUReceiveFSM
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:464    .text.xMBRTUReceiveFSM:0000001a $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:468    .text.xMBRTUReceiveFSM:0000001e $t
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:556    .text.xMBRTUReceiveFSM:00000080 $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:563    .text.xMBRTUTransmitFSM:00000000 $t
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:569    .text.xMBRTUTransmitFSM:00000000 xMBRTUTransmitFSM
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:651    .text.xMBRTUTransmitFSM:00000054 $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:658    .text.xMBRTUTimerT35Expired:00000000 $t
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:664    .text.xMBRTUTimerT35Expired:00000000 xMBRTUTimerT35Expired
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:724    .text.xMBRTUTimerT35Expired:00000034 $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:753    .bss.ucRTUBuf:00000000 ucRTUBuf
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:733    .bss.eRcvState:00000000 eRcvState
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:734    .bss.eRcvState:00000000 $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:739    .bss.eSndState:00000000 eSndState
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:740    .bss.eSndState:00000000 $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:742    .bss.pucSndBufferCur:00000000 $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:746    .bss.pucSndBufferCur:00000000 pucSndBufferCur
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:749    .bss.ucRTUBuf:00000000 $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:756    .bss.usRcvBufferPos:00000000 $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:760    .bss.usRcvBufferPos:00000000 usRcvBufferPos
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:763    .bss.usSndBufferCount:00000000 $d
+C:\Users\az\AppData\Local\Temp\ccNSujnt.s:767    .bss.usSndBufferCount:00000000 usSndBufferCount
 
 UNDEFINED SYMBOLS
 __critical_enter
